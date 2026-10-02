@@ -27,6 +27,10 @@ The CLI sends each complete document as one document-level input. It does not si
 
 Outputs include raw and deterministically validated JSONL files, run metadata, and validation reports. API keys are never written to outputs.
 
+## Master material selection
+
+The first ten-master source plan is recorded in [`masters_material_selection_v0.1.md`](masters_material_selection_v0.1.md) and [`masters_material_selection_v0.1.json`](masters_material_selection_v0.1.json). The manifest stores source type, official URL, style dimensions, access mode, and copyright handling; it does not redistribute copyrighted books or restricted PDFs.
+
 ## Corpus
 
 `buffett_corpus/` contains the existing Buffett pilot corpus, source manifest, selected-source list, 20 draft rubrics, and review notes. `raw/` is ignored for Git commits; use the official URLs in `manifest.json` and `selected_sources.json` to recreate downloads. Processed text and provenance metadata are retained.

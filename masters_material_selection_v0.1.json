@@ -1,0 +1,642 @@
+{
+  "version": "0.1",
+  "purpose": "为投资风格 Rubric 提取建立首批一手材料清单；先提取来源原则，再映射到 TradeBank 轨迹。",
+  "selection_criteria": [
+    "作者本人或其投资机构的原始表达",
+    "有稳定的版本、日期和出处，可保留 source_url、edition 或 filing 标识",
+    "能够覆盖估值、风险、组合、行为或交易决策，而不只是名言",
+    "有机会从一位大师的材料中提取约 50–100 条原子化原则；实际数量需经去重和人工审查确认",
+    "尽量覆盖不同风格，以避免首批语料全部集中在传统价值投资"
+  ],
+  "source_policy": {
+    "canonical": "作者著作、作者署名的官方信件/演讲、投资机构官方股东信/研究和 SEC/公司披露。",
+    "not_canonical": "二手名言汇编、媒体转述、未署名博客和读者整理的语录；可做线索，不能作为原则的唯一出处。",
+    "copyright": "仓库只提交 metadata、官方 URL、版本/页码和 hash。受版权保护的书籍或受限 PDF 由研究者合法取得后在本地处理，不把全文提交到 GitHub。公开官方信件和网页也保留抓取日期、URL 与 hash，并遵守站点条款。",
+    "source_types": {
+      "official_open": "官方公开网页、信件、演讲或申报，可下载或抓取后保留出处",
+      "licensed_book": "作者本人著作；需要合法购买、图书馆或用户提供的授权文本",
+      "official_filing": "作者或其机构的官方年报、股东信或 SEC 文件",
+      "official_institution": "作者任职机构公开的研究、投资说明或策略文件；需记录机构实体与署名"
+    }
+  },
+  "masters": [
+    {
+      "id": "buffett",
+      "name": "Warren Buffett",
+      "style_tags": [
+        "business_value",
+        "quality",
+        "capital_allocation",
+        "temperament"
+      ],
+      "selection_role": "核心基准；已有本地 Buffett 语料和两阶段 pipeline",
+      "core_materials": [
+        {
+          "id": "buffett.berkshire_letters",
+          "title": "Berkshire Hathaway Shareholder Letters, 1977–2024",
+          "type": "official_open",
+          "url": "https://www.berkshirehathaway.com/letters/letters.html",
+          "priority": "core",
+          "dimensions": [
+            "circle_of_competence",
+            "business_understanding",
+            "owner_earnings",
+            "intrinsic_value",
+            "margin_of_safety",
+            "management",
+            "capital_allocation",
+            "liquidity",
+            "long_horizon"
+          ]
+        },
+        {
+          "id": "buffett.owners_manual",
+          "title": "An Owner's Manual",
+          "type": "official_open",
+          "url": "https://www.berkshirehathaway.com/owners.html",
+          "priority": "core",
+          "dimensions": [
+            "owner_orientation",
+            "shareholder_alignment",
+            "debt_discipline",
+            "capital_allocation"
+          ]
+        },
+        {
+          "id": "buffett.special_letters",
+          "title": "Berkshire Special Letters, including Charlie and Warren 50th Anniversary Letter",
+          "type": "official_open",
+          "url": "https://www.berkshirehathaway.com/SpecialLetters/WEBCTMLtr.html",
+          "priority": "supporting",
+          "dimensions": [
+            "investment_policy",
+            "governance",
+            "long_term_partnership"
+          ]
+        }
+      ],
+      "corpus_status": "already_processed_in_buffett_corpus",
+      "expected_yield": "high"
+    },
+    {
+      "id": "munger",
+      "name": "Charlie Munger",
+      "style_tags": [
+        "mental_models",
+        "incentives",
+        "inversion",
+        "quality_value"
+      ],
+      "selection_role": "与 Buffett 相近但强调激励、跨学科模型、逆向思考和判断失误",
+      "core_materials": [
+        {
+          "id": "munger.wesco_letters",
+          "title": "Wesco Financial shareholder letters, 1997–2009",
+          "type": "official_open",
+          "url": "https://www.berkshirehathaway.com/wesco/WescoHome.html",
+          "priority": "core",
+          "dimensions": [
+            "valuation",
+            "insurance",
+            "incentives",
+            "risk",
+            "inversion",
+            "capital_allocation"
+          ]
+        },
+        {
+          "id": "munger.special_letter_2014",
+          "title": "Charlie Munger: Past, Present and Future (2014)",
+          "type": "official_open",
+          "url": "https://www.berkshirehathaway.com/SpecialLetters/CTM%20past%20present%20future%202014.pdf",
+          "priority": "core",
+          "dimensions": [
+            "investment_policy",
+            "business_quality",
+            "long_term_decision_making"
+          ]
+        },
+        {
+          "id": "munger.poor_charlie",
+          "title": "Poor Charlie's Almanack",
+          "type": "licensed_book",
+          "url": "https://www.stripe.press/poor-charlies-almanack",
+          "priority": "supporting",
+          "dimensions": [
+            "mental_models",
+            "psychology",
+            "incentives",
+            "patience"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "Wesco letters和官方 Special Letter优先；书籍是编辑后的演讲/材料汇编，不能替代逐篇原始出处。"
+    },
+    {
+      "id": "graham",
+      "name": "Benjamin Graham",
+      "style_tags": [
+        "defensive_value",
+        "margin_of_safety",
+        "fundamental_analysis"
+      ],
+      "selection_role": "价值投资原则的历史基准；提供防御型与进取型决策规则",
+      "core_materials": [
+        {
+          "id": "graham.intelligent_investor",
+          "title": "The Intelligent Investor (1949; 1973 revised edition)",
+          "type": "licensed_book",
+          "url": "https://www.harpercollins.com/products/the-intelligent-investor-benjamin-graham-jason-zweig",
+          "priority": "core",
+          "dimensions": [
+            "Mr_Market",
+            "margin_of_safety",
+            "defensive_vs_enterprising",
+            "diversification",
+            "valuation",
+            "discipline"
+          ]
+        },
+        {
+          "id": "graham.security_analysis",
+          "title": "Security Analysis (1934, with David Dodd)",
+          "type": "licensed_book",
+          "url": "https://openlibrary.org/works/OL273188W",
+          "priority": "core",
+          "dimensions": [
+            "balance_sheet",
+            "earnings_quality",
+            "bond_and_equity_analysis",
+            "valuation"
+          ],
+          "notes": "OpenLibrary 作为书目/版本入口；正文通过合法版本取得。",
+          "attribution": "joint_authored: Benjamin Graham and David Dodd"
+        },
+        {
+          "id": "graham.financial_statements",
+          "title": "The Interpretation of Financial Statements (1937)",
+          "type": "licensed_book",
+          "url": "https://www.mheducation.com/",
+          "priority": "supporting",
+          "dimensions": [
+            "financial_statement_reading",
+            "solvency",
+            "earnings_quality"
+          ],
+          "attribution": "joint_authored: Benjamin Graham and Spencer Meredith"
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "出版社页面作为书目信息入口；全文需通过合法版本取得。"
+    },
+    {
+      "id": "fisher",
+      "name": "Philip Fisher",
+      "style_tags": [
+        "quality_growth",
+        "scuttlebutt",
+        "management"
+      ],
+      "selection_role": "补足长期成长、管理层研究和定性调查",
+      "core_materials": [
+        {
+          "id": "fisher.common_stocks",
+          "title": "Common Stocks and Uncommon Profits and Other Writings",
+          "type": "licensed_book",
+          "url": "https://www.wiley.com/en-us/Common+Stocks+and+Uncommon+Profits+and+Other+Writings%2C+2nd+Edition-p-9780471445500",
+          "priority": "core",
+          "dimensions": [
+            "scuttlebutt",
+            "management_quality",
+            "long_term_growth",
+            "fifteen_points",
+            "sell_discipline"
+          ]
+        }
+      ],
+      "expected_yield": "medium_high",
+      "notes": "Common Stocks and Uncommon Profits 的合集包含 Conservative Investors Sleep Well 和 15-point checklist；先不把出处未核实的二手/转载文章列入 canonical。书籍案例要标为应用证据，只有作者明确概括的规则才直接升级为原则。"
+    },
+    {
+      "id": "lynch",
+      "name": "Peter Lynch",
+      "style_tags": [
+        "bottom_up_growth",
+        "category_analysis",
+        "portfolio_management"
+      ],
+      "selection_role": "提供成长股分类、普通投资者信息优势、组合持仓与卖出规则",
+      "core_materials": [
+        {
+          "id": "lynch.one_up",
+          "title": "One Up on Wall Street",
+          "type": "licensed_book",
+          "url": "https://www.simonandschuster.com/books/One-Up-On-Wall-Street/Peter-Lynch/9780743200400",
+          "priority": "core",
+          "dimensions": [
+            "know_what_you_own",
+            "stock_categories",
+            "earnings_growth",
+            "thesis",
+            "sell_rules"
+          ]
+        },
+        {
+          "id": "lynch.beating_street",
+          "title": "Beating the Street",
+          "type": "licensed_book",
+          "url": "https://www.simonandschuster.com/books/Beating-the-Street/Peter-Lynch/9780671759155",
+          "priority": "core",
+          "dimensions": [
+            "portfolio_construction",
+            "valuation",
+            "earnings",
+            "position_sizing",
+            "monitoring"
+          ],
+          "attribution": "author: Peter Lynch; co-authored with John Rothchild"
+        },
+        {
+          "id": "lynch.magellan_filings",
+          "title": "Fidelity Magellan Fund SEC filings and annual reports during Lynch's tenure",
+          "type": "official_filing",
+          "url": "https://www.sec.gov/edgar/browse/?CIK=0000061397&owner=exclude",
+          "priority": "supporting",
+          "dimensions": [
+            "portfolio_behavior",
+            "turnover",
+            "holdings",
+            "risk"
+          ],
+          "attribution": "institutional_record: Fidelity Magellan Fund; manager attribution must be recorded per document"
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "SEC 文件是基金实体的一手记录；必须标注作者是 Lynch、基金管理团队还是基金实体。"
+    },
+    {
+      "id": "marks",
+      "name": "Howard Marks",
+      "style_tags": [
+        "credit_value",
+        "cycles",
+        "second_level_thinking",
+        "risk"
+      ],
+      "selection_role": "风险、周期、逆向判断和不确定性表达的核心来源",
+      "core_materials": [
+        {
+          "id": "marks.oaktree_memos",
+          "title": "Oaktree memos archive",
+          "type": "official_institution",
+          "url": "https://www.oaktreecapital.com/insights/memos",
+          "priority": "core",
+          "dimensions": [
+            "risk_vs_uncertainty",
+            "second_level_thinking",
+            "cycles",
+            "contrarianism",
+            "liquidity",
+            "leverage",
+            "margin_of_safety"
+          ]
+        },
+        {
+          "id": "marks.selected_memos",
+          "title": "Selected official memos: The Indispensability of Risk; The Folly of Certainty; The Illusion of Knowledge; The Calculus of Value; Mr. Market Miscalculates; Sea Change; Taking the Temperature; What Really Matters",
+          "type": "official_open",
+          "url": "https://www.oaktreecapital.com/insights/memos",
+          "priority": "core",
+          "dimensions": [
+            "risk",
+            "uncertainty",
+            "valuation",
+            "market_psychology",
+            "cycles"
+          ]
+        },
+        {
+          "id": "marks.most_important_thing",
+          "title": "The Most Important Thing and Mastering the Market Cycle",
+          "type": "licensed_book",
+          "url": "https://www.oaktreecapital.com/insights",
+          "priority": "supporting",
+          "dimensions": [
+            "risk_control",
+            "cycles",
+            "decision_process"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "以英文原文为 canonical；中文译文只作辅助。完整合集不作为单一超大输入，按 memo 分开处理。"
+    },
+    {
+      "id": "dalio",
+      "name": "Ray Dalio",
+      "style_tags": [
+        "macro",
+        "systematic_rules",
+        "risk_balancing",
+        "principles"
+      ],
+      "selection_role": "引入宏观、债务周期、规则化决策和风险平衡",
+      "core_materials": [
+        {
+          "id": "dalio.principles",
+          "title": "Principles: Life and Work",
+          "type": "licensed_book",
+          "url": "https://www.principles.com/",
+          "priority": "core",
+          "dimensions": [
+            "decision_rules",
+            "radical_truth",
+            "pain_reflection",
+            "believability",
+            "system_design"
+          ]
+        },
+        {
+          "id": "dalio.debt_crises",
+          "title": "Principles for Navigating Big Debt Crises",
+          "type": "licensed_book",
+          "url": "https://economicprinciples.org/how-countries-go-broke/",
+          "priority": "core",
+          "dimensions": [
+            "debt_cycle",
+            "macro_regimes",
+            "causal_chain",
+            "scenario_analysis",
+            "stress_testing"
+          ]
+        },
+        {
+          "id": "dalio.changing_order",
+          "title": "Principles for Dealing with the Changing World Order",
+          "type": "licensed_book",
+          "url": "https://economicprinciples.org/the-changing-world-order/",
+          "priority": "supporting",
+          "dimensions": [
+            "long_cycle",
+            "geopolitics",
+            "macro_risk"
+          ]
+        },
+        {
+          "id": "dalio.bridgewater_research",
+          "title": "Bridgewater Research & Insights, with author attribution recorded",
+          "type": "official_institution",
+          "url": "https://www.bridgewater.com/research-and-insights",
+          "priority": "supporting",
+          "dimensions": [
+            "economic_machine",
+            "risk_balancing",
+            "diversification",
+            "systematic_process"
+          ]
+        },
+        {
+          "id": "dalio.economic_machine",
+          "title": "How the Economic Machine Works",
+          "type": "official_open",
+          "url": "https://economicprinciples.org/how-the-economic-machine-works",
+          "priority": "supporting",
+          "dimensions": [
+            "economic_machine",
+            "causal_chain",
+            "macro_regimes",
+            "scenario_analysis"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "Bridgewater 机构研究不自动等同于 Dalio 个人观点；每条记录必须保存署名和实体。"
+    },
+    {
+      "id": "soros",
+      "name": "George Soros",
+      "style_tags": [
+        "reflexivity",
+        "macro",
+        "adaptive_trading",
+        "risk"
+      ],
+      "selection_role": "补足反身性、可证伪假设和宏观交易中的动态更新",
+      "core_materials": [
+        {
+          "id": "soros.alchemy",
+          "title": "The Alchemy of Finance",
+          "type": "licensed_book",
+          "url": "https://www.simonandschuster.com/books/The-Alchemy-of-Finance/George-Soros/9780471445494",
+          "priority": "core",
+          "dimensions": [
+            "reflexivity",
+            "trading_diary",
+            "hypothesis_testing",
+            "position_sizing",
+            "regime_change"
+          ]
+        },
+        {
+          "id": "soros.on_soros",
+          "title": "Soros on Soros",
+          "type": "licensed_book",
+          "url": "https://www.georgesoros.com/",
+          "priority": "core",
+          "dimensions": [
+            "macro_process",
+            "risk",
+            "falsification",
+            "adaptation"
+          ]
+        },
+        {
+          "id": "soros.crisis",
+          "title": "The Crisis of Global Capitalism / Open Society: Reforming Global Capitalism",
+          "type": "licensed_book",
+          "url": "https://www.georgesoros.com/",
+          "priority": "supporting",
+          "dimensions": [
+            "global_macro",
+            "market_institutions",
+            "feedback"
+          ]
+        },
+        {
+          "id": "soros.official_writings",
+          "title": "George Soros official Writings and Speeches",
+          "type": "official_open",
+          "url": "https://www.georgesoros.com/",
+          "priority": "supporting",
+          "dimensions": [
+            "macro_thesis",
+            "uncertainty",
+            "policy_feedback"
+          ]
+        },
+        {
+          "id": "soros.project_syndicate",
+          "title": "George Soros author archive at Project Syndicate",
+          "type": "official_open",
+          "url": "https://www.project-syndicate.org/columnist/george-soros",
+          "priority": "supporting",
+          "dimensions": [
+            "macro_thesis",
+            "reflexivity",
+            "policy_feedback",
+            "uncertainty"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "不能用二手‘索罗斯名言’替代原文；保留书版/章节或演讲日期。"
+    },
+    {
+      "id": "ackman",
+      "name": "Bill Ackman",
+      "style_tags": [
+        "activist",
+        "concentrated_value",
+        "catalysts",
+        "public_thesis"
+      ],
+      "selection_role": "提供公开投资论点、催化剂、主动主义和高集中度下行控制",
+      "core_materials": [
+        {
+          "id": "ackman.shareholder_letters",
+          "title": "Pershing Square Holdings shareholder letters",
+          "type": "official_institution",
+          "url": "https://pershingsquareholdings.com/investor-relations/letters-to-shareholders/",
+          "priority": "core",
+          "dimensions": [
+            "thesis",
+            "catalyst",
+            "intrinsic_value",
+            "downside",
+            "monitoring",
+            "position_sizing"
+          ]
+        },
+        {
+          "id": "ackman.annual_reports",
+          "title": "Pershing Square Holdings annual reports",
+          "type": "official_filing",
+          "url": "https://pershingsquareholdings.com/investor-relations/annual-reports/",
+          "priority": "core",
+          "dimensions": [
+            "holdings",
+            "valuation",
+            "risk",
+            "capital_allocation",
+            "thesis_updates"
+          ]
+        },
+        {
+          "id": "ackman.public_filings",
+          "title": "Pershing Square Holdings public disclosures and filings",
+          "type": "official_filing",
+          "url": "https://pershingsquareholdings.com/investor-relations/",
+          "priority": "supporting",
+          "dimensions": [
+            "activism",
+            "catalyst",
+            "governance",
+            "evidence"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "记录是 Pershing Square Holdings/Capital 的机构文件还是 Ackman 个人署名；新闻采访不作为 canonical。"
+    },
+    {
+      "id": "greenblatt",
+      "name": "Joel Greenblatt",
+      "style_tags": [
+        "systematic_value",
+        "special_situations",
+        "long_short",
+        "rebalancing"
+      ],
+      "selection_role": "提供高度可操作的筛选、持仓、再平衡和风险暴露规则",
+      "core_materials": [
+        {
+          "id": "greenblatt.gotham_strategy",
+          "title": "Gotham investment strategy",
+          "type": "official_institution",
+          "url": "https://www.gothamfunds.com/strategy",
+          "priority": "core",
+          "dimensions": [
+            "relative_value",
+            "long_short",
+            "valuation",
+            "position_adjustment",
+            "exposure_limits"
+          ]
+        },
+        {
+          "id": "greenblatt.magic_formula",
+          "title": "Magic Formula Investing: About, How It Works, and FAQ",
+          "type": "official_open",
+          "url": "https://www.magicformulainvesting.com/",
+          "priority": "core",
+          "dimensions": [
+            "low_pe",
+            "return_on_capital",
+            "equal_weighting",
+            "one_year_holding",
+            "annual_rescreening"
+          ]
+        },
+        {
+          "id": "greenblatt.gotham_documents",
+          "title": "Gotham public fund documents",
+          "type": "official_institution",
+          "url": "https://www.gothamfunds.com/documents",
+          "priority": "supporting",
+          "dimensions": [
+            "fund_constraints",
+            "risk_control",
+            "portfolio_construction"
+          ]
+        },
+        {
+          "id": "greenblatt.books",
+          "title": "You Can Be a Stock Market Genius; The Little Book That Still Beats the Market; The Big Secret for the Small Investor; Common Sense",
+          "type": "licensed_book",
+          "url": "https://www.gothamfunds.com/principals",
+          "priority": "core",
+          "dimensions": [
+            "special_situations",
+            "valuation",
+            "screening",
+            "portfolio_rules",
+            "risk"
+          ]
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "公开网页本身即可产生一批高度可观察规则；要稳定达到 50–100 条，仍需要合法取得至少一本完整著作。"
+    }
+  ],
+  "reserve_candidates": [
+    {
+      "id": "bogle",
+      "name": "John C. Bogle",
+      "reason": "官方演讲档案丰富，适合作为被动指数、低成本、分散和反择时风格的控制组；首批主动交易可观察性略低。",
+      "url": "https://johncbogle.com/wordpress/bogle-speeches/"
+    },
+    {
+      "id": "pabrai",
+      "name": "Mohnish Pabrai",
+      "reason": "官方 Chai with Pabrai transcript/article 档案较丰富，但与 Buffett/Munger 的集中价值和低风险风格重叠较高。",
+      "url": "https://www.chaiwithpabrai.com/transcripts"
+    },
+    {
+      "id": "klarman",
+      "name": "Seth Klarman",
+      "reason": "投资哲学公开页很有价值，但完整一手年度信和合法可得著作不足，难以稳定构成 50–100 条来源充分的 rubric。",
+      "url": "https://www.baupost.com/investment_philosophy"
+    }
+  ]
+}
