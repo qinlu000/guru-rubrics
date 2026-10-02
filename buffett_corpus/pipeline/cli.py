@@ -26,18 +26,23 @@ def as_records(value, key: str) -> list[dict]:
     return records
 
 
-def principle_prompt(doc: dict, master: str) -> str:
-    return load_prompt("stage1_user.txt").replace("{{master}}", master).replace("{{document_id}}", doc["document_id"]).replace("{{title}}", doc["title"]).replace("{{document_text}}", doc["text"])
+def principle_prompt(doc: dict) -> str:
+    return load_prompt("stage1_user.txt").replace("{{document_text}}", doc["text"])
 
 
-def rubric_prompt(principle: dict, framework: dict, master: str) -> str:
-    return load_prompt("stage2_user.txt").replace("{{master}}", master).replace("{{framework_json}}", json.dumps(framework, ensure_ascii=False, indent=2)).replace("{{principle_json}}", json.dumps(principle, ensure_ascii=False, indent=2))
+def rubric_prompt(principle: dict, framework: dict) -> str:
+    prompt_principle = {
+        key: principle[key]
+        for key in ("claim", "principle_type", "polarity", "conditions", "exceptions", "supporting_quotes", "source_support", "confidence")
+        if key in principle
+    }
+    return load_prompt("stage2_user.txt").replace("{{framework_json}}", json.dumps(framework, ensure_ascii=False, indent=2)).replace("{{principle_json}}", json.dumps(prompt_principle, ensure_ascii=False, indent=2))
 
 
 def extract_principles(docs: list[dict], args) -> list[dict]:
     output = []
     for doc in docs:
-        result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc, args.master), model=args.model, max_tokens=args.max_tokens)
+        result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens)
         for item in as_records(result, "principles"):
             quote = item.get("supporting_quotes", [{}])[0].get("quote", "")
             item["document_id"] = doc["document_id"]
@@ -50,7 +55,7 @@ def extract_principles(docs: list[dict], args) -> list[dict]:
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
     output = []
     for principle in principles:
-        result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework, args.master), model=args.model, max_tokens=args.max_tokens)
+        result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens)
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]

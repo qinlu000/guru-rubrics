@@ -5,6 +5,9 @@ principle's meaning; do not introduce unsupported rules or numerical thresholds.
 describe one independently judgeable behavior observable in a trading-agent trajectory. You may
 split a principle into multiple rubrics only when each resulting item checks one behavior.
 
+Use only the supplied principle and framework. Do not use conversation history, project notes,
+outside knowledge, or assumptions about a particular agent.
+
 Define the trigger, decision types, required trajectory fields, pass condition, violation
 condition, not-applicable condition, and not-observable condition. Do not tailor a rubric to a
 single episode or a particular agent. The framework specification describes available fields;

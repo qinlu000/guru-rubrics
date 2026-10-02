@@ -1,4 +1,3 @@
-MASTER: {{master}}
 FRAMEWORK SPECIFICATION:
 {{framework_json}}
 
@@ -6,12 +5,9 @@ SOURCE-GROUNDED PRINCIPLE:
 {{principle_json}}
 
 Return a JSON object with key `rubrics`. Each rubric must contain:
-- rubric_id (a stable slug-like identifier; the pipeline may replace it)
-- principle_id
-- framework_id
 - criterion
 - applicability: trigger, decision_types (array), required_context (array drawn from framework fields)
-- source: document_id, exact_quotes (array), locators (array)
+- source: exact_quotes (array), locators (array)
 - operationalization: observable_behavior, pass_if, violate_if, not_applicable_if, not_observable_if, evidence_to_quote, inference_level
 - scoring: points and severity (ordinary or critical)
 - axis
