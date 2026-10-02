@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "investor-style-rubrics"
+version = "0.1.0"
+description = "Source-grounded investment-style rubric extraction for trading-agent evaluation"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["buffett_corpus*"]

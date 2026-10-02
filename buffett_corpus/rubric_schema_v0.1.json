@@ -1,0 +1,22 @@
+{
+  "id": "stable identifier",
+  "criterion": "one observable behavior stated as a single yes/no test",
+  "applicability": "when the criterion should be evaluated; otherwise it is not applicable",
+  "source": [
+    {
+      "source_id": "selected_sources.json id",
+      "year": 0,
+      "url": "official source URL",
+      "local_file": "normalized text path",
+      "locator": "section and local line or PDF page",
+      "quote_fragment": "short provenance fragment"
+    }
+  ],
+  "operationalization": {
+    "pass_if": "trajectory evidence that satisfies the criterion",
+    "fail_if": "trajectory evidence that violates the criterion",
+    "not_applicable_if": "condition under which the item is omitted from the denominator",
+    "evidence_to_quote": "the exact trajectory span the grader should cite",
+    "inference_level": "direct_statement | repeated_statement | operationalization"
+  }
+}

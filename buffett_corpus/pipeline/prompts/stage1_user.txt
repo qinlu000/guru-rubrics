@@ -1,0 +1,20 @@
+MASTER: {{master}}
+DOCUMENT_ID: {{document_id}}
+DOCUMENT_TITLE: {{title}}
+
+Return a JSON object with key `principles`. Each principle must contain:
+- principle_id (a stable slug-like identifier; the pipeline may replace it)
+- document_id
+- master
+- claim
+- principle_type: selection, valuation, risk, behavior, portfolio, capital_allocation, governance, or other
+- polarity: required, prohibited, or conditional
+- conditions (array)
+- exceptions (array)
+- supporting_quotes: objects with exact quote and locator
+- source_support: direct, repeated, or strong_inference
+- confidence: high, medium, or low
+
+COMPLETE ORIGINAL DOCUMENT
+==========================
+{{document_text}}

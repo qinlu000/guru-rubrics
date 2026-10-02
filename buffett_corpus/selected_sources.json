@@ -1,0 +1,527 @@
+{
+  "project": "buffett_investment_style_rubrics",
+  "version": "0.1",
+  "scope": {
+    "author_boundary": "Warren Buffett's shareholder letters and Berkshire Hathaway's Owner's Manual, using official Berkshire Hathaway-hosted copies.",
+    "primary_use": "Pilot corpus for extracting atomic, trajectory-observable investment-style rubrics.",
+    "selection_logic": [
+      "first-party and attributable",
+      "explicit investment principles rather than only company reporting",
+      "coverage of distinct decision dimensions",
+      "repetition or later restatement where possible",
+      "observable implications for a trading-agent trajectory"
+    ],
+    "excluded_for_now": [
+      "secondary books and quote compilations",
+      "commentary by other investors about Buffett",
+      "company-specific passages with no transferable investment principle",
+      "duplicated HTML/PDF copies of the same letter"
+    ]
+  },
+  "recommended_mvp": [
+    {
+      "id": "buffett_1977_letter",
+      "year": 1977,
+      "title": "Berkshire Hathaway 1977 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1977.html",
+      "local_file": "processed/1977.txt",
+      "priority": "core",
+      "themes": [
+        "business_understanding",
+        "long_term_prospects",
+        "management_quality",
+        "price_discipline",
+        "anti_short_termism"
+      ],
+      "why_selected": "Contains an unusually compact, explicit four-part description of how Buffett selects marketable equities, plus his rejection of short-term price forecasting.",
+      "evidence_anchors": [
+        {
+          "anchor": "We select our marketable equity securities",
+          "local_line": 262,
+          "source_section": "Marketable equity securities"
+        }
+      ],
+      "short_quote_fragments": [
+        "understand",
+        "favorable long-term prospects",
+        "honest and competent people",
+        "very attractive price"
+      ]
+    },
+    {
+      "id": "buffett_1986_letter",
+      "year": 1986,
+      "title": "Berkshire Hathaway 1986 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1986.html",
+      "local_file": "processed/1986.txt",
+      "priority": "core",
+      "themes": [
+        "owner_earnings",
+        "cash_flow",
+        "maintenance_capex",
+        "business_analysis"
+      ],
+      "why_selected": "Defines owner earnings as a more decision-relevant earnings concept and makes the required maintenance investment explicit.",
+      "evidence_anchors": [
+        {
+          "anchor": "owner earnings",
+          "local_line": 1343,
+          "source_section": "Owner earnings"
+        }
+      ],
+      "short_quote_fragments": [
+        "owner earnings",
+        "reported earnings plus",
+        "less ... capitalized expenditures"
+      ]
+    },
+    {
+      "id": "buffett_1987_letter",
+      "year": 1987,
+      "title": "Berkshire Hathaway 1987 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1987.html",
+      "local_file": "processed/1987.txt",
+      "priority": "core",
+      "themes": [
+        "market_psychology",
+        "price_vs_business",
+        "temperament",
+        "opportunity_in_declines"
+      ],
+      "why_selected": "Sets out the Mr. Market thought experiment, which can be translated into trajectory checks for separating business analysis from quotation movements.",
+      "evidence_anchors": [
+        {
+          "anchor": "Mr. Market",
+          "local_line": 674,
+          "source_section": "The investment climate"
+        }
+      ],
+      "short_quote_fragments": [
+        "Mr. Market",
+        "quotations ... anything but",
+        "incurable emotional problems"
+      ]
+    },
+    {
+      "id": "buffett_1989_letter",
+      "year": 1989,
+      "title": "Berkshire Hathaway 1989 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1989.html",
+      "local_file": "processed/1989.txt",
+      "priority": "core",
+      "themes": [
+        "quality_over_bargain",
+        "economic_moat",
+        "management_quality",
+        "anti_cigar_butt"
+      ],
+      "why_selected": "Explains the shift from buying statistically cheap weak businesses toward wonderful businesses at fair prices.",
+      "evidence_anchors": [
+        {
+          "anchor": "wonderful company at a fair price",
+          "local_line": 1263,
+          "source_section": "The acquisition of See's and the evolution of the approach"
+        },
+        {
+          "anchor": "cigar",
+          "local_line": 1231,
+          "source_section": "Cigar-butt approach"
+        }
+      ],
+      "short_quote_fragments": [
+        "wonderful company at a fair price",
+        "cigar butt",
+        "first-class businesses"
+      ]
+    },
+    {
+      "id": "buffett_1992_letter",
+      "year": 1992,
+      "title": "Berkshire Hathaway 1992 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1992.html",
+      "local_file": "processed/1992.txt",
+      "priority": "core",
+      "themes": [
+        "intrinsic_value",
+        "margin_of_safety",
+        "discounted_cash_flows",
+        "growth_quality"
+      ],
+      "why_selected": "Provides direct statements about intrinsic value, discounted cash flows, and refusing purchases where the margin of safety is small.",
+      "evidence_anchors": [
+        {
+          "anchor": "margin of safety",
+          "local_line": 704,
+          "source_section": "Common stock investments"
+        },
+        {
+          "anchor": "John Burr Williams",
+          "local_line": 658,
+          "source_section": "The value equation"
+        }
+      ],
+      "short_quote_fragments": [
+        "margin of safety",
+        "discounted at an appropriate interest rate",
+        "only slightly higher than its price"
+      ]
+    },
+    {
+      "id": "buffett_1993_letter",
+      "year": 1993,
+      "title": "Berkshire Hathaway 1993 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1993.html",
+      "local_file": "processed/1993.txt",
+      "priority": "supporting",
+      "themes": [
+        "market_price_vs_value",
+        "short_run_noise",
+        "long_run_business_value"
+      ],
+      "why_selected": "Useful corroboration for the distinction between short-run quotation behavior and long-run business value; kept as a supporting source rather than a core anchor because later letters restate the idea more directly.",
+      "evidence_anchors": [
+        {
+          "anchor": "voting machine",
+          "local_line": 104,
+          "source_section": "Market price and intrinsic value"
+        }
+      ],
+      "short_quote_fragments": [
+        "short-run ... voting machine",
+        "long-run ... weighing machine"
+      ]
+    },
+    {
+      "id": "buffett_1996_letter",
+      "year": 1996,
+      "title": "Berkshire Hathaway 1996 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1996.html",
+      "local_file": "processed/1996.txt",
+      "priority": "core",
+      "themes": [
+        "circle_of_competence",
+        "business_understanding",
+        "rational_price",
+        "long_horizon",
+        "concentration"
+      ],
+      "why_selected": "Offers a highly operational passage: know the boundary of the circle of competence, buy understandable businesses at rational prices, and evaluate long-term earnings.",
+      "evidence_anchors": [
+        {
+          "anchor": "circle of competence",
+          "local_line": 835,
+          "source_section": "A philosophy of investing"
+        },
+        {
+          "anchor": "understandable business",
+          "local_line": 845,
+          "source_section": "A philosophy of investing"
+        }
+      ],
+      "short_quote_fragments": [
+        "knowing its boundaries ... is vital",
+        "rational price",
+        "easily-understandable business"
+      ]
+    },
+    {
+      "id": "buffett_1997_letter",
+      "year": 1997,
+      "title": "Berkshire Hathaway 1997 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/1997.html",
+      "local_file": "processed/1997.txt",
+      "priority": "core",
+      "themes": [
+        "market_psychology",
+        "long_term_saving",
+        "price_volatility",
+        "behavioral_discipline"
+      ],
+      "why_selected": "Uses the hamburger and car analogy to make lower prices favorable for a net buyer; this is directly testable in responses to market declines.",
+      "evidence_anchors": [
+        {
+          "anchor": "How We Think About Market Fluctuations",
+          "local_line": 194,
+          "source_section": "How We Think About Market Fluctuations"
+        }
+      ],
+      "short_quote_fragments": [
+        "higher or lower stock market",
+        "net saver",
+        "elated when stock prices rise"
+      ]
+    },
+    {
+      "id": "buffett_2000_letter",
+      "year": 2000,
+      "title": "Berkshire Hathaway 2000 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/2000pdf.pdf",
+      "local_file": "processed/linked_2000pdf.txt",
+      "priority": "core",
+      "themes": [
+        "discounted_cash_flow",
+        "certainty",
+        "timing_of_cash_flows",
+        "growth_not_equal_value"
+      ],
+      "why_selected": "Gives a compact valuation template: estimate the cash flows, their timing, and the risk-free rate; explicitly warns that growth can destroy value.",
+      "evidence_anchors": [
+        {
+          "anchor": "Aesop",
+          "local_line": 560,
+          "source_section": "Aesop's investment axiom"
+        }
+      ],
+      "short_quote_fragments": [
+        "a bird in the hand",
+        "how certain",
+        "when they emerge",
+        "growth can destroy value"
+      ]
+    },
+    {
+      "id": "buffett_2008_letter",
+      "year": 2008,
+      "title": "Berkshire Hathaway 2008 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/2008ltr.pdf",
+      "local_file": "processed/2008ltr.txt",
+      "priority": "core",
+      "themes": [
+        "liquidity",
+        "financial_resilience",
+        "risk_control",
+        "opportunity_cost",
+        "sleep_at_night"
+      ],
+      "why_selected": "Shows how the philosophy behaves under crisis conditions: keep excess liquidity, avoid dependence on outside financing, and reject risk that threatens sleep or obligations.",
+      "evidence_anchors": [
+        {
+          "anchor": "excess liquidity",
+          "local_line": 128,
+          "source_section": "Berkshire in 2008"
+        },
+        {
+          "anchor": "night's sleep",
+          "local_line": 698,
+          "source_section": "Liquidity and risk"
+        }
+      ],
+      "short_quote_fragments": [
+        "excess liquidity",
+        "never want to count on the kindness of strangers",
+        "night's sleep"
+      ]
+    },
+    {
+      "id": "buffett_2011_letter",
+      "year": 2011,
+      "title": "Berkshire Hathaway 2011 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/2011ltr.pdf",
+      "local_file": "processed/2011ltr.txt",
+      "priority": "core",
+      "themes": [
+        "definition_of_risk",
+        "purchasing_power",
+        "productive_assets",
+        "inflation",
+        "beta_is_not_risk"
+      ],
+      "why_selected": "Defines investment and risk in purchasing-power terms and distinguishes productive assets from nominally stable but loss-making assets.",
+      "evidence_anchors": [
+        {
+          "anchor": "Basic Choices for Investors",
+          "local_line": 792,
+          "source_section": "The Basic Choices for Investors"
+        },
+        {
+          "anchor": "riskiness",
+          "local_line": 798,
+          "source_section": "The Basic Choices for Investors"
+        },
+        {
+          "anchor": "productive assets",
+          "local_line": 902,
+          "source_section": "Productive assets"
+        }
+      ],
+      "short_quote_fragments": [
+        "riskiness ... not measured by beta",
+        "purchasing power",
+        "productive assets"
+      ]
+    },
+    {
+      "id": "buffett_2013_letter",
+      "year": 2013,
+      "title": "Berkshire Hathaway 2013 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/2013ltr.pdf",
+      "local_file": "processed/2013ltr.txt",
+      "priority": "core",
+      "themes": [
+        "future_productivity",
+        "anti_speculation",
+        "simplicity",
+        "circle_of_competence",
+        "quick_profit_rejection"
+      ],
+      "why_selected": "A later concise checklist for investing behavior: keep it simple, focus on future productivity, and walk away when estimation is not comfortable.",
+      "evidence_anchors": [
+        {
+          "anchor": "Some Thoughts About Investing",
+          "local_line": 717,
+          "source_section": "Some Thoughts About Investing"
+        },
+        {
+          "anchor": "future productivity",
+          "local_line": 765,
+          "source_section": "Some Thoughts About Investing"
+        }
+      ],
+      "short_quote_fragments": [
+        "Keep things simple",
+        "Focus on the future productivity",
+        "quick profits",
+        "forget it and move on"
+      ]
+    },
+    {
+      "id": "buffett_2023_letter",
+      "year": 2023,
+      "title": "Berkshire Hathaway 2023 Shareholder Letter",
+      "official_url": "https://www.berkshirehathaway.com/letters/2023ltr.pdf",
+      "local_file": "processed/2023ltr.txt",
+      "priority": "core",
+      "themes": [
+        "permanent_loss",
+        "long_duration_ownership",
+        "patience",
+        "business_quality",
+        "price_dependent_buybacks"
+      ],
+      "why_selected": "Recent restatement of the durable style: avoid permanent loss, treat listed shares as ownership, hold wonderful businesses, and make repurchases price-dependent.",
+      "evidence_anchors": [
+        {
+          "anchor": "Never risk permanent loss",
+          "local_line": 200,
+          "source_section": "Our Not-So-Secret Weapon"
+        },
+        {
+          "anchor": "Rip Van Winkle",
+          "local_line": 249,
+          "source_section": "Non-controlled Businesses That Leave Us Comfortable"
+        }
+      ],
+      "short_quote_fragments": [
+        "Never risk permanent loss",
+        "stick with it",
+        "Patience pays",
+        "price-dependent"
+      ]
+    },
+    {
+      "id": "buffett_owners_manual_1999",
+      "year": 1999,
+      "title": "Berkshire Hathaway: An Owner's Manual",
+      "official_url": "https://www.berkshirehathaway.com/owners.html",
+      "local_file": "processed/owners.txt",
+      "priority": "foundational",
+      "themes": [
+        "owner_orientation",
+        "long_term_partnership",
+        "capital_allocation",
+        "debt_discipline",
+        "shareholder_alignment",
+        "intrinsic_value"
+      ],
+      "why_selected": "This is the canonical principles document for Berkshire's operating and capital-allocation philosophy; use it as a high-priority source for deduplication and wording normalization across letters.",
+      "evidence_anchors": [
+        {
+          "anchor": "OWNER-RELATED BUSINESS PRINCIPLES",
+          "local_line": 19,
+          "source_section": "Owner-related business principles"
+        },
+        {
+          "anchor": "We use debt sparingly",
+          "local_line": 206,
+          "source_section": "Owner-related business principles"
+        }
+      ],
+      "short_quote_fragments": [
+        "our attitude is partnership",
+        "stay with indefinitely",
+        "We use debt sparingly",
+        "reject ... over-leverage"
+      ]
+    }
+  ],
+  "expansion_candidates": [
+    {
+      "year": 1990,
+      "official_url": "https://www.berkshirehathaway.com/letters/1990.html",
+      "themes": [
+        "look_through_earnings",
+        "earnings_quality"
+      ]
+    },
+    {
+      "year": 1994,
+      "official_url": "https://www.berkshirehathaway.com/letters/1994.html",
+      "themes": [
+        "intrinsic_value",
+        "insurance_float",
+        "capital_allocation"
+      ]
+    },
+    {
+      "year": 1999,
+      "official_url": "https://www.berkshirehathaway.com/letters/final1999pdf.pdf",
+      "themes": [
+        "capital_allocation",
+        "intrinsic_value",
+        "mistake_admission"
+      ]
+    },
+    {
+      "year": 2004,
+      "official_url": "https://www.berkshirehathaway.com/letters/2004ltr.pdf",
+      "themes": [
+        "business_quality",
+        "capital_allocation"
+      ]
+    },
+    {
+      "year": 2014,
+      "official_url": "https://www.berkshirehathaway.com/letters/2014ltr.pdf",
+      "themes": [
+        "intrinsic_value",
+        "capital_allocation",
+        "operating_businesses"
+      ]
+    },
+    {
+      "year": 2016,
+      "official_url": "https://www.berkshirehathaway.com/letters/2016ltr.pdf",
+      "themes": [
+        "mistakes",
+        "business_acquisition",
+        "owner_earnings"
+      ]
+    },
+    {
+      "year": 2024,
+      "official_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+      "themes": [
+        "mistake_correction",
+        "manager_quality",
+        "business_understanding"
+      ]
+    }
+  ],
+  "corpus_inventory": {
+    "official_index": "https://www.berkshirehathaway.com/letters/letters.html",
+    "coverage": "1977-2024 shareholder letters plus Owner's Manual",
+    "download_manifest": "manifest.json",
+    "processed_text_directory": "processed/",
+    "raw_source_directory": "raw/"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trading trajectory framework adapter",
+  "type": "object",
+  "required": ["framework_id", "canonical_event_fields"],
+  "properties": {
+    "framework_id": {"type": "string"},
+    "version": {"type": "string"},
+    "description": {"type": "string"},
+    "canonical_event_fields": {"type": "array"},
+    "action_values": {"type": "array", "items": {"type": "string"}},
+    "missingness_policy": {"type": "string"},
+    "field_mapping": {"type": "object"}
+  },
+  "additionalProperties": true
+}

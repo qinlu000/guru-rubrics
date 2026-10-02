@@ -1,0 +1,26 @@
+{
+  "framework_id": "tradebank",
+  "version": "0.1",
+  "description": "Canonical fields expected in a TradeBank-style trading-agent trajectory.",
+  "canonical_event_fields": [
+    "timestamp",
+    "observation",
+    "market_context",
+    "portfolio_context",
+    "agent_reasoning",
+    "decision_rationale",
+    "action",
+    "order_parameters",
+    "tool_calls",
+    "outcome",
+    "missing_fields"
+  ],
+  "action_values": ["buy", "sell", "hold", "short", "cover", "cancel", "rebalance", "no_action"],
+  "missingness_policy": "Missing context is not a violation. Mark a triggered rubric not_observable when required evidence is absent.",
+  "field_mapping": {
+    "reasoning": ["agent_reasoning", "decision_rationale"],
+    "action": ["action", "order_parameters"],
+    "state": ["observation", "market_context", "portfolio_context"],
+    "evidence": ["tool_calls", "outcome"]
+  }
+}
