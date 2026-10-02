@@ -1,4 +1,6 @@
-Return a JSON object with key `principles`. Each principle must contain:
+Return exactly one JSON object with key `principles`. Put every extracted principle inside that
+array; do not return the fields of one principle at the top level. Extract all distinct principles
+supported by the document. Each principle must contain:
 - claim
 - principle_type: selection, valuation, risk, behavior, portfolio, capital_allocation, governance, or other
 - polarity: required, prohibited, or conditional
