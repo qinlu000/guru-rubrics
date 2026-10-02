@@ -23,6 +23,26 @@ python -m buffett_corpus.pipeline.cli \
   --out buffett_corpus/runs/buffett_pilot
 ```
 
+The same CLI supports OpenAI-compatible chat APIs such as DeepSeek. The provider uses the
+`response_format: {"type": "json_object"}` protocol and keeps semantic and source validation in
+the pipeline, because compatible services do not all support strict JSON Schema:
+
+```bash
+export LLM_PROVIDER=openai
+export OPENAI_API_KEY=...
+export OPENAI_BASE_URL=https://api.deepseek.com
+export OPENAI_MODEL=deepseek-chat
+python -m buffett_corpus.pipeline.cli \
+  --provider openai \
+  --documents buffett_corpus/processed/1977.txt \
+  --master "Warren Buffett" \
+  --framework buffett_corpus/configs/tradebank.json \
+  --out buffett_corpus/runs/deepseek_pilot
+```
+
+For OpenAI itself, use `OPENAI_BASE_URL=https://api.openai.com/v1`. The API key is read only from
+the environment and is never written to run outputs.
+
 The CLI sends each complete document as one document-level input. It does not silently extract independent arbitrary chunks. For documents larger than the provider context window, use an explicit hierarchical configuration and retain the document-level merge step.
 
 Outputs include raw and deterministically validated JSONL files, run metadata, and validation reports. API keys are never written to outputs.

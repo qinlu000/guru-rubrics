@@ -42,7 +42,7 @@ def rubric_prompt(principle: dict, framework: dict) -> str:
 def extract_principles(docs: list[dict], args) -> list[dict]:
     output = []
     for doc in docs:
-        result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens)
+        result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "principles"):
             quote = item.get("supporting_quotes", [{}])[0].get("quote", "")
             item["document_id"] = doc["document_id"]
@@ -55,7 +55,7 @@ def extract_principles(docs: list[dict], args) -> list[dict]:
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
     output = []
     for principle in principles:
-        result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens)
+        result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]
@@ -74,6 +74,7 @@ def main() -> int:
     parser.add_argument("--framework", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--master", default="Warren Buffett")
+    parser.add_argument("--provider", choices=["anthropic", "openai"], default=None)
     parser.add_argument("--model", default=None, help="defaults to ANTHROPIC_MODEL")
     parser.add_argument("--max-tokens", type=int, default=8192)
     parser.add_argument("--stage", choices=["all", "principles", "rubrics"], default="all")
