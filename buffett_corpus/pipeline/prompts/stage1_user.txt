@@ -1,5 +1,4 @@
 Return a JSON object with key `principles`. Each principle must contain:
-- principle_id (a stable slug-like identifier; the pipeline may replace it)
 - claim
 - principle_type: selection, valuation, risk, behavior, portfolio, capital_allocation, governance, or other
 - polarity: required, prohibited, or conditional
