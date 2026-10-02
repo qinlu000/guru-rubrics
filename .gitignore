@@ -1,0 +1,18 @@
+# Secrets and local environments
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated API runs and logs
+runs/
+buffett_corpus/runs/*
+!buffett_corpus/runs/.gitkeep
+*.log
+
+# Downloaded binary source copies can be regenerated from manifest URLs.
+# Keep processed text and metadata in git; keep raw PDFs/HTML out of commits by default.
+buffett_corpus/raw/
