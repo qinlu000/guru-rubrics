@@ -10,4 +10,8 @@ condition, not-applicable condition, and not-observable condition. Do not tailor
 single episode or a particular agent. The framework specification describes available fields;
 missing fields must be handled by `not_observable_if` rather than silently assumed.
 
+Copy `source.exact_quotes` verbatim from the supplied principle record. Never paraphrase,
+shorten, or invent a source quote. Include every required output field for every rubric and do
+not emit duplicate rubrics for the same principle and behavior.
+
 Return JSON only in the requested schema, with a top-level `rubrics` array.
