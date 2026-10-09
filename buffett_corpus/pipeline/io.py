@@ -52,16 +52,11 @@ def stable_id(prefix: str, *parts: str) -> str:
 
 
 def normalized_text(text: str) -> str:
-    """Normalize extraction-format differences while preserving quote content."""
+    """Normalize extraction-format differences while preserving quote words."""
     text = unicodedata.normalize("NFKC", text)
-    text = text.translate(str.maketrans({
-        "\u2018": "'", "\u2019": "'", "\u201b": "'",
-        "\u201c": '"', "\u201d": '"',
-        "\u2013": "-", "\u2014": "-", "\u2212": "-",
-        "\u00a0": " ",
-    }))
-    # PDF text extraction often splits one word at a line boundary.
-    text = re.sub(r"(?<=\w)-\s+(?=\w)", "", text)
+    # PDF and HTML extraction disagree on quotation marks, dashes,
+    # hyphenation, and other punctuation. Compare the ordered word stream.
+    text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
     return re.sub(r"\s+", " ", text).strip().casefold()
 
 
