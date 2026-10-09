@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import unicodedata
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -51,7 +52,16 @@ def stable_id(prefix: str, *parts: str) -> str:
 
 
 def normalized_text(text: str) -> str:
-    """Normalize whitespace only; punctuation remains useful for provenance."""
+    """Normalize extraction-format differences while preserving quote content."""
+    text = unicodedata.normalize("NFKC", text)
+    text = text.translate(str.maketrans({
+        "\u2018": "'", "\u2019": "'", "\u201b": "'",
+        "\u201c": '"', "\u201d": '"',
+        "\u2013": "-", "\u2014": "-", "\u2212": "-",
+        "\u00a0": " ",
+    }))
+    # PDF text extraction often splits one word at a line boundary.
+    text = re.sub(r"(?<=\w)-\s+(?=\w)", "", text)
     return re.sub(r"\s+", " ", text).strip().casefold()
 
 
