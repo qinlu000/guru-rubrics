@@ -60,16 +60,26 @@ def extract_principles(docs: list[dict], args) -> list[dict]:
 
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
     output = []
+    rubric_ids = set()
     for principle in principles:
         result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]
             item["rubric_id"] = stable_id("rubric", principle["principle_id"], framework["framework_id"], item.get("criterion", ""))
-            item.setdefault("source", {})
-            item["source"].setdefault("document_id", principle["document_id"])
-            item["source"].setdefault("exact_quotes", [q.get("quote", "") for q in principle.get("supporting_quotes", [])])
-            item["source"].setdefault("locators", [q.get("locator", "") for q in principle.get("supporting_quotes", [])])
+            if item["rubric_id"] in rubric_ids:
+                continue
+            rubric_ids.add(item["rubric_id"])
+            # Provenance is copied from the validated principle so the model
+            # cannot replace an exact quote with a paraphrase.
+            item["source"] = {
+                "document_id": principle["document_id"],
+                "exact_quotes": [q.get("quote", "") for q in principle.get("supporting_quotes", [])],
+                "locators": [q.get("locator", "") for q in principle.get("supporting_quotes", [])],
+            }
+            operation = item.get("operationalization")
+            if isinstance(operation, dict):
+                operation.setdefault("evidence_to_quote", item.get("applicability", {}).get("required_context", []))
             output.append(item)
     return output
 
