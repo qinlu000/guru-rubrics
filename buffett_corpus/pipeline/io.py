@@ -54,6 +54,10 @@ def stable_id(prefix: str, *parts: str) -> str:
 def normalized_text(text: str) -> str:
     """Normalize extraction-format differences while preserving quote words."""
     text = unicodedata.normalize("NFKC", text)
+    # PDF layout extraction may split one word at a line ending (or leave a
+    # space after the split hyphen). Rejoin those fragments before comparing
+    # the ordered word stream.
+    text = re.sub(r"(?<=\w)-[ \t\r\n]+(?=\w)", "", text)
     # PDF and HTML extraction disagree on quotation marks, dashes,
     # hyphenation, and other punctuation. Compare the ordered word stream.
     text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)

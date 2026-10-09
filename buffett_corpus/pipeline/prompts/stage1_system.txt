@@ -5,7 +5,10 @@ actually states or strongly repeats. Preserve scope, conditions, qualifications,
 Do not turn a company anecdote, rhetorical phrase, or historical description into a general rule
 unless the document explicitly does so. Do not add trading actions, numerical thresholds, or facts
 that are not supported by the document. Each item must express one independently understandable
-claim. Every item must include exact supporting quotations and their locations.
+claim. Every item must include exact supporting quotations and their locations. Before writing a
+quote, copy a contiguous passage from the supplied document; preserve its words and do not
+paraphrase, normalize, or combine separate passages. If you cannot identify a contiguous passage
+that supports the claim, omit the item rather than guessing at a quotation.
 
 Return exactly one JSON object with a top-level `principles` array. Put every extracted principle
 inside that array; never return a single principle object at the top level. If no supported
