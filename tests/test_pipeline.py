@@ -1,6 +1,7 @@
 import unittest
 from pathlib import Path
 
+from buffett_corpus.pipeline.cli import as_records
 from buffett_corpus.pipeline.io import document_record, quote_in_document
 from buffett_corpus.pipeline.validation import validate_principles, validate_rubrics
 
@@ -60,6 +61,10 @@ class PipelineValidationTests(unittest.TestCase):
             documents={self.doc["document_id"]: self.doc["text"]},
         )
         self.assertTrue(report["valid"])
+
+    def test_single_record_model_shape_is_normalized(self):
+        self.assertEqual(as_records({"claim": "A rule."}, "principles"), [{"claim": "A rule."}])
+        self.assertEqual(as_records({"criterion": "A behavior."}, "rubrics"), [{"criterion": "A behavior."}])
 
 
 if __name__ == "__main__":
