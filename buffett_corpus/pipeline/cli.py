@@ -22,6 +22,12 @@ def documents(paths: list[str], master: str) -> list[dict]:
 def as_records(value, key: str) -> list[dict]:
     records = value.get(key) if isinstance(value, dict) else value
     if not isinstance(records, list):
+        # Some compatible models occasionally omit the wrapper for a single
+        # record even when the prompt requests a top-level array. Normalize
+        # that recoverable shape before deterministic validation.
+        record_field = "claim" if key == "principles" else "criterion"
+        if isinstance(value, dict) and value.get(record_field):
+            return [value]
         raise ValueError(f"model output must contain a `{key}` array")
     return records
 
