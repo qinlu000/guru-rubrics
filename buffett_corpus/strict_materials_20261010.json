@@ -1,0 +1,59 @@
+{
+  "run_id": "all_masters_20261010_strict",
+  "total_validated_rubrics": 434,
+  "included": [
+    {
+      "master": "Buffett",
+      "documents": 14,
+      "rubrics": 148
+    },
+    {
+      "master": "Munger",
+      "documents": 14,
+      "rubrics": 93
+    },
+    {
+      "master": "Marks",
+      "documents": 8,
+      "rubrics": 59
+    },
+    {
+      "master": "Dalio",
+      "documents": 3,
+      "rubrics": 23
+    },
+    {
+      "master": "Ackman",
+      "documents": 5,
+      "rubrics": 58
+    },
+    {
+      "master": "Soros",
+      "documents": 4,
+      "rubrics": 53
+    }
+  ],
+  "excluded_as_exploratory": [
+    {
+      "master": "Greenblatt",
+      "rubrics": 34,
+      "reason": "official website explainers; no verified standalone author text"
+    },
+    {
+      "master": "William O'Neil",
+      "rubrics": 39,
+      "reason": "company history/methodology pages; no verified standalone author text"
+    },
+    {
+      "master": "Dalio",
+      "rubrics": 12,
+      "reason": "short official pages retained only as supplementary material"
+    }
+  ],
+  "not_yet_materialized": [
+    "Benjamin Graham",
+    "Philip Fisher",
+    "Peter Lynch",
+    "Mark Minervini"
+  ]
+}
