@@ -16,3 +16,5 @@ buffett_corpus/runs/*
 # Downloaded binary source copies can be regenerated from manifest URLs.
 # Keep processed text and metadata in git; keep raw PDFs/HTML out of commits by default.
 buffett_corpus/raw/
+
+buffett_corpus/materials_local/

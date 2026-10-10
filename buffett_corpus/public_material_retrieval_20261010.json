@@ -1,0 +1,215 @@
+{
+  "manifest_id": "public_material_retrieval_20261010",
+  "source_manifest": "buffett_corpus/material_manifest_20261010.json",
+  "retrieved_at_utc": "2026-10-10T07:34:46.961038+00:00",
+  "local_directory": "buffett_corpus/materials_local (ignored; regenerate with fetch_materials_20261010.py)",
+  "fetched": [
+    {
+      "id": "greenblatt.gotham_cio_letter",
+      "master": "Joel Greenblatt",
+      "title": "Our Investment Philosophy (Gotham Funds CIO Letter)",
+      "url": "https://www.gothamfunds.com/Download.aspx?ID=a112fb47-5019-4ab3-8c30-1ceed79b7304&Inline=1",
+      "format": "pdf",
+      "completeness": "complete_document",
+      "authorship": "Gotham Asset Management CIOs, led by Joel Greenblatt and Robert Goldstein",
+      "role": "supporting_canonical",
+      "retrieved_at_utc": "2026-10-10T07:34:23.077877+00:00",
+      "raw_bytes": 151114,
+      "raw_sha256": "be023a9200adfc2f25a608b9625d83b456c0d4c4b70faf80d5c2d7457a9f3a3b",
+      "text_characters": 11499,
+      "text_words": 1682
+    },
+    {
+      "id": "greenblatt.gotham_strategy",
+      "master": "Joel Greenblatt",
+      "title": "Gotham Investment Strategy",
+      "url": "https://www.gothamfunds.com/strategy",
+      "format": "html",
+      "completeness": "complete_page",
+      "authorship": "Gotham Asset Management institutional description",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:23.505589+00:00",
+      "raw_bytes": 27325,
+      "raw_sha256": "80c6e89c5361af554d7c34cc5f305c59afd2eee1a6327c86e485a7276fbbe189",
+      "text_characters": 12184,
+      "text_words": 1925
+    },
+    {
+      "id": "greenblatt.magic_formula_how_it_works",
+      "master": "Joel Greenblatt",
+      "title": "Magic Formula Investing: How It Works",
+      "url": "https://www.magicformulainvesting.com/Home/HowItWorks",
+      "format": "html",
+      "completeness": "complete_page",
+      "authorship": "Official site controlled in part by Joel Greenblatt",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:23.918247+00:00",
+      "raw_bytes": 15052,
+      "raw_sha256": "a38076e4acbe3ea301b6c748b68373f6a5140ab795e979d2fb1a744088e24b5c",
+      "text_characters": 2305,
+      "text_words": 311
+    },
+    {
+      "id": "greenblatt.magic_formula_faq",
+      "master": "Joel Greenblatt",
+      "title": "Magic Formula Investing: FAQs",
+      "url": "https://www.magicformulainvesting.com/Home/Faqs",
+      "format": "html",
+      "completeness": "complete_page",
+      "authorship": "Official site controlled in part by Joel Greenblatt",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:24.211952+00:00",
+      "raw_bytes": 31408,
+      "raw_sha256": "51d6f97160b42788b5a01d8a8fa53b0405c2c44504e3a97b87bb4712871894ec",
+      "text_characters": 6335,
+      "text_words": 1044
+    },
+    {
+      "id": "greenblatt.interview_2016",
+      "master": "Joel Greenblatt",
+      "title": "Joel Greenblatt's Investing Secrets Revealed (Barron's interview reprint)",
+      "url": "https://www.gothamfunds.com/Download.aspx?ID=41d856a3-06b8-4dde-a25a-4cec1c295af3&Inline=1",
+      "format": "pdf",
+      "completeness": "complete_reprint",
+      "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:25.631750+00:00",
+      "raw_bytes": 6410775,
+      "raw_sha256": "878fc8ee5a95beec79a1591a2b8bcc1c22df82f8553148576733f11372e9d7c9",
+      "text_characters": 33477,
+      "text_words": 3403
+    },
+    {
+      "id": "greenblatt.interview_2018",
+      "master": "Joel Greenblatt",
+      "title": "Talking With Joel Greenblatt (Barron's interview reprint)",
+      "url": "https://www.gothamfunds.com/Download.aspx?ID=5febf93a-1d04-4fdc-b81d-88ba19df3afe&Inline=1",
+      "format": "pdf",
+      "completeness": "complete_reprint",
+      "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:26.097348+00:00",
+      "raw_bytes": 670825,
+      "raw_sha256": "98a5aea2e854243dbb86dfaaedf6fee8c04949937b3271392c7cea6427555585",
+      "text_characters": 15672,
+      "text_words": 1998
+    },
+    {
+      "id": "greenblatt.interview_2019",
+      "master": "Joel Greenblatt",
+      "title": "A Value Investor Defends Value Investing (Wall Street Journal interview reprint)",
+      "url": "https://www.gothamfunds.com/Download.aspx?ID=4745663f-08f5-43ec-ae0c-f1e5dba7a775&Inline=1",
+      "format": "pdf",
+      "completeness": "complete_reprint",
+      "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:26.491123+00:00",
+      "raw_bytes": 199588,
+      "raw_sha256": "0b37b9ecd8941b53dc2468796b1caa6cd39d324cd82913dfd314d028eb37b4c1",
+      "text_characters": 10890,
+      "text_words": 1546
+    },
+    {
+      "id": "dalio.paradigm_shifts",
+      "master": "Ray Dalio",
+      "title": "Paradigm Shifts",
+      "url": "https://economicprinciples.org/downloads/Paradigm-Shifts.pdf?direct=1",
+      "format": "pdf",
+      "completeness": "complete_report",
+      "authorship": "Ray Dalio first-person report hosted by Economic Principles; PDF metadata credits Christopher Edmonds for production",
+      "role": "core_public",
+      "retrieved_at_utc": "2026-10-10T07:34:31.074294+00:00",
+      "raw_bytes": 805544,
+      "raw_sha256": "6393249b05bbae5a17ca0e0606036f0ad6ec9027e775bc9b603aab948d66c67a",
+      "text_characters": 192054,
+      "text_words": 15305
+    },
+    {
+      "id": "dalio.productivity_structural_reform",
+      "master": "Ray Dalio",
+      "title": "Productivity and Structural Reform: Why Countries Succeed & Fail",
+      "url": "https://economicprinciples.org/downloads/ray_dalio__how_the_economic_machine_works__leveragings_and_deleveragings.pdf?direct=1",
+      "format": "pdf",
+      "completeness": "complete_report",
+      "authorship": "Ray Dalio report hosted by Economic Principles",
+      "role": "core_public",
+      "retrieved_at_utc": "2026-10-10T07:34:38.862012+00:00",
+      "raw_bytes": 1658914,
+      "raw_sha256": "8fa2d8f8783d2f31639da86cb206e8f9aeed0d924ebd413d5d1028e420630943",
+      "text_characters": 504846,
+      "text_words": 54180
+    },
+    {
+      "id": "dalio.capital_wars",
+      "master": "Ray Dalio",
+      "title": "Capital Wars from 1600 to the Present",
+      "url": "https://economicprinciples.org/downloads/cwo-a-deeper-look-at-capital-wars.pdf?direct=1",
+      "format": "pdf",
+      "completeness": "complete_report",
+      "authorship": "Economic Principles report associated with Ray Dalio's Changing World Order research",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:43.023780+00:00",
+      "raw_bytes": 128660,
+      "raw_sha256": "144baab7025ac7f62e43f7f3f67ca520376266cdf506e9bc8cfcb79fa39587d7",
+      "text_characters": 20906,
+      "text_words": 2454
+    },
+    {
+      "id": "dalio.life_expectancy",
+      "master": "Ray Dalio",
+      "title": "Largest Events Driving Changes to Life Expectancy Through Time",
+      "url": "https://economicprinciples.org/downloads/cwo-large-drivers-of-life-expectancy-through-time.pdf?direct=1",
+      "format": "pdf",
+      "completeness": "complete_report",
+      "authorship": "Economic Principles report associated with Ray Dalio's Changing World Order research",
+      "role": "supporting_only",
+      "retrieved_at_utc": "2026-10-10T07:34:46.960878+00:00",
+      "raw_bytes": 72038,
+      "raw_sha256": "18b8ce73ea9f36812c1fef7e32730a12fe44cf12266191cf6d41280770d84f93",
+      "text_characters": 7920,
+      "text_words": 686
+    }
+  ],
+  "skipped": [
+    {
+      "id": "greenblatt.you_can_be_genius",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "greenblatt.little_book",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "greenblatt.big_secret",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "oneil.author_archive",
+      "reason": "metadata_only"
+    },
+    {
+      "id": "oneil.chrysler_case",
+      "reason": "metadata_only"
+    },
+    {
+      "id": "oneil.dell_case",
+      "reason": "metadata_only"
+    },
+    {
+      "id": "oneil.how_to_make_money",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "dalio.principles",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "dalio.debt_crises",
+      "reason": "requires_lawful_local_copy"
+    },
+    {
+      "id": "dalio.changing_order",
+      "reason": "requires_lawful_local_copy"
+    }
+  ]
+}

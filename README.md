@@ -49,7 +49,17 @@ Outputs include raw and deterministically validated JSONL files, run metadata, a
 
 ## Master material selection
 
-The first ten-master source plan is recorded in [`masters_material_selection_v0.1.md`](masters_material_selection_v0.1.md) and [`masters_material_selection_v0.1.json`](masters_material_selection_v0.1.json). The manifest stores source type, official URL, style dimensions, access mode, and copyright handling; it does not redistribute copyrighted books or restricted PDFs.
+The current 11-master candidate source plan is recorded in [`masters_material_selection_v0.1.md`](masters_material_selection_v0.1.md) and [`masters_material_selection_v0.1.json`](masters_material_selection_v0.1.json). The manifest stores source type, official URL, style dimensions, access mode, and copyright handling; it does not redistribute copyrighted books or restricted PDFs.
+
+## Public material retrieval
+
+The reselected Greenblatt, O’Neil, and Dalio sources are listed in [`buffett_corpus/material_manifest_20261010.json`](buffett_corpus/material_manifest_20261010.json). Fetch the public first-party documents into a local, ignored directory with:
+
+```bash
+python buffett_corpus/fetch_materials_20261010.py --out buffett_corpus/materials_local
+```
+
+The fetch step retrieves public PDFs and pages, converts PDFs to text, records SHA-256 hashes, and skips copyright books and paywalled article bodies. O’Neil’s IBD author pages currently expose only paywall excerpts; use a lawfully obtained complete copy of *How to Make Money in Stocks* for canonical extraction.
 
 ## Corpus
 
