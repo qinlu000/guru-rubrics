@@ -67,37 +67,45 @@
     {
       "master": "Ray Dalio",
       "source": "official Principles/Economic Principles page",
-      "authorship": "official Dalio-branded page",
-      "url": "https://www.principles.com/",
-      "document_id": "principles_home"
+      "authorship": "official Dalio-branded page"
     },
     {
       "master": "Ray Dalio",
       "source": "official Principles/Economic Principles page",
-      "authorship": "official Dalio-branded page",
-      "url": "https://www.principles.com/principles-for-success",
-      "document_id": "principles_success"
+      "authorship": "official Dalio-branded page"
     },
     {
       "master": "Ray Dalio",
       "source": "official Principles/Economic Principles page",
-      "authorship": "official Dalio-branded page",
-      "url": "https://economicprinciples.org/how-the-economic-machine-works/",
-      "document_id": "economic_machine"
+      "authorship": "official Dalio-branded page"
     },
     {
       "master": "Ray Dalio",
       "source": "official Principles/Economic Principles page",
-      "authorship": "official Dalio-branded page",
-      "url": "https://www.principles.com/big-debt-crises",
-      "document_id": "big_debt_crises"
+      "authorship": "official Dalio-branded page"
     },
     {
       "master": "Ray Dalio",
       "source": "official Principles/Economic Principles page",
-      "authorship": "official Dalio-branded page",
-      "url": "https://economicprinciples.org/the-changing-world-order/",
-      "document_id": "changing_world_order"
+      "authorship": "official Dalio-branded page"
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Paradigm Shifts",
+      "url": "https://economicprinciples.org/downloads/Paradigm-Shifts.pdf?direct=1",
+      "authorship": "Ray Dalio signed investment-principle PDF"
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Capital Wars from 1600 to the Present",
+      "url": "https://economicprinciples.org/downloads/cwo-a-deeper-look-at-capital-wars.pdf?direct=1",
+      "authorship": "Ray Dalio official Economic Principles PDF"
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Largest Events Driving Changes to Life Expectancy Through Time",
+      "url": "https://economicprinciples.org/downloads/cwo-large-drivers-of-life-expectancy-through-time.pdf?direct=1",
+      "authorship": "Ray Dalio official Economic Principles PDF"
     }
   ],
   "notes": [
