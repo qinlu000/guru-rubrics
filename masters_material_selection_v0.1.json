@@ -1,8 +1,8 @@
 {
-  "version": "0.1",
-  "purpose": "为投资风格 Rubric 提取建立首批一手材料清单；先提取来源原则，再映射到 TradeBank 轨迹。",
+  "version": "0.2",
+  "purpose": "为投资风格 Rubric 提取建立一手材料候选清单；先从完整材料提取可追溯原则，再映射到 TradeBank 轨迹。当前是 11 人候选池，正式评测仍可按研究范围收缩到 6–8 人。",
   "selection_criteria": [
-    "作者本人或其投资机构的原始表达",
+    "作者本人、作者署名的原始表达，或可明确归因的投资机构原始文件",
     "有稳定的版本、日期和出处，可保留 source_url、edition 或 filing 标识",
     "能够覆盖估值、风险、组合、行为或交易决策，而不只是名言",
     "有机会从一位大师的材料中提取约 50–100 条原子化原则；实际数量需经去重和人工审查确认",
@@ -341,7 +341,7 @@
         "risk_balancing",
         "principles"
       ],
-      "selection_role": "引入宏观、债务周期、规则化决策和风险平衡",
+      "selection_role": "恢复为候选人物；把短网页降为辅助来源，优先使用完整著作和署名明确的官方研究报告。",
       "core_materials": [
         {
           "id": "dalio.principles",
@@ -361,7 +361,7 @@
           "id": "dalio.debt_crises",
           "title": "Principles for Navigating Big Debt Crises",
           "type": "licensed_book",
-          "url": "https://economicprinciples.org/how-countries-go-broke/",
+          "url": "https://www.principles.com/big-debt-crises/",
           "priority": "core",
           "dimensions": [
             "debt_cycle",
@@ -369,19 +369,71 @@
             "causal_chain",
             "scenario_analysis",
             "stress_testing"
-          ]
+          ],
+          "access": "Official page offers a free PDF after subscription; otherwise use a lawful ebook/print copy."
         },
         {
           "id": "dalio.changing_order",
           "title": "Principles for Dealing with the Changing World Order",
           "type": "licensed_book",
           "url": "https://economicprinciples.org/the-changing-world-order/",
-          "priority": "supporting",
+          "priority": "core",
           "dimensions": [
             "long_cycle",
             "geopolitics",
-            "macro_risk"
+            "macro_risk",
+            "currency",
+            "diversification"
           ]
+        },
+        {
+          "id": "dalio.paradigm_shifts",
+          "title": "Paradigm Shifts",
+          "type": "official_open",
+          "url": "https://economicprinciples.org/downloads/Paradigm-Shifts.pdf?direct=1",
+          "priority": "core",
+          "dimensions": [
+            "regime_change",
+            "unsustainable_forces",
+            "volatility",
+            "portfolio_immunity",
+            "tactical_navigation"
+          ],
+          "attribution": "Ray Dalio first-person report hosted by Economic Principles; PDF metadata credits Christopher Edmonds for production."
+        },
+        {
+          "id": "dalio.productivity_structural_reform",
+          "title": "Productivity and Structural Reform: Why Countries Succeed & Fail",
+          "type": "official_open",
+          "url": "https://economicprinciples.org/downloads/ray_dalio__how_the_economic_machine_works__leveragings_and_deleveragings.pdf?direct=1",
+          "priority": "core",
+          "dimensions": [
+            "economic_machine",
+            "productivity",
+            "causal_chain",
+            "country_comparison",
+            "long_term_growth"
+          ],
+          "attribution": "Ray Dalio report hosted by Economic Principles"
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "保留旧有三份公开 PDF，但不再把原则首页、成功系列或短介绍页当作核心材料。完整著作和署名明确的 Dalio 报告可支持 50–100 条候选原则。",
+      "supporting_materials": [
+        {
+          "id": "dalio.economic_machine_video",
+          "title": "How the Economic Machine Works",
+          "type": "official_open",
+          "url": "https://economicprinciples.org/how-the-economic-machine-works/",
+          "priority": "supporting",
+          "dimensions": [
+            "credit",
+            "interest_rates",
+            "leveraging",
+            "deleveraging",
+            "macro_regimes"
+          ],
+          "attribution": "Ray Dalio official video and accompanying transcript/report"
         },
         {
           "id": "dalio.bridgewater_research",
@@ -394,24 +446,23 @@
             "risk_balancing",
             "diversification",
             "systematic_process"
-          ]
+          ],
+          "attribution": "Bridgewater institutional research; do not attribute to Dalio without explicit byline."
         },
         {
-          "id": "dalio.economic_machine",
-          "title": "How the Economic Machine Works",
+          "id": "dalio.cwo_public_reports",
+          "title": "Official Changing World Order research reports: Capital Wars and Life Expectancy",
           "type": "official_open",
-          "url": "https://economicprinciples.org/how-the-economic-machine-works",
+          "url": "https://economicprinciples.org/the-changing-world-order/",
           "priority": "supporting",
           "dimensions": [
-            "economic_machine",
-            "causal_chain",
-            "macro_regimes",
-            "scenario_analysis"
-          ]
+            "capital_wars",
+            "geopolitics",
+            "historical_base_rates"
+          ],
+          "attribution": "Reports hosted by Economic Principles; author and contributing analyst must be retained per PDF."
         }
-      ],
-      "expected_yield": "high",
-      "notes": "Bridgewater 机构研究不自动等同于 Dalio 个人观点；每条记录必须保存署名和实体。"
+      ]
     },
     {
       "id": "soros",
@@ -558,65 +609,233 @@
         "long_short",
         "rebalancing"
       ],
-      "selection_role": "提供高度可操作的筛选、持仓、再平衡和风险暴露规则",
+      "selection_role": "恢复为候选人物；用作者完整著作建立原则库，用 Gotham 的公开材料补充其机构化多空执行规则。",
       "core_materials": [
         {
-          "id": "greenblatt.gotham_strategy",
-          "title": "Gotham investment strategy",
-          "type": "official_institution",
-          "url": "https://www.gothamfunds.com/strategy",
+          "id": "greenblatt.you_can_be_genius",
+          "title": "You Can Be a Stock Market Genius",
+          "type": "licensed_book",
+          "url": "https://www.gothamfunds.com/Principals",
           "priority": "core",
           "dimensions": [
-            "relative_value",
-            "long_short",
+            "special_situations",
+            "spinoffs",
+            "mergers",
+            "bankruptcies",
             "valuation",
-            "position_adjustment",
-            "exposure_limits"
+            "downside"
           ]
         },
         {
-          "id": "greenblatt.magic_formula",
-          "title": "Magic Formula Investing: About, How It Works, and FAQ",
-          "type": "official_open",
-          "url": "https://www.magicformulainvesting.com/",
+          "id": "greenblatt.little_book",
+          "title": "The Little Book That Beats the Market",
+          "type": "licensed_book",
+          "url": "https://www.gothamfunds.com/Principals",
           "priority": "core",
+          "dimensions": [
+            "earnings_yield",
+            "return_on_capital",
+            "screening",
+            "diversification",
+            "holding_period",
+            "rebalancing"
+          ]
+        },
+        {
+          "id": "greenblatt.big_secret",
+          "title": "The Big Secret for the Small Investor",
+          "type": "licensed_book",
+          "url": "https://www.gothamfunds.com/Principals",
+          "priority": "core",
+          "dimensions": [
+            "indexing",
+            "active_vs_passive",
+            "valuation",
+            "portfolio_construction",
+            "discipline"
+          ]
+        },
+        {
+          "id": "greenblatt.gotham_cio_letter",
+          "title": "Our Investment Philosophy (Gotham Funds CIO Letter)",
+          "type": "official_institution",
+          "url": "https://www.gothamfunds.com/Download.aspx?ID=a112fb47-5019-4ab3-8c30-1ceed79b7304&Inline=1",
+          "priority": "supporting",
+          "dimensions": [
+            "long_short",
+            "valuation",
+            "position_adjustment",
+            "portfolio_diversification",
+            "sector_limits",
+            "gross_net_exposure"
+          ],
+          "attribution": "Gotham Asset Management CIOs, led by Joel Greenblatt and Robert Goldstein"
+        }
+      ],
+      "supporting_materials": [
+        {
+          "id": "greenblatt.magic_formula_pages",
+          "title": "Magic Formula Investing: How It Works and FAQs",
+          "type": "official_open",
+          "url": "https://www.magicformulainvesting.com/Home/HowItWorks",
+          "priority": "supporting",
           "dimensions": [
             "low_pe",
             "return_on_capital",
             "equal_weighting",
             "one_year_holding",
             "annual_rescreening"
-          ]
+          ],
+          "attribution": "Official site controlled in part by Joel Greenblatt; use as an operational cross-check, not as the sole author text."
         },
         {
-          "id": "greenblatt.gotham_documents",
-          "title": "Gotham public fund documents",
+          "id": "greenblatt.gotham_strategy",
+          "title": "Gotham investment strategy",
           "type": "official_institution",
+          "url": "https://www.gothamfunds.com/strategy",
+          "priority": "supporting",
+          "dimensions": [
+            "relative_value",
+            "long_short",
+            "valuation",
+            "position_adjustment",
+            "exposure_limits"
+          ],
+          "attribution": "Gotham Asset Management institutional description"
+        },
+        {
+          "id": "greenblatt.interviews",
+          "title": "Direct interviews with Joel Greenblatt hosted as Gotham/Barron's reprints (2016, 2018, 2019)",
+          "type": "official_open",
           "url": "https://www.gothamfunds.com/documents",
           "priority": "supporting",
           "dimensions": [
-            "fund_constraints",
-            "risk_control",
-            "portfolio_construction"
+            "business_valuation",
+            "patience",
+            "cash_flow",
+            "active_vs_passive"
+          ],
+          "attribution": "Interview speech attributed to Joel Greenblatt; publisher reprint and edited excerpts require provenance retention."
+        }
+      ],
+      "expected_yield": "high",
+      "notes": "官网方法页不再作为 Greenblatt 的独立核心文本。至少取得一本完整著作后再生成正式 Rubric；Gotham CIO 信可用于验证其机构化执行方式。"
+    },
+    {
+      "id": "oneil",
+      "name": "William J. O'Neil",
+      "style_tags": [
+        "growth_momentum",
+        "technical_breakouts",
+        "earnings_revision",
+        "risk_control"
+      ],
+      "selection_role": "新增恢复候选人物；使用 O’Neil 本人著作和 IBD 明确署名的历史案例，覆盖 CAN SLIM、市场方向、突破和卖出纪律。",
+      "core_materials": [
+        {
+          "id": "oneil.how_to_make_money",
+          "title": "How to Make Money in Stocks: A Winning System in Good Times and Bad",
+          "type": "licensed_book",
+          "url": "https://openlibrary.org/books/OL24289443M/How_to_Make_Money_in_Stocks",
+          "priority": "core",
+          "dimensions": [
+            "canslim",
+            "earnings_growth",
+            "sales_growth",
+            "relative_strength",
+            "price_volume",
+            "market_direction",
+            "buy_points",
+            "sell_rules",
+            "position_sizing"
           ]
         },
         {
-          "id": "greenblatt.books",
-          "title": "You Can Be a Stock Market Genius; The Little Book That Still Beats the Market; The Big Secret for the Small Investor; Common Sense",
-          "type": "licensed_book",
-          "url": "https://www.gothamfunds.com/principals",
+          "id": "oneil.ibd_author_archive",
+          "title": "William J. O'Neil author archive at Investor's Business Daily",
+          "type": "official_open",
+          "url": "https://www.investors.com/author/william-j-oneil/",
           "priority": "core",
           "dimensions": [
-            "special_situations",
-            "valuation",
-            "screening",
-            "portfolio_rules",
-            "risk"
+            "chart_reading",
+            "breakouts",
+            "market_timing",
+            "historical_winners",
+            "risk_control"
+          ],
+          "attribution": "Pages carry the WILLIAM J. O'NEIL byline; verify whether each page is a republished original column before canonical extraction."
+        }
+      ],
+      "supporting_materials": [
+        {
+          "id": "oneil.chrysler_case",
+          "title": "Chrysler: How William O'Neil Found It Was A Winner",
+          "type": "official_open",
+          "url": "https://www.investors.com/how-to-invest/william-oneil-on-growth-stocks-why-chrysler-was-a-huge-stock-market-winner/",
+          "priority": "supporting",
+          "dimensions": [
+            "cup_with_handle",
+            "volume_confirmation",
+            "market_context",
+            "historical_case"
+          ],
+          "attribution": "Investor's Business Daily page credits WILLIAM J. O'NEIL; retain page date and provenance."
+        },
+        {
+          "id": "oneil.dell_case",
+          "title": "Dell Stock: How To Find And Own America's Greatest Opportunities",
+          "type": "official_open",
+          "url": "https://www.investors.com/how-to-invest/dell-stock-americas-greatest-opportunities/",
+          "priority": "supporting",
+          "dimensions": [
+            "earnings_change",
+            "base_breakout",
+            "failure_and_recovery",
+            "sell_discipline"
+          ]
+        },
+        {
+          "id": "oneil.redman_case",
+          "title": "Stock Market: Redman One Of America's Greatest Opportunities",
+          "type": "official_open",
+          "url": "https://www.investors.com/how-to-invest/stock-market-redman-industries-americas-greatest-opportunities/",
+          "priority": "supporting",
+          "dimensions": [
+            "earnings_acceleration",
+            "cup_with_handle",
+            "market_correction",
+            "breakout"
+          ]
+        },
+        {
+          "id": "oneil.limited_case",
+          "title": "Stock Market: How The Limited Made Its Impact In Retail",
+          "type": "official_open",
+          "url": "https://www.investors.com/how-to-invest/stock-market-the-limited-americas-greatest-opportunities/",
+          "priority": "supporting",
+          "dimensions": [
+            "new_product_or_market",
+            "base_structure",
+            "breakout",
+            "historical_case"
+          ]
+        },
+        {
+          "id": "oneil.accustaff_case",
+          "title": "Stock Market: How AccuStaff Soared After A Correction",
+          "type": "official_open",
+          "url": "https://www.investors.com/how-to-invest/stock-market-accustaff-americas-greatest-opportunities/",
+          "priority": "supporting",
+          "dimensions": [
+            "correction",
+            "price_volume",
+            "buy_rules",
+            "market_context"
           ]
         }
       ],
       "expected_yield": "high",
-      "notes": "公开网页本身即可产生一批高度可观察规则；要稳定达到 50–100 条，仍需要合法取得至少一本完整著作。"
+      "notes": "O’Neil 的核心输入必须至少包含一本完整、合法取得的作者著作。IBD 文章可提供可观察交易规则，但要保留页面的作者、日期和是否为历史专栏重刊信息；公司历史页和机构方法介绍不进入 canonical corpus。"
     }
   ],
   "reserve_candidates": [

@@ -41,5 +41,38 @@
   ],
   "notes": [
     "Only retained standalone source documents are included. Removed exploratory Greenblatt, O'Neil, and Dalio short-page materials are not part of this manifest."
+  ],
+  "candidate_expansions": [
+    {
+      "master": "Greenblatt",
+      "materials": [
+        "You Can Be a Stock Market Genius",
+        "The Little Book That Beats the Market",
+        "The Big Secret for the Small Investor",
+        "Gotham CIO Letter"
+      ],
+      "status": "selected_pending_local_full_text",
+      "notes": "The earlier Magic Formula and website-only outputs were deleted; these are the replacement sources for a future run."
+    },
+    {
+      "master": "William O'Neil",
+      "materials": [
+        "How to Make Money in Stocks",
+        "IBD William J. O'Neil author archive and attributed historical cases"
+      ],
+      "status": "selected_pending_local_full_text",
+      "notes": "IBD pages require provenance checks for historical republication before canonical extraction."
+    },
+    {
+      "master": "Dalio",
+      "materials": [
+        "Principles: Life and Work",
+        "Principles for Navigating Big Debt Crises",
+        "Principles for Dealing with the Changing World Order",
+        "Productivity and Structural Reform"
+      ],
+      "status": "expansion_pending_local_full_text",
+      "notes": "The strict 3-document Dalio subset remains counted; these sources can expand it after lawful text acquisition."
+    }
   ]
 }
