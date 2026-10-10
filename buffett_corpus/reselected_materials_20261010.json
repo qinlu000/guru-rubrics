@@ -1,0 +1,108 @@
+{
+  "run_id": "reselected_20261010",
+  "materials": [
+    {
+      "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-pershing-square-capital-management-l-p-releases-letter-to-investors/",
+      "date": "2020-03-25",
+      "title": "Pershing Square Capital Management, L.P. Releases Letter to Investors",
+      "master": "Bill Ackman",
+      "authorship": "direct_or_investment_manager_letter"
+    },
+    {
+      "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10305/",
+      "date": "2022-01-26",
+      "title": "Pershing Square Capital Management, L.P. Releases Letter to Investors",
+      "master": "Bill Ackman",
+      "authorship": "direct_or_investment_manager_letter"
+    },
+    {
+      "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10529/",
+      "date": "2022-07-11",
+      "title": "Pershing Square Tontine Holdings, Ltd. Releases Letter to Shareholders",
+      "master": "Bill Ackman",
+      "authorship": "direct_or_investment_manager_letter"
+    },
+    {
+      "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10147/",
+      "date": "2021-07-19",
+      "title": "Pershing Square Tontine Holdings, Ltd. Releases Letter to Shareholders",
+      "master": "Bill Ackman",
+      "authorship": "direct_or_investment_manager_letter"
+    },
+    {
+      "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-pershing-square-holdings-ltd-releases-letter-to-shareholders/",
+      "date": "2022-04-20",
+      "title": "Pershing Square Holdings, Ltd. Releases Letter to Shareholders",
+      "master": "Bill Ackman",
+      "authorship": "direct_or_investment_manager_letter"
+    },
+    {
+      "url": "https://www.georgesoros.com/2008/11/06/the_crisis_what_to_do_about_it/",
+      "date": "2008-11-06",
+      "title": "The Crisis & What To Do About It",
+      "master": "George Soros",
+      "authorship": "George Soros official site"
+    },
+    {
+      "url": "https://www.georgesoros.com/2008/01/22/the_worst_market_crisis_in_60_years/",
+      "date": "2008-01-22",
+      "title": "The Worst Market Crisis in 60 Years",
+      "master": "George Soros",
+      "authorship": "George Soros official site"
+    },
+    {
+      "url": "https://www.georgesoros.com/1997/08/21/my-investments-in-russia/",
+      "date": "1997-08-21",
+      "title": "My Investments in Russia",
+      "master": "George Soros",
+      "authorship": "George Soros official site"
+    },
+    {
+      "url": "https://www.georgesoros.com/2014/01/13/fallibility-reflexivity-and-the-human-uncertainty-principle-2/",
+      "date": "2014-01-13",
+      "title": "Fallibility, Reflexivity, and the Human Uncertainty Principle",
+      "master": "George Soros",
+      "authorship": "George Soros official site"
+    },
+    {
+      "master": "Ray Dalio",
+      "source": "official Principles/Economic Principles page",
+      "authorship": "official Dalio-branded page",
+      "url": "https://www.principles.com/",
+      "document_id": "principles_home"
+    },
+    {
+      "master": "Ray Dalio",
+      "source": "official Principles/Economic Principles page",
+      "authorship": "official Dalio-branded page",
+      "url": "https://www.principles.com/principles-for-success",
+      "document_id": "principles_success"
+    },
+    {
+      "master": "Ray Dalio",
+      "source": "official Principles/Economic Principles page",
+      "authorship": "official Dalio-branded page",
+      "url": "https://economicprinciples.org/how-the-economic-machine-works/",
+      "document_id": "economic_machine"
+    },
+    {
+      "master": "Ray Dalio",
+      "source": "official Principles/Economic Principles page",
+      "authorship": "official Dalio-branded page",
+      "url": "https://www.principles.com/big-debt-crises",
+      "document_id": "big_debt_crises"
+    },
+    {
+      "master": "Ray Dalio",
+      "source": "official Principles/Economic Principles page",
+      "authorship": "official Dalio-branded page",
+      "url": "https://economicprinciples.org/the-changing-world-order/",
+      "document_id": "changing_world_order"
+    }
+  ],
+  "notes": [
+    "Ackman sources are official Pershing Square/PSCM posts whose body identifies a letter from Bill Ackman or the investment manager.",
+    "Soros sources are full posts on George Soros official website; short lecture landing pages were excluded.",
+    "Dalio sources are complete official Principles/Economic Principles pages, but page level authorship is institutional/official rather than verified handwriting."
+  ]
+}
