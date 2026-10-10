@@ -33,27 +33,13 @@
       "rubrics": 53
     }
   ],
-  "excluded_as_exploratory": [
-    {
-      "master": "Greenblatt",
-      "rubrics": 34,
-      "reason": "official website explainers; no verified standalone author text"
-    },
-    {
-      "master": "William O'Neil",
-      "rubrics": 39,
-      "reason": "company history/methodology pages; no verified standalone author text"
-    },
-    {
-      "master": "Dalio",
-      "rubrics": 12,
-      "reason": "short official pages retained only as supplementary material"
-    }
-  ],
   "not_yet_materialized": [
     "Benjamin Graham",
     "Philip Fisher",
     "Peter Lynch",
     "Mark Minervini"
+  ],
+  "notes": [
+    "Only retained standalone source documents are included. Removed exploratory Greenblatt, O'Neil, and Dalio short-page materials are not part of this manifest."
   ]
 }
