@@ -78,5 +78,9 @@
       "status": "pending_complete_primary_source",
       "reason": "official site has book/course pages but no complete publicly accessible method text"
     }
-  ]
+  ],
+  "materials_status": {
+    "William O'Neil": "exploratory_only_not_in_final_count",
+    "Mark Minervini": "pending_complete_primary_source"
+  }
 }
