@@ -1,0 +1,82 @@
+{
+  "run_id": "trading_extension_20261010",
+  "materials": [
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_1960",
+      "url": "https://www.williamoneil.com/about-us/heritage/1960",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1491
+    },
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_1970",
+      "url": "https://www.williamoneil.com/about-us/heritage/1970",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1837
+    },
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_1980",
+      "url": "https://www.williamoneil.com/about-us/heritage/1980",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1653
+    },
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_1990",
+      "url": "https://www.williamoneil.com/about-us/heritage/1990",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1588
+    },
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_2000",
+      "url": "https://www.williamoneil.com/about-us/heritage/2000",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1693
+    },
+    {
+      "master": "William O'Neil",
+      "title": "about-us_heritage_2010",
+      "url": "https://www.williamoneil.com/about-us/heritage/2010",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 2220
+    },
+    {
+      "master": "William O'Neil",
+      "title": "what-we-do",
+      "url": "https://www.williamoneil.com/what-we-do",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 2691
+    },
+    {
+      "master": "William O'Neil",
+      "title": "research-pages_equity-research",
+      "url": "https://www.williamoneil.com/research-pages/equity-research",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1728
+    },
+    {
+      "master": "William O'Neil",
+      "title": "research-pages_global-sector-strategy",
+      "url": "https://www.williamoneil.com/research-pages/global-sector-strategy",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 1516
+    },
+    {
+      "master": "William O'Neil",
+      "title": "research-pages_focus-list_us",
+      "url": "https://www.williamoneil.com/research-pages/focus-list/us",
+      "authorship": "William O'Neil official company page with attributed quotations",
+      "characters": 2833
+    }
+  ],
+  "pending": [
+    {
+      "master": "Mark Minervini",
+      "status": "pending_complete_primary_source",
+      "reason": "official site has book/course pages but no complete publicly accessible method text"
+    }
+  ]
+}
