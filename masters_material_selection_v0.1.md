@@ -18,7 +18,7 @@
 | 8 | George Soros | 反身性、宏观交易、动态更新 | `The Alchemy of Finance`；`Soros on Soros`；`The Crisis of Global Capitalism` / `Open Society`；作者官网 Writings/Speeches | 主要是作者著作；官网公开文章和演讲作补充 | reflexivity、hypothesis/falsification、feedback、regime change、position sizing、uncertainty、adaptation |
 | 9 | Bill Ackman | 主动主义、集中价值、催化剂、公开论点 | Pershing Square Holdings Shareholder Letters；Annual Reports；公开披露和投资者材料 | 机构官方公开材料；逐条记录 PSH/PSCM 实体和署名 | thesis、catalyst、intrinsic value、downside、concentration、monitoring、governance、evidence |
 | 10 | Joel Greenblatt | 系统化价值、特殊情形、多空、再平衡 | `You Can Be a Stock Market Genius`；`The Little Book That Beats the Market`；`The Big Secret for the Small Investor`；Gotham CIO letter | 著作需合法取得；Gotham CIO letter 为机构共同署名；官网方法页仅作辅助 | special situations、earnings yield、return on capital、screening、long/short、rebalancing、exposure limits |
-| 11 | William J. O'Neil | 成长动量、技术突破、盈利加速、风险控制 | `How to Make Money in Stocks`；IBD 的 William J. O'Neil 作者档案及署名历史案例 | 书籍需合法取得；IBD 页面须保留作者、日期并核对是否为历史专栏重刊 | CAN SLIM、earnings、price/volume、market direction、breakouts、buy points、sell rules、position sizing |
+| 11 | William J. O'Neil | 成长动量、技术突破、盈利加速、风险控制 | `How to Make Money in Stocks`；IBD 的 William J. O'Neil 作者档案及署名历史案例 | 书籍需合法取得；IBD 页面须保留作者、日期并核对是否为历史专栏重刊；IBD 的 `All About Charts` 手册只作机构辅助材料 | CAN SLIM、earnings、price/volume、market direction、breakouts、buy points、sell rules、position sizing |
 
 ## 逐位材料入口
 
@@ -32,7 +32,7 @@
 - **Soros**：<https://www.georgesoros.com/>；Open Society 人物页 <https://www.opensocietyfoundations.org/george-soros>；作者署名的 Project Syndicate archive <https://www.project-syndicate.org/columnist/george-soros>。以书版、章节和演讲日期作为 citation anchor，避免使用二手名言。
 - **Ackman**：Shareholder Letters <https://pershingsquareholdings.com/investor-relations/letters-to-shareholders/>；Annual Reports <https://pershingsquareholdings.com/investor-relations/annual-reports/>；机构披露入口 <https://pershingsquareholdings.com/investor-relations/>。
 - **Greenblatt**：作者与著作入口 <https://www.gothamfunds.com/Principals>；Gotham CIO letter <https://www.gothamfunds.com/Download.aspx?ID=a112fb47-5019-4ab3-8c30-1ceed79b7304&Inline=1>；Gotham Strategy <https://www.gothamfunds.com/strategy>；Magic Formula How It Works <https://www.magicformulainvesting.com/Home/HowItWorks>。完整著作是核心输入，官网方法页只作操作交叉核对。
-- **O'Neil**：`How to Make Money in Stocks` 书目入口 <https://openlibrary.org/books/OL24289443M/How_to_Make_Money_in_Stocks>；作者档案 <https://www.investors.com/author/william-j-oneil/>；Chrysler 案例 <https://www.investors.com/how-to-invest/william-oneil-on-growth-stocks-why-chrysler-was-a-huge-stock-market-winner/>；Dell、Redman、The Limited 和 AccuStaff 案例均来自同一作者档案。公司历史页和机构方法介绍不进入 canonical corpus。
+- **O'Neil**：`How to Make Money in Stocks` 书目入口 <https://openlibrary.org/books/OL24289443M/How_to_Make_Money_in_Stocks>；作者档案 <https://www.investors.com/author/william-j-oneil/>；`All About Charts` IBD 手册 <https://www1.ibdcd.com/images/pdf/IBDbooklets_Orange_2015.pdf>；Chrysler 案例 <https://www.investors.com/how-to-invest/william-oneil-on-growth-stocks-why-chrysler-was-a-huge-stock-market-winner/>。IBD 手册和公司/机构页面只作辅助；公司历史页和机构方法介绍不进入 canonical corpus。
 
 ## 取材和版权边界
 

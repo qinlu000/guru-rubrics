@@ -768,6 +768,22 @@
       ],
       "supporting_materials": [
         {
+          "id": "oneil.ibd_chart_booklet",
+          "title": "All About Charts (IBD CAN SLIM chart booklet)",
+          "type": "official_institution",
+          "url": "https://www1.ibdcd.com/images/pdf/IBDbooklets_Orange_2015.pdf",
+          "priority": "supporting",
+          "dimensions": [
+            "chart_patterns",
+            "cup_with_handle",
+            "buy_points",
+            "price_volume",
+            "CAN_SLIM",
+            "sell_rules"
+          ],
+          "attribution": "Investor's Business Daily / MarketSmith editorial booklet; cites William O'Neil but is not solely authored by him."
+        },
+        {
           "id": "oneil.chrysler_case",
           "title": "Chrysler: How William O'Neil Found It Was A Winner",
           "type": "official_open",

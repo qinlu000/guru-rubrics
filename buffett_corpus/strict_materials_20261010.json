@@ -58,10 +58,11 @@
       "master": "William O'Neil",
       "materials": [
         "How to Make Money in Stocks",
+        "All About Charts (IBD CAN SLIM chart booklet)",
         "IBD William J. O'Neil author archive and attributed historical cases"
       ],
       "status": "selected_pending_local_full_text",
-      "notes": "IBD pages require provenance checks for historical republication before canonical extraction."
+      "notes": "The IBD booklet is complete and public but institutional, not solely authored by O'Neil; IBD pages require provenance checks for historical republication before canonical extraction."
     },
     {
       "master": "Dalio",

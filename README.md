@@ -59,7 +59,7 @@ The reselected Greenblatt, O’Neil, and Dalio sources are listed in [`buffett_c
 python buffett_corpus/fetch_materials_20261010.py --out buffett_corpus/materials_local
 ```
 
-The fetch step retrieves public PDFs and pages, converts PDFs to text, records SHA-256 hashes, and skips copyright books and paywalled article bodies. O’Neil’s IBD author pages currently expose only paywall excerpts; use a lawfully obtained complete copy of *How to Make Money in Stocks* for canonical extraction.
+The fetch step retrieves public PDFs and pages, converts PDFs to text, records SHA-256 hashes, and skips copyright books and paywalled article bodies. The public IBD `All About Charts` booklet is included as institutional supporting material, while O’Neil’s author pages expose only paywall excerpts; use a lawfully obtained complete copy of *How to Make Money in Stocks* for canonical extraction.
 
 ## Corpus
 

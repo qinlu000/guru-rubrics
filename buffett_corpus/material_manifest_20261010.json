@@ -13,7 +13,14 @@
       "completeness": "complete_document",
       "authorship": "Gotham Asset Management CIOs, led by Joel Greenblatt and Robert Goldstein",
       "role": "supporting_canonical",
-      "dimensions": ["valuation", "long_short", "position_adjustment", "diversification", "sector_limits", "gross_net_exposure"]
+      "dimensions": [
+        "valuation",
+        "long_short",
+        "position_adjustment",
+        "diversification",
+        "sector_limits",
+        "gross_net_exposure"
+      ]
     },
     {
       "id": "greenblatt.gotham_strategy",
@@ -25,7 +32,13 @@
       "completeness": "complete_page",
       "authorship": "Gotham Asset Management institutional description",
       "role": "supporting_only",
-      "dimensions": ["relative_value", "long_short", "valuation", "position_adjustment", "exposure_limits"]
+      "dimensions": [
+        "relative_value",
+        "long_short",
+        "valuation",
+        "position_adjustment",
+        "exposure_limits"
+      ]
     },
     {
       "id": "greenblatt.magic_formula_how_it_works",
@@ -37,7 +50,13 @@
       "completeness": "complete_page",
       "authorship": "Official site controlled in part by Joel Greenblatt",
       "role": "supporting_only",
-      "dimensions": ["return_on_capital", "earnings_yield", "diversification", "holding_period", "rescreening"]
+      "dimensions": [
+        "return_on_capital",
+        "earnings_yield",
+        "diversification",
+        "holding_period",
+        "rescreening"
+      ]
     },
     {
       "id": "greenblatt.magic_formula_faq",
@@ -49,7 +68,13 @@
       "completeness": "complete_page",
       "authorship": "Official site controlled in part by Joel Greenblatt",
       "role": "supporting_only",
-      "dimensions": ["portfolio_size", "equal_weighting", "holding_period", "data_update", "risk"]
+      "dimensions": [
+        "portfolio_size",
+        "equal_weighting",
+        "holding_period",
+        "data_update",
+        "risk"
+      ]
     },
     {
       "id": "greenblatt.interview_2016",
@@ -61,7 +86,12 @@
       "completeness": "complete_reprint",
       "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
       "role": "supporting_only",
-      "dimensions": ["value", "process", "patience", "long_short"]
+      "dimensions": [
+        "value",
+        "process",
+        "patience",
+        "long_short"
+      ]
     },
     {
       "id": "greenblatt.interview_2018",
@@ -73,7 +103,12 @@
       "completeness": "complete_reprint",
       "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
       "role": "supporting_only",
-      "dimensions": ["business_valuation", "cash_flow", "growth_value", "patience"]
+      "dimensions": [
+        "business_valuation",
+        "cash_flow",
+        "growth_value",
+        "patience"
+      ]
     },
     {
       "id": "greenblatt.interview_2019",
@@ -85,7 +120,12 @@
       "completeness": "complete_reprint",
       "authorship": "Interview speech attributed to Joel Greenblatt; edited publisher reprint",
       "role": "supporting_only",
-      "dimensions": ["cash_flow", "valuation", "patience", "active_vs_passive"]
+      "dimensions": [
+        "cash_flow",
+        "valuation",
+        "patience",
+        "active_vs_passive"
+      ]
     },
     {
       "id": "greenblatt.you_can_be_genius",
@@ -97,7 +137,14 @@
       "completeness": "complete_book_required",
       "authorship": "Joel Greenblatt",
       "role": "core_required",
-      "dimensions": ["special_situations", "spinoffs", "mergers", "bankruptcies", "valuation", "downside"]
+      "dimensions": [
+        "special_situations",
+        "spinoffs",
+        "mergers",
+        "bankruptcies",
+        "valuation",
+        "downside"
+      ]
     },
     {
       "id": "greenblatt.little_book",
@@ -109,7 +156,14 @@
       "completeness": "complete_book_required",
       "authorship": "Joel Greenblatt",
       "role": "core_required",
-      "dimensions": ["earnings_yield", "return_on_capital", "screening", "diversification", "holding_period", "rebalancing"]
+      "dimensions": [
+        "earnings_yield",
+        "return_on_capital",
+        "screening",
+        "diversification",
+        "holding_period",
+        "rebalancing"
+      ]
     },
     {
       "id": "greenblatt.big_secret",
@@ -121,7 +175,13 @@
       "completeness": "complete_book_required",
       "authorship": "Joel Greenblatt",
       "role": "core_required",
-      "dimensions": ["indexing", "active_vs_passive", "valuation", "portfolio_construction", "discipline"]
+      "dimensions": [
+        "indexing",
+        "active_vs_passive",
+        "valuation",
+        "portfolio_construction",
+        "discipline"
+      ]
     },
     {
       "id": "oneil.author_archive",
@@ -133,7 +193,31 @@
       "completeness": "index_page",
       "authorship": "IBD author archive with WILLIAM J. O'NEIL byline",
       "role": "metadata_only",
-      "dimensions": ["chart_reading", "breakouts", "market_timing", "historical_winners"]
+      "dimensions": [
+        "chart_reading",
+        "breakouts",
+        "market_timing",
+        "historical_winners"
+      ]
+    },
+    {
+      "id": "oneil.ibd_chart_booklet",
+      "master": "William J. O'Neil",
+      "title": "All About Charts (IBD CAN SLIM chart booklet)",
+      "url": "https://www1.ibdcd.com/images/pdf/IBDbooklets_Orange_2015.pdf",
+      "format": "pdf",
+      "access": "public_open",
+      "completeness": "complete_booklet",
+      "authorship": "Investor's Business Daily / MarketSmith editorial booklet; cites William O'Neil but is not solely authored by him",
+      "role": "supporting_only",
+      "dimensions": [
+        "chart_patterns",
+        "cup_with_handle",
+        "buy_points",
+        "price_volume",
+        "CAN_SLIM",
+        "sell_rules"
+      ]
     },
     {
       "id": "oneil.chrysler_case",
@@ -145,7 +229,11 @@
       "completeness": "incomplete_without_subscription",
       "authorship": "IBD page credits WILLIAM J. O'NEIL",
       "role": "metadata_only",
-      "dimensions": ["cup_with_handle", "volume_confirmation", "market_context"]
+      "dimensions": [
+        "cup_with_handle",
+        "volume_confirmation",
+        "market_context"
+      ]
     },
     {
       "id": "oneil.dell_case",
@@ -157,7 +245,11 @@
       "completeness": "incomplete_without_subscription",
       "authorship": "IBD page credits WILLIAM J. O'NEIL",
       "role": "metadata_only",
-      "dimensions": ["earnings_change", "base_breakout", "sell_discipline"]
+      "dimensions": [
+        "earnings_change",
+        "base_breakout",
+        "sell_discipline"
+      ]
     },
     {
       "id": "oneil.how_to_make_money",
@@ -169,7 +261,17 @@
       "completeness": "complete_book_required",
       "authorship": "William J. O'Neil",
       "role": "core_required",
-      "dimensions": ["canslim", "earnings_growth", "sales_growth", "relative_strength", "price_volume", "market_direction", "buy_points", "sell_rules", "position_sizing"]
+      "dimensions": [
+        "canslim",
+        "earnings_growth",
+        "sales_growth",
+        "relative_strength",
+        "price_volume",
+        "market_direction",
+        "buy_points",
+        "sell_rules",
+        "position_sizing"
+      ]
     },
     {
       "id": "dalio.paradigm_shifts",
@@ -181,7 +283,13 @@
       "completeness": "complete_report",
       "authorship": "Ray Dalio first-person report hosted by Economic Principles; PDF metadata credits Christopher Edmonds for production",
       "role": "core_public",
-      "dimensions": ["regime_change", "unsustainable_forces", "volatility", "portfolio_immunity", "tactical_navigation"]
+      "dimensions": [
+        "regime_change",
+        "unsustainable_forces",
+        "volatility",
+        "portfolio_immunity",
+        "tactical_navigation"
+      ]
     },
     {
       "id": "dalio.productivity_structural_reform",
@@ -193,7 +301,13 @@
       "completeness": "complete_report",
       "authorship": "Ray Dalio report hosted by Economic Principles",
       "role": "core_public",
-      "dimensions": ["economic_machine", "productivity", "causal_chain", "country_comparison", "long_term_growth"]
+      "dimensions": [
+        "economic_machine",
+        "productivity",
+        "causal_chain",
+        "country_comparison",
+        "long_term_growth"
+      ]
     },
     {
       "id": "dalio.capital_wars",
@@ -205,7 +319,12 @@
       "completeness": "complete_report",
       "authorship": "Economic Principles report associated with Ray Dalio's Changing World Order research",
       "role": "supporting_only",
-      "dimensions": ["capital_wars", "geopolitics", "financial_sanctions", "historical_cases"]
+      "dimensions": [
+        "capital_wars",
+        "geopolitics",
+        "financial_sanctions",
+        "historical_cases"
+      ]
     },
     {
       "id": "dalio.life_expectancy",
@@ -217,7 +336,11 @@
       "completeness": "complete_report",
       "authorship": "Economic Principles report associated with Ray Dalio's Changing World Order research",
       "role": "supporting_only",
-      "dimensions": ["historical_base_rates", "regime_change", "long_cycle"]
+      "dimensions": [
+        "historical_base_rates",
+        "regime_change",
+        "long_cycle"
+      ]
     },
     {
       "id": "dalio.principles",
@@ -229,7 +352,13 @@
       "completeness": "complete_book_required",
       "authorship": "Ray Dalio",
       "role": "core_required",
-      "dimensions": ["decision_rules", "radical_truth", "pain_reflection", "believability", "system_design"]
+      "dimensions": [
+        "decision_rules",
+        "radical_truth",
+        "pain_reflection",
+        "believability",
+        "system_design"
+      ]
     },
     {
       "id": "dalio.debt_crises",
@@ -241,7 +370,13 @@
       "completeness": "complete_book_required",
       "authorship": "Ray Dalio",
       "role": "core_required",
-      "dimensions": ["debt_cycle", "macro_regimes", "causal_chain", "scenario_analysis", "stress_testing"]
+      "dimensions": [
+        "debt_cycle",
+        "macro_regimes",
+        "causal_chain",
+        "scenario_analysis",
+        "stress_testing"
+      ]
     },
     {
       "id": "dalio.changing_order",
@@ -253,7 +388,13 @@
       "completeness": "complete_book_required",
       "authorship": "Ray Dalio",
       "role": "core_required",
-      "dimensions": ["long_cycle", "geopolitics", "macro_risk", "currency", "diversification"]
+      "dimensions": [
+        "long_cycle",
+        "geopolitics",
+        "macro_risk",
+        "currency",
+        "diversification"
+      ]
     }
   ]
 }
