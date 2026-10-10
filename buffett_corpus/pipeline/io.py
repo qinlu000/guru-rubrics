@@ -58,6 +58,9 @@ def normalized_text(text: str) -> str:
     # space after the split hyphen). Rejoin those fragments before comparing
     # the ordered word stream.
     text = re.sub(r"(?<=\w)-[ \t\r\n]+(?=\w)", "", text)
+    # Treat ordinary hyphenated compounds consistently with PDF line-break
+    # extraction (for example, ``lead-up`` versus ``lead-\\nup``).
+    text = re.sub(r"(?<=\w)-(?=\w)", "", text)
     # PDF and HTML extraction disagree on quotation marks, dashes,
     # hyphenation, and other punctuation. Compare the ordered word stream.
     text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
