@@ -10,7 +10,17 @@
     {
       "master": "Munger",
       "documents": 14,
-      "rubrics": 93
+      "rubrics": 93,
+      "documents_attempted": 14,
+      "documents_stage1_validated": 10,
+      "execution_status": "partial",
+      "pending_documents": [
+        "1997.txt",
+        "1998.txt",
+        "2001.txt",
+        "2003.txt"
+      ],
+      "pending_reason": "Source quote validation failed; source documents remain pending, not discarded."
     },
     {
       "master": "Marks",

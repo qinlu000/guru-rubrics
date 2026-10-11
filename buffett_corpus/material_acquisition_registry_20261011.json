@@ -9,12 +9,50 @@
     "not_applicable": "No canonical authored book is required for this person; first-party letters or reports are the primary source class."
   },
   "formal_public_corpus": [
-    {"master": "Buffett", "documents": 14, "rubrics": 148, "status": "available_public"},
-    {"master": "Munger", "documents": 14, "rubrics": 93, "status": "available_public"},
-    {"master": "Howard Marks", "documents": 8, "rubrics": 59, "status": "available_public"},
-    {"master": "Ray Dalio", "documents": 3, "rubrics": 23, "status": "available_public"},
-    {"master": "Bill Ackman", "documents": 5, "rubrics": 58, "status": "available_public"},
-    {"master": "George Soros", "documents": 4, "rubrics": 53, "status": "available_public"}
+    {
+      "master": "Buffett",
+      "documents": 14,
+      "rubrics": 148,
+      "status": "available_public"
+    },
+    {
+      "master": "Munger",
+      "documents": 14,
+      "rubrics": 93,
+      "status": "available_public",
+      "execution_status": "partial",
+      "documents_stage1_validated": 10,
+      "pending_documents": [
+        "1997.txt",
+        "1998.txt",
+        "2001.txt",
+        "2003.txt"
+      ]
+    },
+    {
+      "master": "Howard Marks",
+      "documents": 8,
+      "rubrics": 59,
+      "status": "available_public"
+    },
+    {
+      "master": "Ray Dalio",
+      "documents": 3,
+      "rubrics": 23,
+      "status": "available_public"
+    },
+    {
+      "master": "Bill Ackman",
+      "documents": 5,
+      "rubrics": 58,
+      "status": "available_public"
+    },
+    {
+      "master": "George Soros",
+      "documents": 4,
+      "rubrics": 53,
+      "status": "available_public"
+    }
   ],
   "materials": [
     {

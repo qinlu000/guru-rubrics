@@ -1,0 +1,173 @@
+{
+  "checked_at_utc": "2026-10-11",
+  "all_available_materials_processed": false,
+  "retained_rubrics_passing_automatic_validation": 434,
+  "expert_review_status": "not_completed",
+  "previous_selected_batch": [
+    {
+      "master": "Buffett",
+      "documents": 14,
+      "rubrics": 148,
+      "status": "available_public"
+    },
+    {
+      "master": "Munger",
+      "documents": 14,
+      "rubrics": 93,
+      "status": "available_public",
+      "execution_status": "partial",
+      "documents_stage1_validated": 10,
+      "pending_documents": [
+        "1997.txt",
+        "1998.txt",
+        "2001.txt",
+        "2003.txt"
+      ]
+    },
+    {
+      "master": "Howard Marks",
+      "documents": 8,
+      "rubrics": 59,
+      "status": "available_public"
+    },
+    {
+      "master": "Ray Dalio",
+      "documents": 3,
+      "rubrics": 23,
+      "status": "available_public"
+    },
+    {
+      "master": "Bill Ackman",
+      "documents": 5,
+      "rubrics": 58,
+      "status": "available_public"
+    },
+    {
+      "master": "George Soros",
+      "documents": 4,
+      "rubrics": 53,
+      "status": "available_public"
+    }
+  ],
+  "reselected_public_files": [
+    {
+      "source_id": "greenblatt.gotham_cio_letter",
+      "master": "Joel Greenblatt",
+      "title": "Our Investment Philosophy (Gotham Funds CIO Letter)",
+      "local_text": "buffett_corpus/materials_local/greenblatt.gotham_cio_letter.txt",
+      "source_role": "supporting_canonical",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.gotham_strategy",
+      "master": "Joel Greenblatt",
+      "title": "Gotham Investment Strategy",
+      "local_text": "buffett_corpus/materials_local/greenblatt.gotham_strategy.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.magic_formula_how_it_works",
+      "master": "Joel Greenblatt",
+      "title": "Magic Formula Investing: How It Works",
+      "local_text": "buffett_corpus/materials_local/greenblatt.magic_formula_how_it_works.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.magic_formula_faq",
+      "master": "Joel Greenblatt",
+      "title": "Magic Formula Investing: FAQs",
+      "local_text": "buffett_corpus/materials_local/greenblatt.magic_formula_faq.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.interview_2016",
+      "master": "Joel Greenblatt",
+      "title": "Joel Greenblatt's Investing Secrets Revealed (Barron's interview reprint)",
+      "local_text": "buffett_corpus/materials_local/greenblatt.interview_2016.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.interview_2018",
+      "master": "Joel Greenblatt",
+      "title": "Talking With Joel Greenblatt (Barron's interview reprint)",
+      "local_text": "buffett_corpus/materials_local/greenblatt.interview_2018.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "greenblatt.interview_2019",
+      "master": "Joel Greenblatt",
+      "title": "A Value Investor Defends Value Investing (Wall Street Journal interview reprint)",
+      "local_text": "buffett_corpus/materials_local/greenblatt.interview_2019.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "oneil.ibd_chart_booklet",
+      "master": "William J. O'Neil",
+      "title": "All About Charts (IBD CAN SLIM chart booklet)",
+      "local_text": "buffett_corpus/materials_local/oneil.ibd_chart_booklet.txt",
+      "source_role": "supporting_only",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "dalio.paradigm_shifts",
+      "master": "Ray Dalio",
+      "title": "Paradigm Shifts",
+      "local_text": "buffett_corpus/materials_local/dalio.paradigm_shifts.txt",
+      "source_role": "core_public",
+      "execution_status": "processed_previous_copy",
+      "notes": "Downloaded text matches the previous source after extraction normalization; reuse existing results."
+    },
+    {
+      "source_id": "dalio.productivity_structural_reform",
+      "master": "Ray Dalio",
+      "title": "Productivity and Structural Reform: Why Countries Succeed & Fail",
+      "local_text": "buffett_corpus/materials_local/dalio.productivity_structural_reform.txt",
+      "source_role": "core_public",
+      "execution_status": "not_run",
+      "notes": "Complete local text is available; no matching non-dry-run pipeline output was found. Supporting source status is retained."
+    },
+    {
+      "source_id": "dalio.capital_wars",
+      "master": "Ray Dalio",
+      "title": "Capital Wars from 1600 to the Present",
+      "local_text": "buffett_corpus/materials_local/dalio.capital_wars.txt",
+      "source_role": "supporting_only",
+      "execution_status": "processed_previous_copy",
+      "notes": "Downloaded text matches the previous source after extraction normalization; reuse existing results."
+    },
+    {
+      "source_id": "dalio.life_expectancy",
+      "master": "Ray Dalio",
+      "title": "Largest Events Driving Changes to Life Expectancy Through Time",
+      "local_text": "buffett_corpus/materials_local/dalio.life_expectancy.txt",
+      "source_role": "supporting_only",
+      "execution_status": "processed_previous_copy",
+      "notes": "Downloaded text matches the previous source after extraction normalization; reuse existing results."
+    }
+  ],
+  "not_run_public_files": 9,
+  "failed_documents_pending": {
+    "Munger": [
+      "1997.txt",
+      "1998.txt",
+      "2001.txt",
+      "2003.txt"
+    ]
+  },
+  "other_downloads": "The full Buffett archive is downloaded, but the extraction batch used 14 selected sources. Availability of the archive does not imply every archived letter has been processed.",
+  "scope_note": "This report distinguishes source availability, pipeline execution, automatic validation, and expert review. Unavailable books remain in the acquisition registry."
+}

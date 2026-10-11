@@ -12,6 +12,8 @@ The full downloaded set covers the 1977–2024 shareholder letters plus the Owne
 
 `material_acquisition_registry_20261011.json` is the source-of-truth inventory for selected and proposed materials. It keeps materials whose complete lawful text has not yet been obtained, with an explicit status such as `pending_lawful_access` or `not_yet_screened`. A source must not be silently removed because it is unavailable; only the formal corpus statistics exclude sources that have not passed the stated availability and provenance checks.
 
+`material_execution_status_20261011.json` records the execution audit separately from acquisition: four Munger documents still failed source-quote validation, and nine newly downloaded public documents have not been run. The three previously processed Dalio reports match their newly downloaded copies and do not need a duplicate run. The 434 retained rubrics passed automatic validation; this is not a claim of complete source coverage or expert review.
+
 ## Recommended first pass
 
 Use `selected_sources.json`. Its `recommended_mvp` contains 14 sources: 12 core or supporting letters, the 2023 recent restatement, and the Owner's Manual as the foundational principles document. This set deliberately spans early explicit selection rules, later valuation and risk definitions, crisis behavior, and recent restatements.
