@@ -8,6 +8,10 @@ The pilot uses copies hosted by Berkshire Hathaway: annual shareholder letters a
 
 The full downloaded set covers the 1977–2024 shareholder letters plus the Owner's Manual. `manifest.json` records the downloaded file hash, format, size, and processed word count. `processed/` contains text extracted from the HTML/PDF files. Duplicate HTML/PDF versions of the same letter should be treated as one source during extraction.
 
+## Material acquisition tracking
+
+`material_acquisition_registry_20261011.json` is the source-of-truth inventory for selected and proposed materials. It keeps materials whose complete lawful text has not yet been obtained, with an explicit status such as `pending_lawful_access` or `not_yet_screened`. A source must not be silently removed because it is unavailable; only the formal corpus statistics exclude sources that have not passed the stated availability and provenance checks.
+
 ## Recommended first pass
 
 Use `selected_sources.json`. Its `recommended_mvp` contains 14 sources: 12 core or supporting letters, the 2023 recent restatement, and the Owner's Manual as the foundational principles document. This set deliberately spans early explicit selection rules, later valuation and risk definitions, crisis behavior, and recent restatements.

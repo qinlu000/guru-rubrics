@@ -1,0 +1,162 @@
+{
+  "registry_id": "material_acquisition_registry_20261011",
+  "purpose": "Keep every selected or proposed source visible, including sources whose complete lawful text has not yet been obtained.",
+  "status_policy": {
+    "available_public": "A complete source is publicly retrievable from a first-party or clearly authorized host.",
+    "pending_lawful_access": "The source is selected, but the complete text requires a lawful local copy, library access, or author/publisher delivery.",
+    "supporting_only": "The source is complete and public but is institutional, edited, or otherwise not sufficient as a sole authorial source.",
+    "not_yet_screened": "The person or source has been proposed but has not yet undergone the source-selection pass.",
+    "not_applicable": "No canonical authored book is required for this person; first-party letters or reports are the primary source class."
+  },
+  "formal_public_corpus": [
+    {"master": "Buffett", "documents": 14, "rubrics": 148, "status": "available_public"},
+    {"master": "Munger", "documents": 14, "rubrics": 93, "status": "available_public"},
+    {"master": "Howard Marks", "documents": 8, "rubrics": 59, "status": "available_public"},
+    {"master": "Ray Dalio", "documents": 3, "rubrics": 23, "status": "available_public"},
+    {"master": "Bill Ackman", "documents": 5, "rubrics": 58, "status": "available_public"},
+    {"master": "George Soros", "documents": 4, "rubrics": 53, "status": "available_public"}
+  ],
+  "materials": [
+    {
+      "master": "Buffett",
+      "title": "Berkshire Hathaway shareholder letters and An Owner's Manual",
+      "status": "available_public",
+      "role": "primary_public",
+      "url": "https://www.berkshirehathaway.com/letters/letters.html",
+      "notes": "Direct shareholder communications hosted by Berkshire; preferred over edited quote compilations."
+    },
+    {
+      "master": "Buffett",
+      "title": "The Essays of Warren Buffett",
+      "status": "supporting_only",
+      "role": "edited_compilation",
+      "notes": "Compiled and edited from shareholder letters; not an independent authorial source. No full copy has been added."
+    },
+    {
+      "master": "Munger",
+      "title": "Poor Charlie's Almanack",
+      "status": "pending_lawful_access",
+      "role": "compiled_book",
+      "notes": "Contains Munger speeches and talks but is edited/compiled; use original transcripts where available and retain this as a possible cross-check."
+    },
+    {
+      "master": "Howard Marks",
+      "title": "The Most Important Thing",
+      "status": "pending_lawful_access",
+      "role": "core_book_candidate",
+      "notes": "Copyrighted book; official Oaktree memos are already the primary public source set."
+    },
+    {
+      "master": "Howard Marks",
+      "title": "Mastering the Market Cycle",
+      "status": "pending_lawful_access",
+      "role": "core_book_candidate",
+      "notes": "Copyrighted book; official Oaktree memos are already the primary public source set."
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Principles: Life and Work",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://www.principles.com/",
+      "notes": "Complete lawful local copy still required."
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Principles for Navigating Big Debt Crises",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://www.principles.com/big-debt-crises/",
+      "notes": "The official page offers a free PDF after email signup; the downloaded file has not yet been supplied to the corpus."
+    },
+    {
+      "master": "Ray Dalio",
+      "title": "Principles for Dealing with the Changing World Order",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://economicprinciples.org/the-changing-world-order/",
+      "notes": "The official site provides related reports and charts, but not a complete public book file."
+    },
+    {
+      "master": "George Soros",
+      "title": "The Alchemy of Finance",
+      "status": "pending_lawful_access",
+      "role": "core_book_candidate",
+      "notes": "Copyrighted book; official Soros essays are already in the formal public corpus."
+    },
+    {
+      "master": "George Soros",
+      "title": "Soros on Soros",
+      "status": "pending_lawful_access",
+      "role": "core_book_candidate",
+      "notes": "Interview/edited book; useful as a supplement but not the sole source of a principle."
+    },
+    {
+      "master": "Bill Ackman",
+      "title": "Canonical authored investment book",
+      "status": "not_applicable",
+      "role": "not_required",
+      "notes": "No canonical authored investment book was identified; Pershing Square letters and presentations are the relevant first-party source class."
+    },
+    {
+      "master": "Joel Greenblatt",
+      "title": "You Can Be a Stock Market Genius",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://openlibrary.org/works/OL3354667W",
+      "notes": "Open Library may provide controlled digital lending; no public downloadable copy is treated as authorized."
+    },
+    {
+      "master": "Joel Greenblatt",
+      "title": "The Little Book That Beats the Market",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://openlibrary.org/works/OL3354668W",
+      "notes": "The official Magic Formula site has complete methodology pages, but not the complete book."
+    },
+    {
+      "master": "Joel Greenblatt",
+      "title": "The Big Secret for the Small Investor",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "notes": "Complete lawful local copy still required."
+    },
+    {
+      "master": "William J. O'Neil",
+      "title": "How to Make Money in Stocks",
+      "status": "pending_lawful_access",
+      "role": "core_book",
+      "url": "https://openlibrary.org/works/OL3498124W",
+      "notes": "Open Library may provide controlled digital lending; the public IBD booklet is retained separately as supporting-only."
+    },
+    {
+      "master": "Benjamin Graham",
+      "title": "The Intelligent Investor and Security Analysis",
+      "status": "not_yet_screened",
+      "role": "core_book_candidates",
+      "notes": "Source-selection and acquisition pass has not yet been completed; no book was silently discarded."
+    },
+    {
+      "master": "Philip Fisher",
+      "title": "Common Stocks and Uncommon Profits",
+      "status": "not_yet_screened",
+      "role": "core_book_candidate",
+      "notes": "Source-selection and acquisition pass has not yet been completed."
+    },
+    {
+      "master": "Peter Lynch",
+      "title": "One Up on Wall Street and Beating the Street",
+      "status": "not_yet_screened",
+      "role": "core_book_candidates",
+      "notes": "Source-selection and acquisition pass has not yet been completed."
+    },
+    {
+      "master": "Mark Minervini",
+      "title": "Trade Like a Stock Market Wizard and Think & Trade Like a Champion",
+      "status": "not_yet_screened",
+      "role": "core_book_candidates",
+      "notes": "Source-selection and acquisition pass has not yet been completed."
+    }
+  ],
+  "integrity_rule": "A source may move from pending_lawful_access to available_public or available_local only after its complete text and provenance are recorded. It must not disappear from this registry merely because it is unavailable."
+}
