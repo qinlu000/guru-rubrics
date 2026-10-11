@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guru Rubrics｜材料与运行总结</title>
+  <style>
+    :root { --ink:#17202a; --muted:#5d6b78; --line:#dfe5ea; --panel:#fff; --canvas:#f4f7f8; --blue:#1d5f83; --blue-soft:#e9f3f8; --green:#1e7657; --green-soft:#e9f6ef; --amber:#9a6200; --amber-soft:#fff5dc; --red:#a33d36; --red-soft:#fff0ee; --shadow:0 10px 30px rgba(24,46,61,.07); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--canvas); font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; }
+    a { color:var(--blue); } code,pre { font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; } code { padding:.12em .36em; border-radius:4px; background:#edf1f3; font-size:.92em; }
+    .shell { width:min(1180px,calc(100% - 36px)); margin:0 auto; }
+    .hero { padding:58px 0 42px; color:#eef7fb; background:linear-gradient(135deg,#12384d 0%,#1c607f 60%,#32859a 100%); }
+    .eyebrow { margin:0 0 8px; color:#acd9e5; font-size:12px; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(30px,4.4vw,52px); line-height:1.12; letter-spacing:-.035em; }
+    .lede { max-width:790px; margin:18px 0 0; color:#d9edf4; font-size:18px; }
+    .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+    .pill { display:inline-flex; align-items:center; padding:5px 11px; border:1px solid rgba(255,255,255,.25); border-radius:999px; color:#ecf8fb; font-size:13px; }
+    nav { position:sticky; top:0; z-index:5; border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(10px); }
+    nav .shell { display:flex; gap:18px; overflow-x:auto; padding:11px 0; } nav a { white-space:nowrap; color:var(--muted); font-size:13px; text-decoration:none; } nav a:hover { color:var(--blue); }
+    main { padding:34px 0 62px; } section { margin:0 0 36px; } h2 { margin:0 0 13px; color:#12384d; font-size:25px; letter-spacing:-.02em; } h3 { margin:0 0 8px; font-size:17px; } p { margin:8px 0; }
+    .intro { max-width:930px; color:var(--muted); font-size:16px; } .callout { margin:18px 0; padding:17px 19px; border-left:4px solid var(--blue); border-radius:8px; background:var(--blue-soft); } .callout strong { color:#12384d; }
+    .kpis { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:22px 0 30px; } .kpi { min-height:117px; padding:17px; border:1px solid var(--line); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); } .kpi .num { display:block; color:var(--blue); font-size:29px; font-weight:700; line-height:1.1; } .kpi .label { display:block; margin-top:7px; color:var(--muted); font-size:12px; }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; } .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; } .card { padding:20px; border:1px solid var(--line); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); } .card p,.card li { color:var(--muted); }
+    .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; } .flow-step { position:relative; min-height:145px; padding:17px; border:1px solid #cfe0e7; border-radius:10px; background:var(--blue-soft); } .flow-step:not(:last-child)::after { content:"→"; position:absolute; right:-17px; top:52px; z-index:1; color:var(--blue); font-size:22px; font-weight:700; } .flow-step .n { color:var(--blue); font-size:12px; font-weight:700; letter-spacing:.08em; } .flow-step h3 { margin-top:7px; } .flow-step p { margin:0; color:#48606d; font-size:13px; }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); } table { width:100%; border-collapse:collapse; min-width:820px; } th,td { padding:12px 13px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { color:#345262; background:#f4f8fa; font-size:12px; font-weight:700; letter-spacing:.03em; } td { font-size:13px; } tr:last-child td { border-bottom:0; }
+    .status { display:inline-block; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:700; white-space:nowrap; } .ok { color:var(--green); background:var(--green-soft); } .partial { color:var(--amber); background:var(--amber-soft); } .pending { color:var(--red); background:var(--red-soft); } .support { color:var(--blue); background:var(--blue-soft); } .muted { color:var(--muted); } .small { color:var(--muted); font-size:12px; }
+    .search { width:100%; margin:0 0 10px; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; } .source-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px 18px; margin:0; padding:0; list-style:none; } .source-list li { padding:11px 0; border-bottom:1px solid var(--line); } .source-list strong { display:block; } .source-list span { color:var(--muted); font-size:13px; }
+    details { border:1px solid var(--line); border-radius:9px; background:var(--panel); } details + details { margin-top:9px; } summary { cursor:pointer; padding:13px 15px; color:#234e62; font-weight:700; } details .detail-body { padding:0 15px 15px; color:var(--muted); }
+    .checklist { margin:7px 0 0; padding-left:20px; } .checklist li { margin:4px 0; } pre { overflow-x:auto; margin:12px 0 0; padding:15px; border-radius:8px; background:#172b36; color:#d9edf4; font-size:12px; line-height:1.55; } footer { padding:24px 0 42px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+    @media (max-width:900px) { .kpis { grid-template-columns:repeat(3,1fr); } .flow { grid-template-columns:repeat(2,1fr); } .flow-step:nth-child(2)::after { display:none; } .flow-step:nth-child(3)::after { display:block; } .grid-3 { grid-template-columns:1fr; } }
+    @media (max-width:640px) { .shell { width:min(100% - 24px,1180px); } .hero { padding-top:38px; } .kpis,.grid-2,.flow,.source-list { grid-template-columns:1fr; } .flow-step::after { display:none !important; } }
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="shell">
+    <p class="eyebrow">Guru Rubrics · Research Status</p>
+    <h1>投资大师风格 Rubric 项目<br>材料与运行总结</h1>
+    <p class="lede">本页记录“原始材料 → 投资原则 → 交易轨迹 Rubric”的当前版本。它区分正式 canonical corpus、公开材料扩展、待合法取得的核心著作和自动校验状态。</p>
+    <div class="hero-meta"><span class="pill">更新：2026-10-11</span><span class="pill">TradeBank-oriented framework</span><span class="pill">自动生成 + 确定性验证</span><span class="pill">专家审核：尚未开始</span></div>
+  </div></header>
+  <nav><div class="shell"><a href="#conclusion">结论</a><a href="#pipeline">Pipeline</a><a href="#corpus">Corpus</a><a href="#materials">材料</a><a href="#rubric">Rubric 结构</a><a href="#validation">验证</a><a href="#next">下一步</a><a href="#repro">复现</a></div></nav>
+  <main class="shell">
+    <section id="conclusion"><h2>当前结论</h2>
+      <p class="intro">当前所有已取得的公共完整材料都已经完成两阶段运行。严格 canonical 子集仍保持 434 条；本次扩展运行另外生成 281 条输出，其中相对原严格集合新增 188 条。待合法取得的版权书籍没有被删除，而是保留在 acquisition registry 中等待补充。</p>
+      <div class="callout"><strong>阅读口径：</strong>“已完成运行”表示材料已经经过 stage1、stage2 和自动校验；它不等于材料已经覆盖大师全部思想，也不等于已经通过金融专家审核。</div>
+      <div class="kpis"><div class="kpi"><span class="num">434</span><span class="label">严格公共 canonical rubrics</span></div><div class="kpi"><span class="num">188</span><span class="label">相对严格集合新增 rubrics</span></div><div class="kpi"><span class="num">622</span><span class="label">严格集合 + 新增，去重前</span></div><div class="kpi"><span class="num">12</span><span class="label">公共完整文件全部已处理</span></div><div class="kpi"><span class="num">0</span><span class="label">尚未运行的已取得公共文件</span></div></div>
+    </section>
+
+    <section id="pipeline"><h2>研究 pipeline</h2><p class="intro">Pipeline 将来源事实和交易轨迹适配分开。模型负责提出结构化记录，确定性检查负责拒绝没有原文支持、缺少字段或无法映射到框架的记录。</p>
+      <div class="flow"><div class="flow-step"><span class="n">01 · CORPUS</span><h3>材料与 provenance</h3><p>保存 URL、日期、版本、作者边界、hash 和完整文本。书籍只在研究者合法取得后本地处理。</p></div><div class="flow-step"><span class="n">02 · STAGE 1</span><h3>Principle extraction</h3><p>从完整文本提取作者明确陈述或强重复的原则，保留连续原文引文、条件、例外和出处。</p></div><div class="flow-step"><span class="n">03 · STAGE 2</span><h3>Rubric compilation</h3><p>将原则编译为可以在 trading agent trajectory 中观察的 criterion、适用条件、证据和判定规则。</p></div><div class="flow-step"><span class="n">04 · EVALUATION</span><h3>Trajectory audit</h3><p>在 TradeBank 或其他框架中评测 pass、violate、not_applicable、not_observable，并报告 coverage。</p></div></div>
+      <div class="grid-2"><div class="card"><h3>研究目标</h3><p>衡量 Trading Agent 的行为有多符合某位大师的投资风格，并定位错误首先出现于证据读取、分析、估值、仓位还是执行环节。</p></div><div class="card"><h3>与 financial outcome 的关系</h3><p>收益、回测和波动可以作为结果层指标，但不能单独证明风格忠实。Rubric 评估先审计过程，再与金融结果和专家判断对照。</p></div></div>
+    </section>
+
+    <section id="corpus"><h2>大师与运行结果</h2><p class="small">严格统计来自 <code>strict_materials_20261010.json</code>；扩展统计来自本次完成的本地运行。Greenblatt、O’Neil 的公共材料仍标为 supporting；Munger 的 139 条包含原有 93 条和本次补跑结果。</p>
+      <input class="search" id="masterSearch" type="search" placeholder="筛选大师、状态或材料角色…" aria-label="筛选大师表格">
+      <div class="table-wrap"><table id="masterTable"><thead><tr><th>大师</th><th>当前材料范围</th><th>Stage 1</th><th>Stage 2</th><th>来源角色</th><th>状态</th></tr></thead><tbody>
+        <tr><td><strong>Warren Buffett</strong></td><td>14 份 Berkshire 信件 / Owner’s Manual</td><td>—</td><td>148</td><td>primary public</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>Charlie Munger</strong></td><td>14 份 Wesco / Berkshire 公开材料</td><td>104 条合并</td><td>139（含旧结果）</td><td>primary public</td><td><span class="status partial">4 条模型记录被拒</span></td></tr>
+        <tr><td><strong>Howard Marks</strong></td><td>8 份 Oaktree 官方 memo</td><td>—</td><td>59</td><td>official institution</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>Ray Dalio</strong></td><td>3 份原有报告 + 1 份 Productivity 报告</td><td>+1</td><td>24（23 + 1）</td><td>core public expansion</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>Bill Ackman</strong></td><td>5 份 Pershing Square 投资者信</td><td>—</td><td>58</td><td>official filing / letter</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>George Soros</strong></td><td>4 份 Soros 官方网站文章</td><td>—</td><td>53</td><td>primary public</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>Joel Greenblatt</strong></td><td>7 份 Gotham、官方方法页和本人访谈</td><td>116</td><td>139</td><td>supporting public</td><td><span class="status ok">已验证</span></td></tr>
+        <tr><td><strong>William J. O’Neil</strong></td><td>1 份完整 IBD/MarketSmith chart booklet</td><td>1</td><td>2</td><td>supporting only</td><td><span class="status support">已验证，非本人独著</span></td></tr>
+        <tr><td><strong>Benjamin Graham</strong></td><td>核心著作候选，尚未取得完整合法文本</td><td>—</td><td>—</td><td>licensed book pending</td><td><span class="status pending">未 materialize</span></td></tr>
+        <tr><td><strong>Philip Fisher</strong></td><td>核心著作候选，尚未完成来源获取</td><td>—</td><td>—</td><td>licensed book pending</td><td><span class="status pending">未 materialize</span></td></tr>
+        <tr><td><strong>Peter Lynch</strong></td><td>核心著作候选，尚未完成来源获取</td><td>—</td><td>—</td><td>licensed book pending</td><td><span class="status pending">未 materialize</span></td></tr>
+      </tbody></table></div>
+      <p class="small">Mark Minervini 仍在候选/待筛选状态，不计入当前 11 人主候选池；John C. Bogle、Mohnish Pabrai、Seth Klarman 是 reserve candidates。</p>
+    </section>
+
+    <section id="materials"><h2>材料状态与来源边界</h2><div class="grid-2">
+      <div class="card"><h3>已取得并运行的公共材料</h3><ul class="source-list"><li><strong>Greenblatt · 7 份</strong><span>Gotham CIO letter、strategy、Magic Formula 页面、2016/2018/2019 访谈 reprint。三份双栏 PDF 使用 raw extraction。</span></li><li><strong>O’Neil · 1 份</strong><span>完整 IBD <em>All About Charts</em> booklet；内容完整，但作者边界是 IBD/MarketSmith 机构材料。</span></li><li><strong>Dalio · 4 份</strong><span><em>Paradigm Shifts</em>、Productivity and Structural Reform、Capital Wars、Life Expectancy。</span></li></ul></div>
+      <div class="card"><h3>仍待合法取得的核心著作</h3><ul class="source-list"><li><strong>Greenblatt</strong><span><em>You Can Be a Stock Market Genius</em>、<em>The Little Book That Beats the Market</em>、<em>The Big Secret for the Small Investor</em>。</span></li><li><strong>O’Neil</strong><span><em>How to Make Money in Stocks</em>。</span></li><li><strong>Dalio</strong><span><em>Principles: Life and Work</em>、<em>Big Debt Crises</em>、<em>Changing World Order</em>。Big Debt Crises 官方页可通过订阅获取免费 PDF。</span></li><li><strong>Munger / Marks / Soros</strong><span>相关书籍已记录为 pending_lawful_access；官方信件、memo 和文章仍作为公开一手来源。</span></li></ul></div>
+    </div><div class="callout"><strong>版权和 provenance 规则：</strong>仓库保留 metadata、官方 URL、版本、页码、hash 和短引文；完整受版权保护的书籍不上传 GitHub。合法取得的文本在本地处理，并且需要确认研究用途的文本挖掘权限。</div>
+    <details><summary>为什么不同大师不一定需要书？</summary><div class="detail-body">Buffett 的股东信、Marks 的官方 memo、Ackman 的投资者信、Soros 的官方文章本身就是连续、可追溯的一手表达。Munger 的书是编选/编辑材料，Greenblatt、O’Neil、Dalio 的核心书籍则会显著补充公开 corpus。因而书籍是 source tier 的补充，不应被默默删除，也不必机械地成为每位大师唯一的来源。</div></details>
+    </section>
+
+    <section id="rubric"><h2>Rubric 如何连接 Trading Agent</h2><div class="grid-3"><div class="card"><h3>Rubric core</h3><p>描述大师原则本身：<code>criterion</code>、适用条件、原文及出处、operationalization、evidence requirements、pass/violation/unknown 规则。</p></div><div class="card"><h3>Canonical trajectory</h3><p>统一记录 <code>observation</code>、<code>market_context</code>、<code>agent_reasoning</code>、<code>action</code>、<code>order_parameters</code>、<code>outcome</code> 和 <code>source_refs</code>。</p></div><div class="card"><h3>Framework adapter</h3><p>TradeBank 只负责把自己的 action、reasoning、timestamp 和 outcome 字段映射到 canonical trajectory；Rubric core 不随单条 episode 改写。</p></div></div>
+      <div class="grid-2" style="margin-top:16px"><div class="card"><h3>四种评测状态</h3><ul class="checklist"><li><strong>pass</strong>：有足够证据支持符合。</li><li><strong>violate</strong>：有足够证据支持违反。</li><li><strong>not_applicable</strong>：触发条件没有出现。</li><li><strong>not_observable</strong>：条件适用，但轨迹缺少必要 context。</li></ul></div><div class="card"><h3>覆盖率报告</h3><pre>coverage = (pass + violate)
+          / (pass + violate + not_observable)
+
+observable_score = pass / (pass + violate)</pre></div></div>
+      <div class="callout"><strong>关键防误判：</strong>TradeBank 没有提供估值、组合或市场 context 时，不能把“没有展示安全边际”直接判为违反 Buffett 原则，应返回 <code>not_observable</code>。</div>
+    </section>
+
+    <section id="validation"><h2>自动验证和当前局限</h2><div class="grid-2"><div class="card"><h3>已经执行的检查</h3><ul class="checklist"><li>JSON 结构和必需字段。</li><li>supporting quote 是否能在完整来源文本中找到。</li><li>rubric 是否引用了框架中存在的字段。</li><li>稳定 ID、重复记录和 source provenance。</li><li>criterion 的原子性提示。</li></ul></div><div class="card"><h3>仍需要人工处理</h3><ul class="checklist"><li>“criterion may contain more than one behavior” 警告需要逐条审查。</li><li>相近 principle 的跨文档去重。</li><li>区分作者明确原则、重复表达和强推断。</li><li>由金融专家判断风格特异性、适用条件和反例。</li><li>确认不同大师之间的来源覆盖度可比。</li></ul></div></div>
+      <details><summary>Munger 的 4 条 rejected 记录</summary><div class="detail-body">1997.txt 拒绝 2 条，1998.txt 拒绝 1 条，2001.txt 拒绝 1 条。它们的共同原因是模型给出的引文无法在抽取后的完整文本中定位为连续片段。源文件仍保留，合法的可验证原则继续进入 stage2；拒绝记录位于本地运行目录下各文档的 <code>principles.rejected.jsonl</code>。</div></details>
+      <details><summary>为什么严格总数仍然是 434？</summary><div class="detail-body">434 是冻结的 strict public canonical subset。Greenblatt 和 O’Neil 的新增材料有 supporting/institutional 作者边界，Dalio 的新增报告是 expansion，Munger 的补跑包含旧结果。因此扩展输出单独报告，避免把不同 source tier 混成一个统计口径。</div></details>
+    </section>
+
+    <section id="next"><h2>下一步工作</h2><div class="grid-2"><div class="card"><h3>材料层</h3><ol class="checklist"><li>为最终 6–8 位大师取得一份可合法处理的核心著作或等价的一手材料。</li><li>把每份书籍的 edition、章节和授权状态加入 registry。</li><li>对 Graham、Fisher、Lynch 做 source-selection pass；决定是否保留 Minervini。</li></ol></div><div class="card"><h3>Rubric 层</h3><ol class="checklist"><li>审查原子性警告、去重和风格特异性。</li><li>固定 source tier、confidence 和 evidence schema。</li><li>建立 TradeBank canonical trajectory adapter。</li><li>使用专家进行双人或多人的对照审核和一致性统计。</li></ol></div></div></section>
+
+    <section id="repro"><h2>复现入口</h2><div class="card"><p>本地材料抓取脚本：</p><pre>python buffett_corpus/fetch_materials_20261010.py \
+  --out buffett_corpus/materials_local</pre><p>单个完整文本运行两阶段 pipeline：</p><pre>python -m buffett_corpus.pipeline.cli \
+  --documents &lt;complete-document.txt&gt; \
+  --master "&lt;master&gt;" \
+  --framework buffett_corpus/configs/tradebank.json \
+  --out buffett_corpus/runs/&lt;run-name&gt;</pre><p class="small">API key 只从环境变量读取。原始 PDF、完整版权文本和 generated runs 默认被 gitignore；运行状态和材料 registry 会提交到仓库。</p><p><a href="https://github.com/qinlu000/guru-rubrics">GitHub：qinlu000/guru-rubrics</a></p><p><a href="material_execution_status_20261011.json">运行状态 JSON</a> · <a href="material_acquisition_registry_20261011.json">材料获取 registry</a> · <a href="strict_materials_20261010.json">严格 canonical manifest</a></p></div></section>
+  </main>
+  <footer><div class="shell">Guru Rubrics · material_run_summary_20261011.html · 自动运行结果截至 2026-10-11；专家验证尚未完成。</div></footer>
+  <script>const input=document.getElementById('masterSearch');const rows=[...document.querySelectorAll('#masterTable tbody tr')];input.addEventListener('input',()=>{const q=input.value.trim().toLowerCase();rows.forEach(row=>{row.style.display=row.textContent.toLowerCase().includes(q)?'':'none';});});</script>
+</body>
+</html>
