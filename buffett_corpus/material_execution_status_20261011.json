@@ -64,5 +64,14 @@
   },
   "local_run_directory": "/workspace/buffett_corpus/runs/all_masters_20261010/completed_expansions_20261011",
   "expert_review_status": "not_completed",
-  "source_acquisition_status": "Copyrighted books remain pending_lawful_access in material_acquisition_registry_20261011.json; they were not silently removed."
+  "source_acquisition_status": "Copyrighted books remain pending_lawful_access in material_acquisition_registry_20261011.json; they were not silently removed.",
+  "completed_expansion_rubric_outputs": 281,
+  "incremental_rubrics_beyond_previous_strict_set": {
+    "Greenblatt": 139,
+    "O'Neil": 2,
+    "Dalio": 1,
+    "Munger": 46,
+    "total": 188
+  },
+  "strict_plus_incremental_rubric_count_before_deduplication": 622
 }
