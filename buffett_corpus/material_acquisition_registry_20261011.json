@@ -20,14 +20,12 @@
       "documents": 14,
       "rubrics": 93,
       "status": "available_public",
-      "execution_status": "partial",
-      "documents_stage1_validated": 10,
-      "pending_documents": [
-        "1997.txt",
-        "1998.txt",
-        "2001.txt",
-        "2003.txt"
-      ]
+      "execution_status": "validated_with_rejected_records",
+      "documents_stage1_validated": 14,
+      "pending_documents": [],
+      "stage1_rejected_records": 4,
+      "stage2_rubrics": 139,
+      "notes": "All 14 documents have been processed. Four unsupported model records remain in principles.rejected.jsonl."
     },
     {
       "master": "Howard Marks",
@@ -105,7 +103,8 @@
       "status": "pending_lawful_access",
       "role": "core_book",
       "url": "https://www.principles.com/big-debt-crises/",
-      "notes": "The official page offers a free PDF after email signup; the downloaded file has not yet been supplied to the corpus."
+      "notes": "The official page offers a free PDF after email signup; the downloaded file has not yet been supplied to the corpus.",
+      "execution_status": "pending_lawful_access"
     },
     {
       "master": "Ray Dalio",

@@ -12,7 +12,7 @@ The full downloaded set covers the 1977–2024 shareholder letters plus the Owne
 
 `material_acquisition_registry_20261011.json` is the source-of-truth inventory for selected and proposed materials. It keeps materials whose complete lawful text has not yet been obtained, with an explicit status such as `pending_lawful_access` or `not_yet_screened`. A source must not be silently removed because it is unavailable; only the formal corpus statistics exclude sources that have not passed the stated availability and provenance checks.
 
-`material_execution_status_20261011.json` records the execution audit separately from acquisition: four Munger documents still failed source-quote validation, and nine newly downloaded public documents have not been run. The three previously processed Dalio reports match their newly downloaded copies and do not need a duplicate run. The 434 retained rubrics passed automatic validation; this is not a claim of complete source coverage or expert review.
+`material_execution_status_20261011.json` records the execution audit separately from acquisition. All 12 complete public files in the retrieval manifest have now been processed. Four Munger records lacked a contiguous source quote and remain in `principles.rejected.jsonl`; the source documents themselves remain in the run directory. Greenblatt's three interview PDFs use a recorded `pdftotext -raw` extraction to preserve two-column reading order. The 434 strict rubrics remain the canonical public subset; expansion runs are reported separately, and none of these automated results constitute expert review.
 
 ## Recommended first pass
 
