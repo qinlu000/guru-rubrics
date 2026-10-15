@@ -6,7 +6,7 @@ supported by the document. Each principle must contain:
 - polarity: required, prohibited, or conditional
 - conditions (array)
 - exceptions (array)
-- supporting_quotes: objects with exact quote and locator
+- supporting_quotes: objects with an exact `quote`
 - source_support: direct, repeated, or strong_inference
 - confidence: high, medium, or low
 

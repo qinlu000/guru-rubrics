@@ -30,15 +30,19 @@
   "$defs": {
     "evidence": {
       "type": "object",
-      "required": ["quote", "locator"],
+      "required": ["quote"],
       "properties": {
         "quote": {"type": "string"},
-        "locator": {"type": "string"},
-        "page": {"type": ["integer", "null"]},
-        "line_start": {"type": ["integer", "null"]},
-        "line_end": {"type": ["integer", "null"]}
+        "span": {"$ref": "#/$defs/span"}
       },
       "additionalProperties": true
+    },
+    "span": {
+      "description": "Character offsets [start, end) of the quote in the source text, computed by the pipeline.",
+      "type": "array",
+      "items": {"type": "integer"},
+      "minItems": 2,
+      "maxItems": 2
     }
   }
 }

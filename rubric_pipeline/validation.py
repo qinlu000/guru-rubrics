@@ -1,59 +1,68 @@
-"""Small deterministic checks for the two generated JSONL files."""
+"""Deterministic per-record checks; records that fail are rejected, not repaired."""
 from __future__ import annotations
 
 import re
-from .io import quote_in_document
+from typing import Callable
+
+from .io import quote_span
+
+PRINCIPLE_FIELDS = ["principle_id", "document_id", "claim", "principle_type", "source_support", "supporting_quotes"]
+RUBRIC_FIELDS = ["rubric_id", "principle_id", "framework_id", "criterion", "applicability", "source", "operationalization"]
+APPLICABILITY_FIELDS = ["trigger", "decision_types", "required_context"]
+OPERATIONALIZATION_FIELDS = ["observable_behavior", "pass_if", "violate_if", "not_applicable_if", "not_observable_if", "evidence_to_quote"]
 
 
-def _missing(record: dict, fields: list[str]) -> list[str]:
-    return [field for field in fields if not record.get(field)]
+def _missing(record: dict, fields: list[str], where: str = "") -> list[str]:
+    return [f"missing {where}{field}" for field in fields if not record.get(field)]
 
 
-def validate_principles(principles: list[dict], documents: dict[str, str]) -> dict:
-    errors = []
-    ids = set()
-    for i, item in enumerate(principles):
-        where = f"principles[{i}]"
-        missing = _missing(item, ["principle_id", "document_id", "claim", "principle_type", "source_support", "supporting_quotes"])
-        errors.extend({"where": where, "message": f"missing {field}"} for field in missing)
-        if item.get("principle_id") in ids:
-            errors.append({"where": where, "message": "duplicate principle_id"})
-        ids.add(item.get("principle_id"))
-        for j, evidence in enumerate(item.get("supporting_quotes", [])):
-            if not isinstance(evidence, dict) or not evidence.get("quote") or not evidence.get("locator"):
-                errors.append({"where": f"{where}.supporting_quotes[{j}]", "message": "quote and locator are required"})
-            elif item.get("document_id") in documents and not quote_in_document(evidence["quote"], documents[item["document_id"]]):
-                errors.append({"where": f"{where}.supporting_quotes[{j}]", "message": "quote not found in complete document"})
-    return {"valid": not errors, "record_count": len(principles), "errors": errors}
+def principle_errors(item: dict, documents: dict[str, str]) -> list[str]:
+    errors = _missing(item, PRINCIPLE_FIELDS)
+    document = documents.get(item.get("document_id"), "")
+    for j, evidence in enumerate(item.get("supporting_quotes", [])):
+        if not isinstance(evidence, dict) or not evidence.get("quote"):
+            errors.append(f"supporting_quotes[{j}]: quote is required")
+        elif quote_span(evidence["quote"], document) is None:
+            errors.append(f"supporting_quotes[{j}]: quote not found in complete document")
+    return errors
 
 
-def validate_rubrics(rubrics: list[dict], principles: list[dict], framework: dict, documents: dict[str, str]) -> dict:
-    errors = []
-    warnings = []
-    principle_ids = {item.get("principle_id") for item in principles}
-    fields = {item if isinstance(item, str) else item.get("name") for item in framework.get("canonical_event_fields", [])}
-    ids = set()
-    for i, item in enumerate(rubrics):
-        where = f"rubrics[{i}]"
-        errors.extend({"where": where, "message": f"missing {field}"} for field in _missing(item, ["rubric_id", "principle_id", "framework_id", "criterion", "applicability", "source", "operationalization"]))
-        if item.get("rubric_id") in ids:
-            errors.append({"where": where, "message": "duplicate rubric_id"})
-        ids.add(item.get("rubric_id"))
-        if item.get("principle_id") not in principle_ids:
-            errors.append({"where": where, "message": "principle_id is not in the principle library"})
-        if item.get("framework_id") != framework.get("framework_id"):
-            errors.append({"where": where, "message": "framework_id does not match framework"})
-        applicability = item.get("applicability", {})
-        errors.extend({"where": where + ".applicability", "message": f"missing {field}"} for field in _missing(applicability, ["trigger", "decision_types", "required_context"]))
-        for field in applicability.get("required_context", []):
-            if fields and field not in fields:
-                warnings.append({"where": where, "message": f"required_context not in framework: {field}"})
-        operation = item.get("operationalization", {})
-        errors.extend({"where": where + ".operationalization", "message": f"missing {field}"} for field in _missing(operation, ["observable_behavior", "pass_if", "violate_if", "not_applicable_if", "not_observable_if", "evidence_to_quote"]))
-        if ";" in item.get("criterion", "") or re.search(r"\b(and|as well as)\b|并且|以及", item.get("criterion", ""), re.I):
-            warnings.append({"where": where, "message": "criterion may contain more than one behavior"})
-        source = item.get("source", {})
-        for j, quote in enumerate(source.get("exact_quotes", [])):
-            if source.get("document_id") in documents and not quote_in_document(quote, documents[source["document_id"]]):
-                errors.append({"where": f"{where}.source.exact_quotes[{j}]", "message": "quote not found in complete document"})
-    return {"valid": not errors, "record_count": len(rubrics), "errors": errors, "warnings": warnings}
+def rubric_errors(item: dict, principle_ids: set[str], framework: dict, documents: dict[str, str]) -> list[str]:
+    errors = _missing(item, RUBRIC_FIELDS)
+    errors += _missing(item.get("applicability", {}), APPLICABILITY_FIELDS, "applicability.")
+    errors += _missing(item.get("operationalization", {}), OPERATIONALIZATION_FIELDS, "operationalization.")
+    if item.get("principle_id") not in principle_ids:
+        errors.append("principle_id is not in the principle library")
+    if item.get("framework_id") != framework["framework_id"]:
+        errors.append("framework_id does not match framework")
+    source = item.get("source", {})
+    document = documents.get(source.get("document_id"), "")
+    for j, quote in enumerate(source.get("exact_quotes", [])):
+        if quote_span(quote, document) is None:
+            errors.append(f"source.exact_quotes[{j}]: quote not found in complete document")
+    return errors
+
+
+def rubric_warnings(item: dict, framework: dict) -> list[str]:
+    fields = set(framework["canonical_event_fields"])
+    warnings = [f"required_context not in framework: {f}" for f in item.get("applicability", {}).get("required_context", []) if f not in fields]
+    if ";" in item.get("criterion", "") or re.search(r"\b(and|as well as)\b|并且|以及", item.get("criterion", ""), re.I):
+        warnings.append("criterion may contain more than one behavior")
+    return warnings
+
+
+def partition(records: list[dict], id_field: str, errors: Callable[[dict], list[str]]) -> tuple[list[dict], dict]:
+    """Split records into accepted ones and a rejection report."""
+    accepted, rejected = [], []
+    for record in records:
+        found = errors(record)
+        if found:
+            rejected.append({id_field: record.get(id_field), "errors": found})
+        else:
+            accepted.append(record)
+    return accepted, {
+        "record_count": len(records),
+        "accepted": len(accepted),
+        "rejection_rate": len(rejected) / len(records) if records else 0.0,
+        "rejected": rejected,
+    }

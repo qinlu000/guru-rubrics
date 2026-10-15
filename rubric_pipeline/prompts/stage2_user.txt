@@ -7,7 +7,6 @@ SOURCE-GROUNDED PRINCIPLE:
 Return a JSON object with key `rubrics`. Each rubric must contain:
 - criterion
 - applicability: trigger, decision_types (array), required_context (array drawn from framework fields)
-- source: exact_quotes (array), locators (array)
 - operationalization: observable_behavior, pass_if, violate_if, not_applicable_if, not_observable_if, evidence_to_quote, inference_level
 - scoring: points and severity (ordinary or critical)
 - axis
