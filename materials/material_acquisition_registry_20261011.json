@@ -8,50 +8,6 @@
     "not_yet_screened": "The person or source has been proposed but has not yet undergone the source-selection pass.",
     "not_applicable": "No canonical authored book is required for this person; first-party letters or reports are the primary source class."
   },
-  "formal_public_corpus": [
-    {
-      "master": "Buffett",
-      "documents": 14,
-      "rubrics": 148,
-      "status": "available_public"
-    },
-    {
-      "master": "Munger",
-      "documents": 14,
-      "rubrics": 93,
-      "status": "available_public",
-      "execution_status": "validated_with_rejected_records",
-      "documents_stage1_validated": 14,
-      "pending_documents": [],
-      "stage1_rejected_records": 4,
-      "stage2_rubrics": 139,
-      "notes": "All 14 documents have been processed. Four unsupported model records remain in principles.rejected.jsonl."
-    },
-    {
-      "master": "Howard Marks",
-      "documents": 8,
-      "rubrics": 59,
-      "status": "available_public"
-    },
-    {
-      "master": "Ray Dalio",
-      "documents": 3,
-      "rubrics": 23,
-      "status": "available_public"
-    },
-    {
-      "master": "Bill Ackman",
-      "documents": 5,
-      "rubrics": 58,
-      "status": "available_public"
-    },
-    {
-      "master": "George Soros",
-      "documents": 4,
-      "rubrics": 53,
-      "status": "available_public"
-    }
-  ],
   "materials": [
     {
       "master": "Buffett",
