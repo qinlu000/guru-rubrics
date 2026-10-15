@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 from pathlib import Path
 
 from .client import complete_json
@@ -20,16 +21,10 @@ def documents(paths: list[str], master: str) -> list[dict]:
 
 
 def as_records(value, key: str) -> list[dict]:
-    records = value.get(key) if isinstance(value, dict) else value
-    if not isinstance(records, list):
-        # Some compatible models occasionally omit the wrapper for a single
-        # record even when the prompt requests a top-level array. Normalize
-        # that recoverable shape before deterministic validation.
-        record_field = "claim" if key == "principles" else "criterion"
-        if isinstance(value, dict) and value.get(record_field):
-            return [value]
-        raise ValueError(f"model output must contain a `{key}` array")
-    return records
+    # Some compatible models return a single record without the requested wrapper.
+    if isinstance(value, dict) and key not in value:
+        return [value]
+    return value[key] if isinstance(value, dict) else value
 
 
 def principle_prompt(doc: dict) -> str:
@@ -77,9 +72,6 @@ def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]
                 "exact_quotes": [q.get("quote", "") for q in principle.get("supporting_quotes", [])],
                 "locators": [q.get("locator", "") for q in principle.get("supporting_quotes", [])],
             }
-            operation = item.get("operationalization")
-            if isinstance(operation, dict):
-                operation.setdefault("evidence_to_quote", item.get("applicability", {}).get("required_context", []))
             output.append(item)
     return output
 
@@ -90,8 +82,8 @@ def main() -> int:
     parser.add_argument("--framework", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--master", default="Warren Buffett")
-    parser.add_argument("--provider", choices=["anthropic", "openai"], default=None)
-    parser.add_argument("--model", default=None, help="defaults to ANTHROPIC_MODEL")
+    parser.add_argument("--provider", choices=["anthropic", "openai"], default=os.environ.get("LLM_PROVIDER", "anthropic"))
+    parser.add_argument("--model", help="defaults to ANTHROPIC_MODEL or OPENAI_MODEL")
     parser.add_argument("--max-tokens", type=int, default=8192)
     parser.add_argument("--stage", choices=["all", "principles", "rubrics"], default="all")
     parser.add_argument("--principles", help="validated principles JSONL for --stage rubrics")
@@ -107,6 +99,7 @@ def main() -> int:
         "master": args.master,
         "documents": args.documents,
         "framework": args.framework,
+        "provider": args.provider,
         "model": args.model,
         "stage": args.stage,
         "dry_run": args.dry_run,
@@ -126,8 +119,7 @@ def main() -> int:
             raise ValueError("principle validation failed; inspect principles.validation.json")
         write_jsonl(out / "principles.validated.jsonl", principles)
     else:
-        principle_path = args.principles or str(out / "principles.validated.jsonl")
-        principles = read_jsonl(principle_path)
+        principles = read_jsonl(args.principles or out / "principles.validated.jsonl")
 
     if args.stage in {"all", "rubrics"}:
         rubrics = extract_rubrics(principles, framework, args)

@@ -31,7 +31,7 @@ def validate_rubrics(rubrics: list[dict], principles: list[dict], framework: dic
     errors = []
     warnings = []
     principle_ids = {item.get("principle_id") for item in principles}
-    fields = {item if isinstance(item, str) else item.get("name") for item in framework.get("canonical_event_fields", [])}
+    fields = set(framework["canonical_event_fields"])
     ids = set()
     for i, item in enumerate(rubrics):
         where = f"rubrics[{i}]"
@@ -41,12 +41,12 @@ def validate_rubrics(rubrics: list[dict], principles: list[dict], framework: dic
         ids.add(item.get("rubric_id"))
         if item.get("principle_id") not in principle_ids:
             errors.append({"where": where, "message": "principle_id is not in the principle library"})
-        if item.get("framework_id") != framework.get("framework_id"):
+        if item.get("framework_id") != framework["framework_id"]:
             errors.append({"where": where, "message": "framework_id does not match framework"})
         applicability = item.get("applicability", {})
         errors.extend({"where": where + ".applicability", "message": f"missing {field}"} for field in _missing(applicability, ["trigger", "decision_types", "required_context"]))
         for field in applicability.get("required_context", []):
-            if fields and field not in fields:
+            if field not in fields:
                 warnings.append({"where": where, "message": f"required_context not in framework: {field}"})
         operation = item.get("operationalization", {})
         errors.extend({"where": where + ".operationalization", "message": f"missing {field}"} for field in _missing(operation, ["observable_behavior", "pass_if", "violate_if", "not_applicable_if", "not_observable_if", "evidence_to_quote"]))

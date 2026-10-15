@@ -1,5 +1,4 @@
 """File and prompt helpers used by the CLI."""
-
 from __future__ import annotations
 
 import hashlib
@@ -15,29 +14,17 @@ def read_json(path: str | Path) -> Any:
 
 
 def write_json(path: str | Path, value: Any) -> None:
-    target = Path(path)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def write_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
-    target = Path(path)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    with target.open("w", encoding="utf-8") as handle:
+    with Path(path).open("w", encoding="utf-8") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
 def read_jsonl(path: str | Path) -> list[dict[str, Any]]:
-    rows: list[dict[str, Any]] = []
-    for line_number, line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        value = json.loads(line)
-        if not isinstance(value, dict):
-            raise ValueError(f"{path}:{line_number} is not a JSON object")
-        rows.append(value)
-    return rows
+    return [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def load_prompt(name: str) -> str:
@@ -46,24 +33,16 @@ def load_prompt(name: str) -> str:
 
 def stable_id(prefix: str, *parts: str) -> str:
     normalized = "\n".join(re.sub(r"\s+", " ", part.strip().lower()) for part in parts)
-    digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:12]
-    clean_prefix = re.sub(r"[^a-z0-9_]+", "_", prefix.lower()).strip("_")
-    return f"{clean_prefix}_{digest}"
+    return f"{prefix}_{hashlib.sha1(normalized.encode('utf-8')).hexdigest()[:12]}"
 
 
 def normalized_text(text: str) -> str:
     """Normalize extraction-format differences while preserving quote words."""
     text = unicodedata.normalize("NFKC", text)
-    # PDF layout extraction may split one word at a line ending (or leave a
-    # space after the split hyphen). Rejoin those fragments before comparing
-    # the ordered word stream.
-    text = re.sub(r"(?<=\w)-[ \t\r\n]+(?=\w)", "", text)
-    # Treat ordinary hyphenated compounds consistently with PDF line-break
-    # extraction (for example, ``lead-up`` versus ``lead-\\nup``).
-    text = re.sub(r"(?<=\w)-(?=\w)", "", text)
-    # PDF and HTML extraction disagree on quotation marks, dashes,
-    # hyphenation, and other punctuation. Compare the ordered word stream.
-    text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
+    # Join hyphenated words, including PDF line-break hyphens ("lead-\nup"),
+    # then compare the ordered word stream, ignoring punctuation.
+    text = re.sub(r"(?<=\w)-\s*(?=\w)", "", text)
+    text = re.sub(r"[^\w]+", " ", text)
     return re.sub(r"\s+", " ", text).strip().casefold()
 
 
