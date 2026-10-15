@@ -4,7 +4,6 @@ This directory tracks which first-party materials are selected, fetched, and pro
 
 | File | Role |
 |---|---|
-| `masters_material_selection_v0.1.{md,json}` | The 11-master candidate source plan: source type, official URL, style dimensions, access mode, copyright handling |
 | `material_acquisition_registry_20261011.json` | Source-of-truth inventory of selected and proposed materials, including ones still `pending_lawful_access` or `not_yet_screened` |
 | `materials_list_20261015.json` | Input list for `scripts/fetch_materials.py` (the 2026-10-15 download), plus the four pre-2016 Soros essays used in the strict run |
 | `rubric_runs_20261011.json` | Run records: `strict_20261010` (document and rubric counts of the 434-rubric strict run) and `expansion_20261011` (execution audit of the expansion runs) |

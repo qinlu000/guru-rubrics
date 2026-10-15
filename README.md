@@ -54,16 +54,15 @@ Outputs include raw and deterministically validated JSONL files, run metadata, a
 | `rubric_pipeline/` | Two-stage extraction code, prompts, and JSON schemas |
 | `configs/` | Trajectory framework definitions (currently `tradebank.json`) |
 | `corpus/buffett/` | Buffett pilot corpus: processed letter text, hash manifest, and selected-source list |
-| `materials/` | Cross-master source selection, manifests, acquisition registry, and run records; see [`materials/README.md`](materials/README.md) |
+| `materials/` | Acquisition registry, fetch list, and run records; see [`materials/README.md`](materials/README.md) |
 | `scripts/fetch_materials.py` | Downloads the public first-party materials in `materials/materials_list_20261015.json` |
-| `docs/` | Framework adaptation notes and the external trajectory inventory |
 | `tests/` | Unit tests (`python -m unittest discover -s tests`) |
 
 Generated runs (`runs/`), raw downloads (`corpus/*/raw/`), and fetched materials (`materials_local/`) are ignored by Git.
 
-## Master material selection
+## Master materials
 
-The current 11-master candidate source plan is recorded in [`materials/masters_material_selection_v0.1.md`](materials/masters_material_selection_v0.1.md) and [`materials/masters_material_selection_v0.1.json`](materials/masters_material_selection_v0.1.json). The manifest stores source type, official URL, style dimensions, access mode, and copyright handling; it does not redistribute copyrighted books or restricted PDFs.
+[`materials/material_acquisition_registry_20261011.json`](materials/material_acquisition_registry_20261011.json) is the source-of-truth inventory of selected materials per master, including books still pending lawful access. The repository stores metadata only; it does not redistribute copyrighted books or restricted PDFs.
 
 ## Public material retrieval
 

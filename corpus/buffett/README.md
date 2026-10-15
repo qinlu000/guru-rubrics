@@ -19,41 +19,4 @@ Suggested source precedence during normalization:
 3. Concrete examples and case discussions as evidence of application, not automatically as universal rules.
 4. One-off commentary as a lower-confidence candidate requiring review.
 
-## Extraction fields for the next stage
-
-For each candidate claim, retain:
-
-- `source_id`, `source_url`, `year`, `section`, and local evidence anchor;
-- a short verbatim fragment and a faithful paraphrase;
-- `principle_type`: selection rule, valuation rule, risk rule, behavioral rule, portfolio/capital-allocation rule, or governance rule;
-- `applicability`: the decision situation in which the rule should be checked;
-- `trajectory_evidence`: what the trading agent must say, calculate, do, or refrain from doing;
-- `polarity`: required behavior, prohibited behavior, or conditional behavior;
-- `confidence`: direct statement, repeated statement, or inferred operationalization;
-- links to duplicate or corroborating sources.
-
-The next artifact should turn each candidate into one atomic criterion. A criterion should check one observable behavior and return a boolean plus a brief evidence explanation, in the same spirit as HealthBench.
-
-## Running the two-stage pipeline
-
-The implementation lives in the top-level `rubric_pipeline/` package. It reads complete processed documents, so a directory
-argument means one API request per complete `.txt` document; it does not silently treat arbitrary
-fragments as independent sources.
-
-```bash
-export ANTHROPIC_API_KEY=...
-export ANTHROPIC_MODEL=claude-opus-5
-python -m rubric_pipeline.cli \
-  --documents corpus/buffett/processed/1977.txt \
-  --framework configs/tradebank.json \
-  --out runs/buffett_pilot
-```
-
-Stage 1 produces a source-grounded principle library. Stage 2 compiles those principles against
-the TradeBank trajectory schema into atomic rubrics. The provider client is dependency-free and
-uses Anthropic's Messages API; set `ANTHROPIC_BASE_URL` when routing through a compatible gateway.
-
-Use `--dry-run` to inspect document discovery and output metadata without an API key. The current
-validator checks required fields, exact-quote support, framework-field references, stable IDs,
-atomicity warnings, and near-duplicate warnings. It deliberately leaves expert judgment and
-trajectory-level applicability for later stages.
+To run the pipeline on this corpus, see the repository [README](../../README.md).
