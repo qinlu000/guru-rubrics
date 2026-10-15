@@ -1,9 +1,9 @@
 import unittest
 from pathlib import Path
 
-from buffett_corpus.pipeline.cli import as_records
-from buffett_corpus.pipeline.io import document_record, quote_in_document
-from buffett_corpus.pipeline.validation import validate_principles, validate_rubrics
+from rubric_pipeline.cli import as_records
+from rubric_pipeline.io import document_record, quote_in_document
+from rubric_pipeline.validation import validate_principles, validate_rubrics
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class PipelineValidationTests(unittest.TestCase):
     def setUp(self):
-        self.doc = document_record(ROOT / "buffett_corpus/processed/1977.txt", "Warren Buffett")
+        self.doc = document_record(ROOT / "corpus/buffett/processed/1977.txt", "Warren Buffett")
         self.framework = {
             "framework_id": "tradebank",
             "canonical_event_fields": ["decision_rationale", "action"],

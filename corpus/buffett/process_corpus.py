@@ -121,9 +121,9 @@ def process(raw_dir: Path, out_dir: Path, manifest_path: Path) -> list[dict[str,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--raw-dir", default="buffett_corpus/raw")
-    parser.add_argument("--out-dir", default="buffett_corpus/processed")
-    parser.add_argument("--manifest", default="buffett_corpus/manifest.json")
+    parser.add_argument("--raw-dir", default="corpus/buffett/raw")
+    parser.add_argument("--out-dir", default="corpus/buffett/processed")
+    parser.add_argument("--manifest", default="corpus/buffett/manifest.json")
     args = parser.parse_args()
     records = process(Path(args.raw_dir), Path(args.out_dir), Path(args.manifest))
     print(f"processed {len(records)} source files")

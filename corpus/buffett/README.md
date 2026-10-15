@@ -1,18 +1,12 @@
 # Buffett investment-style corpus (pilot)
 
-This directory contains a first-party corpus for extracting investment-style rubrics from Warren Buffett's public shareholder communications.
+This directory contains a first-party corpus for extracting investment-style rubrics from Warren Buffett's public shareholder communications. Material tracking for all masters lives in [`../../materials/`](../../materials/README.md).
 
 ## Source boundary
 
 The pilot uses copies hosted by Berkshire Hathaway: annual shareholder letters and *An Owner's Manual*. The official index is <https://www.berkshirehathaway.com/letters/letters.html>. The corpus is intended for research and traceability; every extracted claim must retain its source URL, source year, section or anchor, and a short provenance note.
 
 The full downloaded set covers the 1977–2024 shareholder letters plus the Owner's Manual. `manifest.json` records the downloaded file hash, format, size, and processed word count. `processed/` contains text extracted from the HTML/PDF files. Duplicate HTML/PDF versions of the same letter should be treated as one source during extraction.
-
-## Material acquisition tracking
-
-`material_acquisition_registry_20261011.json` is the source-of-truth inventory for selected and proposed materials. It keeps materials whose complete lawful text has not yet been obtained, with an explicit status such as `pending_lawful_access` or `not_yet_screened`. A source must not be silently removed because it is unavailable; only the formal corpus statistics exclude sources that have not passed the stated availability and provenance checks.
-
-`material_execution_status_20261011.json` records the execution audit separately from acquisition. All 12 complete public files in the retrieval manifest have now been processed. Four Munger records lacked a contiguous source quote and remain in `principles.rejected.jsonl`; the source documents themselves remain in the run directory. Greenblatt's three interview PDFs use a recorded `pdftotext -raw` extraction to preserve two-column reading order. The 434 strict rubrics remain the canonical public subset; expansion runs are reported separately, and none of these automated results constitute expert review.
 
 ## Recommended first pass
 
@@ -42,17 +36,17 @@ The next artifact should turn each candidate into one atomic criterion. A criter
 
 ## Running the two-stage pipeline
 
-The implementation lives in `pipeline/`. It reads complete processed documents, so a directory
+The implementation lives in the top-level `rubric_pipeline/` package. It reads complete processed documents, so a directory
 argument means one API request per complete `.txt` document; it does not silently treat arbitrary
 fragments as independent sources.
 
 ```bash
 export ANTHROPIC_API_KEY=...
 export ANTHROPIC_MODEL=claude-opus-5
-python -m buffett_corpus.pipeline.cli \
-  --documents buffett_corpus/processed/1977.txt \
-  --framework buffett_corpus/configs/tradebank.json \
-  --out buffett_corpus/runs/buffett_pilot
+python -m rubric_pipeline.cli \
+  --documents corpus/buffett/processed/1977.txt \
+  --framework configs/tradebank.json \
+  --out runs/buffett_pilot
 ```
 
 Stage 1 produces a source-grounded principle library. Stage 2 compiles those principles against
