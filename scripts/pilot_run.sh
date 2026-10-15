@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Pilot: run the two-stage pipeline on Buffett, Marks and O'Neil (provisional contrast).
+# Pilot: run the two-stage pipeline on Buffett, Marks and Soros (style contrast).
+# Every input is the master's own first-hand writing.
 # Needs ANTHROPIC_API_KEY + ANTHROPIC_MODEL, or LLM_PROVIDER=openai with OPENAI_*.
 # Usage: scripts/pilot_run.sh [OUT_DIR] [extra cli args, e.g. --dry-run]
 set -euo pipefail
@@ -17,9 +18,10 @@ CLI_ARGS=("$@")
 
 # Buffett: letters with the most marketable-securities content (Mr. Market, risk, concentration).
 run buffett "Warren Buffett" $B/1987.txt $B/1992.txt $B/1993.txt $B/1996.txt
-# Marks: four memos covering risk, cycles/temperature, value and market forecasting.
-run marks "Howard Marks" $MAT/marks/marks.the_indispensability_of_risk.txt \
+# Marks: four memos covering market psychology, cycles/temperature, value and forecasting.
+# (The Indispensability of Risk is left out: much of it quotes a chess article.)
+run marks "Howard Marks" $MAT/marks/marks.mr_market_miscalculates.txt \
   $MAT/marks/marks.taking_the_temperature.txt $MAT/marks/marks.the_calculus_of_value.txt \
   $MAT/marks/marks.the_folly_of_certainty.txt
-# O'Neil: provisional; IBD handbook (institutional, staff-written) until the books are bought.
-run oneil "William O'Neil" $MAT/oneil/oneil.ibd_chart_booklet.txt
+# Soros: 2014 reflexivity essay (georgesoros.com). O'Neil waits for his own books.
+run soros "George Soros" $MAT/soros/soros.fallibility_reflexivity_2014.txt
