@@ -53,10 +53,10 @@ Outputs include raw and deterministically validated JSONL files, run metadata, a
 |---|---|
 | `rubric_pipeline/` | Two-stage extraction code, prompts, and JSON schemas |
 | `configs/` | Trajectory framework definitions (currently `tradebank.json`) |
-| `corpus/buffett/` | Buffett pilot corpus: processed letter text, hash manifest, selected-source list, and `process_corpus.py` |
+| `corpus/buffett/` | Buffett pilot corpus: processed letter text, hash manifest, and selected-source list |
 | `materials/` | Cross-master source selection, manifests, acquisition registry, and run records; see [`materials/README.md`](materials/README.md) |
 | `scripts/fetch_materials.py` | Downloads the public first-party materials in `materials/materials_list_20261015.json` |
-| `docs/` | Framework adaptation notes, external trajectory inventory, run reports, and archived v0.1 hand drafts |
+| `docs/` | Framework adaptation notes and the external trajectory inventory |
 | `tests/` | Unit tests (`python -m unittest discover -s tests`) |
 
 Generated runs (`runs/`), raw downloads (`corpus/*/raw/`), and fetched materials (`materials_local/`) are ignored by Git.
