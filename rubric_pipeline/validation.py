@@ -22,7 +22,7 @@ def validate_principles(principles: list[dict], documents: dict[str, str]) -> di
         for j, evidence in enumerate(item.get("supporting_quotes", [])):
             if not isinstance(evidence, dict) or not evidence.get("quote") or not evidence.get("locator"):
                 errors.append({"where": f"{where}.supporting_quotes[{j}]", "message": "quote and locator are required"})
-            elif item.get("document_id") in documents and not quote_in_document(evidence["quote"], documents[item["document_id"]]):
+            elif not quote_in_document(evidence["quote"], documents.get(item.get("document_id"), "")):
                 errors.append({"where": f"{where}.supporting_quotes[{j}]", "message": "quote not found in complete document"})
     return {"valid": not errors, "record_count": len(principles), "errors": errors}
 
@@ -54,6 +54,6 @@ def validate_rubrics(rubrics: list[dict], principles: list[dict], framework: dic
             warnings.append({"where": where, "message": "criterion may contain more than one behavior"})
         source = item.get("source", {})
         for j, quote in enumerate(source.get("exact_quotes", [])):
-            if source.get("document_id") in documents and not quote_in_document(quote, documents[source["document_id"]]):
+            if not quote_in_document(quote, documents.get(source.get("document_id"), "")):
                 errors.append({"where": f"{where}.source.exact_quotes[{j}]", "message": "quote not found in complete document"})
     return {"valid": not errors, "record_count": len(rubrics), "errors": errors, "warnings": warnings}
