@@ -1,0 +1,243 @@
+[
+ {
+  "id": "greenblatt.gotham_cio_letter",
+  "master": "greenblatt",
+  "url": "https://www.gothamfunds.com/Download.aspx?ID=a112fb47-5019-4ab3-8c30-1ceed79b7304&Inline=1",
+  "format": "pdf",
+  "role": "supporting_canonical"
+ },
+ {
+  "id": "greenblatt.gotham_strategy",
+  "master": "greenblatt",
+  "url": "https://www.gothamfunds.com/strategy",
+  "format": "html",
+  "role": "supporting_only"
+ },
+ {
+  "id": "greenblatt.magic_formula_how_it_works",
+  "master": "greenblatt",
+  "url": "https://www.magicformulainvesting.com/Home/HowItWorks",
+  "format": "html",
+  "role": "supporting_only"
+ },
+ {
+  "id": "greenblatt.magic_formula_faq",
+  "master": "greenblatt",
+  "url": "https://www.magicformulainvesting.com/Home/Faqs",
+  "format": "html",
+  "role": "supporting_only"
+ },
+ {
+  "id": "greenblatt.interview_2016",
+  "master": "greenblatt",
+  "url": "https://www.gothamfunds.com/Download.aspx?ID=41d856a3-06b8-4dde-a25a-4cec1c295af3&Inline=1",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "greenblatt.interview_2018",
+  "master": "greenblatt",
+  "url": "https://www.gothamfunds.com/Download.aspx?ID=5febf93a-1d04-4fdc-b81d-88ba19df3afe&Inline=1",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "greenblatt.interview_2019",
+  "master": "greenblatt",
+  "url": "https://www.gothamfunds.com/Download.aspx?ID=4745663f-08f5-43ec-ae0c-f1e5dba7a775&Inline=1",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "oneil.ibd_chart_booklet",
+  "master": "oneil",
+  "url": "https://www1.ibdcd.com/images/pdf/IBDbooklets_Orange_2015.pdf",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "dalio.paradigm_shifts",
+  "master": "dalio",
+  "url": "https://economicprinciples.org/downloads/Paradigm-Shifts.pdf?direct=1",
+  "format": "pdf",
+  "role": "core_public"
+ },
+ {
+  "id": "dalio.productivity_structural_reform",
+  "master": "dalio",
+  "url": "https://economicprinciples.org/downloads/ray_dalio__how_the_economic_machine_works__leveragings_and_deleveragings.pdf?direct=1",
+  "format": "pdf",
+  "role": "core_public"
+ },
+ {
+  "id": "dalio.capital_wars",
+  "master": "dalio",
+  "url": "https://economicprinciples.org/downloads/cwo-a-deeper-look-at-capital-wars.pdf?direct=1",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "dalio.life_expectancy",
+  "master": "dalio",
+  "url": "https://economicprinciples.org/downloads/cwo-large-drivers-of-life-expectancy-through-time.pdf?direct=1",
+  "format": "pdf",
+  "role": "supporting_only"
+ },
+ {
+  "id": "munger.ctm_past_present_future_2014",
+  "master": "munger",
+  "url": "https://www.berkshirehathaway.com/SpecialLetters/CTM%20past%20present%20future%202014.pdf",
+  "format": "pdf",
+  "role": "core"
+ },
+ {
+  "id": "buffett.owners_manual",
+  "master": "buffett",
+  "url": "https://www.berkshirehathaway.com/ownman.pdf",
+  "format": "pdf",
+  "role": "core"
+ },
+ {
+  "id": "buffett.special_letter_50th",
+  "master": "buffett",
+  "url": "https://www.berkshirehathaway.com/SpecialLetters/WEBCTMLtr.html",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.the_indispensability_of_risk",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/the-indispensability-of-risk",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.the_folly_of_certainty",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/the-folly-of-certainty",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.the_illusion_of_knowledge",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.the_calculus_of_value",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/the-calculus-of-value",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.mr_market_miscalculates",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/mr-market-miscalculates",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.sea_change",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/sea-change",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.taking_the_temperature",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/taking-the-temperature",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "marks.what_really_matters",
+  "master": "marks",
+  "url": "https://www.oaktreecapital.com/insights/memo/what-really-matters",
+  "format": "html",
+  "role": "core"
+ },
+ {
+  "id": "ackman.pershing_letter_page_1",
+  "master": "ackman",
+  "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10147/",
+  "format": "html",
+  "role": "core",
+  "follow_pdf_links": true
+ },
+ {
+  "id": "ackman.pershing_letter_page_2",
+  "master": "ackman",
+  "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10305/",
+  "format": "html",
+  "role": "core",
+  "follow_pdf_links": true
+ },
+ {
+  "id": "ackman.pershing_letter_page_3",
+  "master": "ackman",
+  "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-p10529/",
+  "format": "html",
+  "role": "core",
+  "follow_pdf_links": true
+ },
+ {
+  "id": "ackman.pershing_letter_page_4",
+  "master": "ackman",
+  "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-pershing-square-capital-management-l-p-releases-letter-to-investors/",
+  "format": "html",
+  "role": "core",
+  "follow_pdf_links": true
+ },
+ {
+  "id": "ackman.pershing_letter_page_5",
+  "master": "ackman",
+  "url": "https://pershingsquareholdings.com/https-pershingsquareholdings-com-pershing-square-holdings-ltd-releases-letter-to-shareholders/",
+  "format": "html",
+  "role": "core",
+  "follow_pdf_links": true
+ },
+ {
+  "id": "soros.essay_the_crisis_what_to_do_about_it",
+  "master": "soros",
+  "url": "https://www.georgesoros.com/2008/11/06/the_crisis_what_to_do_about_it/",
+  "format": "html",
+  "role": "core",
+  "date": "2008-11-06",
+  "title": "The Crisis & What To Do About It",
+  "note": "Used in the 2026-10-10 strict run; pre-2016, so not found by index discovery."
+ },
+ {
+  "id": "soros.essay_the_worst_market_crisis_in_60_years",
+  "master": "soros",
+  "url": "https://www.georgesoros.com/2008/01/22/the_worst_market_crisis_in_60_years/",
+  "format": "html",
+  "role": "core",
+  "date": "2008-01-22",
+  "title": "The Worst Market Crisis in 60 Years",
+  "note": "Used in the 2026-10-10 strict run; pre-2016, so not found by index discovery."
+ },
+ {
+  "id": "soros.essay_my_investments_in_russia",
+  "master": "soros",
+  "url": "https://www.georgesoros.com/1997/08/21/my-investments-in-russia/",
+  "format": "html",
+  "role": "core",
+  "date": "1997-08-21",
+  "title": "My Investments in Russia",
+  "note": "Used in the 2026-10-10 strict run; pre-2016, so not found by index discovery."
+ },
+ {
+  "id": "soros.essay_fallibility_reflexivity_and_the_human_uncertainty_principle_2",
+  "master": "soros",
+  "url": "https://www.georgesoros.com/2014/01/13/fallibility-reflexivity-and-the-human-uncertainty-principle-2/",
+  "format": "html",
+  "role": "core",
+  "date": "2014-01-13",
+  "title": "Fallibility, Reflexivity, and the Human Uncertainty Principle",
+  "note": "Used in the 2026-10-10 strict run; pre-2016, so not found by index discovery."
+ }
+]

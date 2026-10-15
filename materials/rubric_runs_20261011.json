@@ -1,0 +1,168 @@
+{
+  "strict_20261010": {
+    "run_id": "all_masters_20261010_strict",
+    "total_validated_rubrics": 434,
+    "included": [
+      {
+        "master": "Buffett",
+        "documents": 14,
+        "rubrics": 148
+      },
+      {
+        "master": "Munger",
+        "documents": 14,
+        "rubrics": 93,
+        "documents_attempted": 14,
+        "documents_stage1_validated": 10,
+        "execution_status": "partial",
+        "pending_documents": [
+          "1997.txt",
+          "1998.txt",
+          "2001.txt",
+          "2003.txt"
+        ],
+        "pending_reason": "Source quote validation failed; source documents remain pending, not discarded."
+      },
+      {
+        "master": "Marks",
+        "documents": 8,
+        "rubrics": 59
+      },
+      {
+        "master": "Dalio",
+        "documents": 3,
+        "rubrics": 23
+      },
+      {
+        "master": "Ackman",
+        "documents": 5,
+        "rubrics": 58
+      },
+      {
+        "master": "Soros",
+        "documents": 4,
+        "rubrics": 53
+      }
+    ],
+    "not_yet_materialized": [
+      "Benjamin Graham",
+      "Philip Fisher",
+      "Peter Lynch",
+      "Mark Minervini"
+    ],
+    "notes": [
+      "Only retained standalone source documents are included. Removed exploratory Greenblatt, O'Neil, and Dalio short-page materials are not part of this manifest."
+    ],
+    "candidate_expansions": [
+      {
+        "master": "Greenblatt",
+        "materials": [
+          "You Can Be a Stock Market Genius",
+          "The Little Book That Beats the Market",
+          "The Big Secret for the Small Investor",
+          "Gotham CIO Letter"
+        ],
+        "status": "selected_pending_local_full_text",
+        "notes": "The earlier Magic Formula and website-only outputs were deleted; these are the replacement sources for a future run."
+      },
+      {
+        "master": "William O'Neil",
+        "materials": [
+          "How to Make Money in Stocks",
+          "All About Charts (IBD CAN SLIM chart booklet)",
+          "IBD William J. O'Neil author archive and attributed historical cases"
+        ],
+        "status": "selected_pending_local_full_text",
+        "notes": "The IBD booklet is complete and public but institutional, not solely authored by O'Neil; IBD pages require provenance checks for historical republication before canonical extraction."
+      },
+      {
+        "master": "Dalio",
+        "materials": [
+          "Principles: Life and Work",
+          "Principles for Navigating Big Debt Crises",
+          "Principles for Dealing with the Changing World Order",
+          "Productivity and Structural Reform"
+        ],
+        "status": "expansion_pending_local_full_text",
+        "notes": "The strict 3-document Dalio subset remains counted; these sources can expand it after lawful text acquisition."
+      }
+    ]
+  },
+  "expansion_20261011": {
+    "checked_at_utc": "2026-10-11",
+    "all_available_public_materials_processed": true,
+    "scope": "All 12 complete public files in public_material_retrieval_20261010 plus the four previously failing Munger source documents.",
+    "previous_strict_validated_rubrics": 434,
+    "previous_strict_status": "unchanged; this remains the public canonical subset counted in strict_materials_20261010.json",
+    "completed_expansion_runs": [
+      {
+        "master": "Joel Greenblatt",
+        "documents": 7,
+        "stage1_principles": 116,
+        "stage2_rubrics": 139,
+        "status": "validated",
+        "source_role": "supporting_public_materials",
+        "notes": "2016, 2018, and 2019 Barron's/WSJ PDFs were re-extracted with pdftotext -raw to preserve two-column reading order."
+      },
+      {
+        "master": "William J. O'Neil",
+        "documents": 1,
+        "stage1_principles": 1,
+        "stage2_rubrics": 2,
+        "status": "validated",
+        "source_role": "supporting_only",
+        "notes": "Complete IBD/MarketSmith booklet; not solely authored by O'Neil."
+      },
+      {
+        "master": "Ray Dalio",
+        "documents": 1,
+        "stage1_principles": 1,
+        "stage2_rubrics": 1,
+        "status": "validated",
+        "source_role": "core_public_expansion",
+        "notes": "Productivity and Structural Reform report."
+      },
+      {
+        "master": "Charlie Munger",
+        "documents": 4,
+        "stage1_principles": 34,
+        "stage2_rubrics": 139,
+        "status": "validated_with_rejected_records",
+        "source_role": "primary_public",
+        "rejected_stage1_records": 4,
+        "rejected_documents": {
+          "1997.txt": 2,
+          "1998.txt": 1,
+          "2001.txt": 1
+        },
+        "notes": "The four documents were processed. Four model records lacked a contiguous source quote and remain in principles.rejected.jsonl; no source document was removed."
+      }
+    ],
+    "available_file_execution": {
+      "greenblatt.gotham_cio_letter": "validated",
+      "greenblatt.gotham_strategy": "validated",
+      "greenblatt.magic_formula_how_it_works": "validated",
+      "greenblatt.magic_formula_faq": "validated",
+      "greenblatt.interview_2016": "validated_raw_pdf_extraction",
+      "greenblatt.interview_2018": "validated_raw_pdf_extraction",
+      "greenblatt.interview_2019": "validated_raw_pdf_extraction",
+      "oneil.ibd_chart_booklet": "validated_supporting_only",
+      "dalio.paradigm_shifts": "already_processed_previous_copy",
+      "dalio.productivity_structural_reform": "validated",
+      "dalio.capital_wars": "already_processed_previous_copy",
+      "dalio.life_expectancy": "already_processed_previous_copy"
+    },
+    "local_run_directory": "/workspace/buffett_corpus/runs/all_masters_20261010/completed_expansions_20261011",
+    "expert_review_status": "not_completed",
+    "source_acquisition_status": "Copyrighted books remain pending_lawful_access in material_acquisition_registry_20261011.json; they were not silently removed.",
+    "completed_expansion_rubric_outputs": 281,
+    "incremental_rubrics_beyond_previous_strict_set": {
+      "Greenblatt": 139,
+      "O'Neil": 2,
+      "Dalio": 1,
+      "Munger": 46,
+      "total": 188
+    },
+    "strict_plus_incremental_rubric_count_before_deduplication": 622
+  }
+}

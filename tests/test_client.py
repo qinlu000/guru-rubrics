@@ -3,7 +3,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-from buffett_corpus.pipeline.client import complete_json
+from rubric_pipeline.client import complete_json
 
 
 class FakeResponse:
@@ -29,7 +29,7 @@ class OpenAICompatibleClientTests(unittest.TestCase):
             "OPENAI_API_KEY": "test-key",
             "OPENAI_MODEL": "test-model",
             "OPENAI_BASE_URL": "https://example.test/v1",
-        }, clear=False), patch("buffett_corpus.pipeline.client.urlopen", return_value=response) as request_mock:
+        }, clear=False), patch("rubric_pipeline.client.urlopen", return_value=response) as request_mock:
             result = complete_json(system="system", user="user", provider="openai")
 
         self.assertEqual(result, {"principles": []})

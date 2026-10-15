@@ -10,4 +10,7 @@ requires-python = ">=3.11"
 dependencies = []
 
 [tool.setuptools.packages.find]
-include = ["buffett_corpus*"]
+include = ["rubric_pipeline*"]
+
+[tool.setuptools.package-data]
+rubric_pipeline = ["prompts/*.txt", "schemas/*.json"]
