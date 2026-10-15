@@ -2,7 +2,7 @@ import unittest
 from pathlib import Path
 
 from rubric_pipeline.cli import as_records
-from rubric_pipeline.io import document_record, quote_in_document
+from rubric_pipeline.io import document_record, quote_span
 from rubric_pipeline.validation import partition, principle_errors, rubric_errors
 
 
@@ -22,16 +22,20 @@ class PipelineValidationTests(unittest.TestCase):
             "claim": "Understand the business.",
             "principle_type": "selection",
             "source_support": "direct",
-            "supporting_quotes": [{"quote": "one that we can understand", "locator": "line 264"}],
+            "supporting_quotes": [{"quote": "one that we can understand"}],
         }
 
     def test_source_quote_is_checked_against_complete_document(self):
-        self.assertTrue(quote_in_document("one that we can understand", self.doc["text"]))
+        start, end = quote_span("one that we can understand", self.doc["text"])
+        self.assertEqual(self.doc["text"][start:end], "one that we can understand")
+        text = "said \u201clead-\n up\u201d to the\u2014end."
+        start, end = quote_span("lead-up to the end", text)
+        self.assertEqual(text[start:end], "lead-\n up\u201d to the\u2014end")
         self.assertEqual(principle_errors(self.principle, {self.doc["document_id"]: self.doc["text"]}), [])
         self.assertEqual(principle_errors(self.principle, {}), ["supporting_quotes[0]: quote not found in complete document"])
 
     def test_invalid_records_are_rejected_not_fatal(self):
-        bad = dict(self.principle, principle_id="p2", supporting_quotes=[{"quote": "not in the letter at all", "locator": "x"}])
+        bad = dict(self.principle, principle_id="p2", supporting_quotes=[{"quote": "not in the letter at all"}])
         kept, report = partition([self.principle, bad], "principle_id", lambda p: principle_errors(p, {self.doc["document_id"]: self.doc["text"]}))
         self.assertEqual(kept, [self.principle])
         self.assertEqual(report["rejection_rate"], 0.5)

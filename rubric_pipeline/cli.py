@@ -5,10 +5,11 @@ import argparse
 import datetime as dt
 import json
 import os
+import subprocess
 from pathlib import Path
 
 from .client import complete_json
-from .io import document_record, load_prompt, read_json, read_jsonl, sha256, stable_id, write_json, write_jsonl
+from .io import document_record, load_prompt, quote_span, read_json, read_jsonl, sha256, stable_id, write_json, write_jsonl
 from .validation import partition, principle_errors, rubric_errors, rubric_warnings
 
 PROMPTS = ["stage1_system.txt", "stage1_user.txt", "stage2_system.txt", "stage2_user.txt"]
@@ -68,7 +69,7 @@ def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]
             item["source"] = {
                 "document_id": principle["document_id"],
                 "exact_quotes": [q.get("quote", "") for q in principle.get("supporting_quotes", [])],
-                "locators": [q.get("locator", "") for q in principle.get("supporting_quotes", [])],
+                "spans": [q["span"] for q in principle.get("supporting_quotes", [])],
             }
             output.setdefault(item["rubric_id"], item)
     return list(output.values())
@@ -101,6 +102,7 @@ def main() -> int:
         "model": args.model,
         "stage": args.stage,
         "dry_run": args.dry_run,
+        "git_commit": subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=Path(__file__).parent).stdout.strip(),
         "prompt_sha256": {name: sha256(load_prompt(name)) for name in PROMPTS},
     })
     if args.dry_run:
@@ -112,6 +114,9 @@ def main() -> int:
     if args.stage in {"all", "principles"}:
         raw = extract_principles(docs, args)
         principles, report = partition(raw, "principle_id", lambda p: principle_errors(p, texts))
+        for principle in principles:
+            for evidence in principle["supporting_quotes"]:
+                evidence["span"] = quote_span(evidence["quote"], texts[principle["document_id"]])
         write_jsonl(out / "principles.raw.jsonl", raw)
         write_json(out / "principles.validation.json", report)
         write_jsonl(out / "principles.validated.jsonl", principles)

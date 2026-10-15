@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import unicodedata
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -36,18 +37,41 @@ def stable_id(prefix: str, *parts: str) -> str:
     return f"{prefix}_{hashlib.sha1(normalized.encode('utf-8')).hexdigest()[:12]}"
 
 
-def normalized_text(text: str) -> str:
-    """Normalize extraction-format differences while preserving quote words."""
+@lru_cache(maxsize=None)
+def _word_stream(text: str) -> tuple[str, tuple[int, ...]]:
+    """Return the casefolded word stream of ``text`` and each character's offset in ``text``.
+
+    Punctuation, quotation marks and whitespace are ignored, and words split by a
+    hyphen (including PDF line-break hyphens, "lead-\\nup") are joined.
+    Offsets refer to the NFKC-normalized text, which equals the original for
+    the plain-text corpus.
+    """
     text = unicodedata.normalize("NFKC", text)
-    # Join hyphenated words, including PDF line-break hyphens ("lead-\nup"),
-    # then compare the ordered word stream, ignoring punctuation.
-    text = re.sub(r"(?<=\w)-\s*(?=\w)", "", text)
-    text = re.sub(r"[^\w]+", " ", text)
-    return re.sub(r"\s+", " ", text).strip().casefold()
+    chars, offsets, end = [], [], None
+    for match in re.finditer(r"\w+", text):
+        if end is not None and not re.fullmatch(r"-\s*", text[end:match.start()]):
+            chars.append(" ")
+            offsets.append(end)
+        for i, char in enumerate(match.group(), start=match.start()):
+            folded = char.casefold()
+            chars.extend(folded)
+            offsets.extend([i] * len(folded))
+        end = match.end()
+    return "".join(chars), tuple(offsets)
 
 
-def quote_in_document(quote: str, document: str) -> bool:
-    return bool(quote.strip()) and normalized_text(quote) in normalized_text(document)
+def normalized_text(text: str) -> str:
+    return _word_stream(text)[0]
+
+
+def quote_span(quote: str, document: str) -> list[int] | None:
+    """Character span ``[start, end)`` of ``quote`` in ``document``, or None if absent."""
+    needle = normalized_text(quote)
+    stream, offsets = _word_stream(document)
+    start = stream.find(needle) if needle else -1
+    if start < 0:
+        return None
+    return [offsets[start], offsets[start + len(needle) - 1] + 1]
 
 
 def sha256(text: str) -> str:

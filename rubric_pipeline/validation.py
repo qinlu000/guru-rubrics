@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from typing import Callable
 
-from .io import quote_in_document
+from .io import quote_span
 
 PRINCIPLE_FIELDS = ["principle_id", "document_id", "claim", "principle_type", "source_support", "supporting_quotes"]
 RUBRIC_FIELDS = ["rubric_id", "principle_id", "framework_id", "criterion", "applicability", "source", "operationalization"]
@@ -20,9 +20,9 @@ def principle_errors(item: dict, documents: dict[str, str]) -> list[str]:
     errors = _missing(item, PRINCIPLE_FIELDS)
     document = documents.get(item.get("document_id"), "")
     for j, evidence in enumerate(item.get("supporting_quotes", [])):
-        if not isinstance(evidence, dict) or not evidence.get("quote") or not evidence.get("locator"):
-            errors.append(f"supporting_quotes[{j}]: quote and locator are required")
-        elif not quote_in_document(evidence["quote"], document):
+        if not isinstance(evidence, dict) or not evidence.get("quote"):
+            errors.append(f"supporting_quotes[{j}]: quote is required")
+        elif quote_span(evidence["quote"], document) is None:
             errors.append(f"supporting_quotes[{j}]: quote not found in complete document")
     return errors
 
@@ -38,7 +38,7 @@ def rubric_errors(item: dict, principle_ids: set[str], framework: dict, document
     source = item.get("source", {})
     document = documents.get(source.get("document_id"), "")
     for j, quote in enumerate(source.get("exact_quotes", [])):
-        if not quote_in_document(quote, document):
+        if quote_span(quote, document) is None:
             errors.append(f"source.exact_quotes[{j}]: quote not found in complete document")
     return errors
 
