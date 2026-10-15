@@ -8,8 +8,10 @@ import os
 from pathlib import Path
 
 from .client import complete_json
-from .io import document_record, load_prompt, read_json, read_jsonl, stable_id, write_json, write_jsonl
-from .validation import validate_principles, validate_rubrics
+from .io import document_record, load_prompt, read_json, read_jsonl, sha256, stable_id, write_json, write_jsonl
+from .validation import partition, principle_errors, rubric_errors, rubric_warnings
+
+PROMPTS = ["stage1_system.txt", "stage1_user.txt", "stage2_system.txt", "stage2_user.txt"]
 
 
 def documents(paths: list[str], master: str) -> list[dict]:
@@ -41,30 +43,26 @@ def rubric_prompt(principle: dict, framework: dict) -> str:
 
 
 def extract_principles(docs: list[dict], args) -> list[dict]:
-    output = []
+    output = {}
     for doc in docs:
         result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "principles"):
-            quote = item.get("supporting_quotes", [{}])[0].get("quote", "")
+            quote = (item.get("supporting_quotes") or [{}])[0].get("quote", "")
             item["document_id"] = doc["document_id"]
             item["master"] = args.master
             item["principle_id"] = stable_id("principle", doc["document_id"], item.get("claim", ""), quote)
-            output.append(item)
-    return output
+            output.setdefault(item["principle_id"], item)
+    return list(output.values())
 
 
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
-    output = []
-    rubric_ids = set()
+    output = {}
     for principle in principles:
         result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]
             item["rubric_id"] = stable_id("rubric", principle["principle_id"], framework["framework_id"], item.get("criterion", ""))
-            if item["rubric_id"] in rubric_ids:
-                continue
-            rubric_ids.add(item["rubric_id"])
             # Provenance is copied from the validated principle so the model
             # cannot replace an exact quote with a paraphrase.
             item["source"] = {
@@ -72,8 +70,8 @@ def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]
                 "exact_quotes": [q.get("quote", "") for q in principle.get("supporting_quotes", [])],
                 "locators": [q.get("locator", "") for q in principle.get("supporting_quotes", [])],
             }
-            output.append(item)
-    return output
+            output.setdefault(item["rubric_id"], item)
+    return list(output.values())
 
 
 def main() -> int:
@@ -103,6 +101,7 @@ def main() -> int:
         "model": args.model,
         "stage": args.stage,
         "dry_run": args.dry_run,
+        "prompt_sha256": {name: sha256(load_prompt(name)) for name in PROMPTS},
     })
     if args.dry_run:
         write_json(out / "documents.json", [{k: v for k, v in doc.items() if k != "text"} for doc in docs])
@@ -111,23 +110,21 @@ def main() -> int:
 
     texts = {doc["document_id"]: doc["text"] for doc in docs}
     if args.stage in {"all", "principles"}:
-        principles = extract_principles(docs, args)
-        report = validate_principles(principles, texts)
-        write_jsonl(out / "principles.raw.jsonl", principles)
+        raw = extract_principles(docs, args)
+        principles, report = partition(raw, "principle_id", lambda p: principle_errors(p, texts))
+        write_jsonl(out / "principles.raw.jsonl", raw)
         write_json(out / "principles.validation.json", report)
-        if not report["valid"]:
-            raise ValueError("principle validation failed; inspect principles.validation.json")
         write_jsonl(out / "principles.validated.jsonl", principles)
     else:
         principles = read_jsonl(args.principles or out / "principles.validated.jsonl")
 
     if args.stage in {"all", "rubrics"}:
-        rubrics = extract_rubrics(principles, framework, args)
-        report = validate_rubrics(rubrics, principles, framework, texts)
-        write_jsonl(out / "rubrics.raw.jsonl", rubrics)
+        raw = extract_rubrics(principles, framework, args)
+        principle_ids = {p["principle_id"] for p in principles}
+        rubrics, report = partition(raw, "rubric_id", lambda r: rubric_errors(r, principle_ids, framework, texts))
+        report["warnings"] = [{"rubric_id": r["rubric_id"], "warnings": w} for r in rubrics if (w := rubric_warnings(r, framework))]
+        write_jsonl(out / "rubrics.raw.jsonl", raw)
         write_json(out / "rubrics.validation.json", report)
-        if not report["valid"]:
-            raise ValueError("rubric validation failed; inspect rubrics.validation.json")
         write_jsonl(out / "rubrics.validated.jsonl", rubrics)
     print(f"wrote {args.stage} outputs to {out}")
     return 0

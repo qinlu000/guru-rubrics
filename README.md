@@ -45,7 +45,7 @@ the environment and is never written to run outputs.
 
 The CLI sends each complete document as one document-level input. It does not silently extract independent arbitrary chunks. For documents larger than the provider context window, use an explicit hierarchical configuration and retain the document-level merge step.
 
-Outputs include raw and deterministically validated JSONL files, run metadata, and validation reports. API keys are never written to outputs.
+Outputs include raw and deterministically validated JSONL files, run metadata (including prompt hashes), and validation reports. A record that fails validation is dropped and listed in the report with its errors; the report's `rejection_rate` measures how often the model's output is not source-grounded. API keys are never written to outputs.
 
 ## Repository layout
 
@@ -84,6 +84,6 @@ The script reads [`materials/materials_list_20261015.json`](materials/materials_
 - A principle is not a trajectory rubric. Stage 2 maps a source-grounded principle onto the framework's observable fields.
 - `not_applicable` means the trigger did not occur. `not_observable` means the trigger occurred but the trace lacks required evidence.
 - Rubric criteria are atomic: one independently judgeable behavior per item.
-- The API model proposes records; deterministic checks reject missing fields, missing source support, unsupported framework fields, and duplicate IDs.
+- The API model proposes records; deterministic checks reject records with missing fields, quotes not found in the source document, or unknown principle IDs. Records are rejected, never repaired. Duplicate IDs are collapsed at extraction.
 
 The later grader should report both behavior score and observability coverage, and should be calibrated against financial experts.

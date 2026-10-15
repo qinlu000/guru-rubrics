@@ -50,6 +50,10 @@ def quote_in_document(quote: str, document: str) -> bool:
     return bool(quote.strip()) and normalized_text(quote) in normalized_text(document)
 
 
+def sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def document_record(path: str | Path, master: str) -> dict[str, Any]:
     source = Path(path)
     text = source.read_text(encoding="utf-8")
@@ -58,7 +62,7 @@ def document_record(path: str | Path, master: str) -> dict[str, Any]:
         "master": master,
         "title": source.stem,
         "local_file": str(source),
-        "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "sha256": sha256(text),
         "character_count": len(text),
         "word_count": len(text.split()),
         "text": text,
