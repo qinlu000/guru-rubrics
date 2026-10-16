@@ -3,16 +3,18 @@
 Run:  python3 scripts/fetch_materials.py --out materials_local
 Uses curl (built into macOS). Raw files land in <out>/<master>/ and the URL,
 SHA-256 and retrieval time of each file go to <out>/retrieval_manifest.json.
-Text conversion is a separate step. Books and paywalled articles are never
-fetched. Pershing Square (Ackman) blocks non-browser requests, so those PDFs
-must be downloaded in a real browser.
+The input is the material selection: every `access: "public"` item with a URL,
+plus the Wesco letters (Munger) discovered from the Wesco home page. Text
+conversion is a separate step. Books (`purchase`) are never fetched.
+Pershing Square (Ackman, `public_browser`) blocks non-browser requests, so
+those PDFs are listed for manual download in a real browser.
 """
 import argparse, datetime as dt, hashlib, json, re, subprocess, sys
 from pathlib import Path
 from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_LIST = ROOT / "materials" / "materials_list_20261015.json"
+DEFAULT_SELECTION = ROOT / "materials" / "material_selection_v3_20261015.json"
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36"
 
 def get(url: str) -> bytes:
@@ -37,28 +39,22 @@ def discover() -> list[dict]:
                               "format": "pdf" if name.endswith(".pdf") else "html", "role": "core", "discovered_from": home})
     except Exception as e:
         print("DISCOVER-FAIL wesco", e)
-    # Soros: all essays on georgesoros.com (5 index pages); filter for investing topics later.
-    seen = set()
-    for p in range(1, 6):
-        idx = "https://www.georgesoros.com/essays/" + ("" if p == 1 else f"page/{p}/")
-        try:
-            for u in links(idx, get(idx)):
-                if re.match(r"https://www\.georgesoros\.com/\d{4}/\d\d/\d\d/[^/]+/?$", u) and u not in seen:
-                    seen.add(u)
-                    slug = u.rstrip("/").rsplit("/", 1)[-1]
-                    found.append({"id": "soros.essay_" + slug.replace("-", "_")[:80], "master": "soros", "url": u,
-                                  "format": "html", "role": "candidate", "discovered_from": idx})
-        except Exception as e:
-            print("DISCOVER-FAIL soros", idx, e)
     return found
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--list", type=Path, default=DEFAULT_LIST)
+    parser.add_argument("--selection", type=Path, default=DEFAULT_SELECTION)
     parser.add_argument("--out", type=Path, default=ROOT / "materials_local")
     args = parser.parse_args()
     OUT = args.out.resolve()
-    items = json.loads(args.list.read_text()) + discover()
+    materials = json.loads(args.selection.read_text())["materials"]
+    items = [{**m, "format": "pdf" if m["url"].lower().split("?")[0].endswith(".pdf") else "html"}
+             for m in materials if m.get("access") == "public" and m.get("url")]
+    if any(m["id"].startswith("munger.wesco") for m in materials):
+        items += discover()
+    for m in materials:
+        if m.get("access") == "public_browser":
+            print("BROWSER", m["id"], m.get("url", "(URL to be located)"))
     OUT.mkdir(parents=True, exist_ok=True)
     fetched, failed, done_urls = [], [], set()
     while items:

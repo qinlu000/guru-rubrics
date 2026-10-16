@@ -1,16 +1,13 @@
 # Source materials for all masters
 
-This directory tracks which first-party materials are selected, fetched, and processed for each master. It holds metadata only; downloaded files are not committed.
+This directory holds metadata about the selected first-party materials. Downloaded files and book text are not committed.
 
 | File | Role |
 |---|---|
-| `material_acquisition_registry_20261011.json` | Source-of-truth inventory of selected and proposed materials, including ones still `pending_lawful_access` or `not_yet_screened` |
-| `materials_list_20261015.json` | Input list for `scripts/fetch_materials.py` (the 2026-10-15 download), plus four pre-2016 Soros essays |
+| `material_selection_v3_20261015.json` | Masters by style archetype, selected sources per master (`purchase`, `public`, `public_browser`, `check`), attribution tier (A/B/C), spans to exclude, and sources dropped from earlier selections with the reason. Input for `scripts/fetch_materials.py` |
 
-## Acquisition tracking
+## Attribution rule
 
-`material_acquisition_registry_20261011.json` keeps materials whose complete lawful text has not yet been obtained, with an explicit status. A source must not be silently removed because it is unavailable.
+Every principle must be the master's own thinking. Tier A: written, signed or spoken by the master alone. Tier B: published under the master's name with a named co-author or co-signatory. Tier C: the master's verbatim answers in published interviews, answers only. Third-party accounts, institutional material and others' forewords or commentary are excluded. The selection's `policy` field has the full rule, including passage-level safeguards.
 
-No rubric run results are tracked yet. Earlier runs (2026-10-10 and 2026-10-11) used a superseded material selection and were discarded; their records remain in Git history.
-
-Dated records are snapshots: file names and paths inside them (for example `buffett_corpus/...`) refer to files and the layout at the time they were written; those files remain in Git history.
+No rubric run results are tracked yet. Earlier selections, acquisition registries and runs remain in Git history.
