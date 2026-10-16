@@ -6,7 +6,7 @@ This directory contains a first-party corpus for extracting investment-style rub
 
 The pilot uses copies hosted by Berkshire Hathaway: annual shareholder letters and *An Owner's Manual*. The official index is <https://www.berkshirehathaway.com/letters/letters.html>. The corpus is intended for research and traceability; every extracted claim must retain its source URL, source year, section or anchor, and a short provenance note.
 
-The full downloaded set covers the 1977–2024 shareholder letters plus the Owner's Manual. `manifest.json` records the downloaded file hash, format, size, and processed word count. `processed/` contains text extracted from the HTML/PDF files. Duplicate HTML/PDF versions of the same letter should be treated as one source during extraction.
+The full downloaded set covers the 1977–2024 shareholder letters plus the Owner's Manual. `manifest.json` records the downloaded file hash, format, size, and processed word count. `processed/` contains text extracted from the HTML/PDF files, one file per letter (duplicate HTML/PDF copies of the 1998 and 1999 letters were removed).
 
 ## Recommended first pass
 
