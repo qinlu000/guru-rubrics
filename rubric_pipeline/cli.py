@@ -6,6 +6,7 @@ import datetime as dt
 import json
 import os
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from .client import complete_json
@@ -70,9 +71,14 @@ def extract_principles(docs: list[dict], args) -> list[dict]:
 
 
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
+    def compile_one(principle: dict):
+        return call_model(principle["principle_id"], system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
+
+    # One independent call per principle; results are collected in principle order.
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        results = list(pool.map(compile_one, principles))
     output = {}
-    for principle in principles:
-        result = call_model(principle["principle_id"], system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
+    for principle, result in zip(principles, results):
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]
@@ -99,6 +105,7 @@ def main() -> int:
     parser.add_argument("--max-tokens", type=int, default=8192)
     parser.add_argument("--stage", choices=["all", "principles", "rubrics"], default="all")
     parser.add_argument("--principles", help="validated principles JSONL for --stage rubrics")
+    parser.add_argument("--workers", type=int, default=1, help="parallel Stage 2 calls")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -114,6 +121,7 @@ def main() -> int:
         "provider": args.provider,
         "model": args.model,
         "stage": args.stage,
+        "max_tokens": args.max_tokens,
         "dry_run": args.dry_run,
         "git_commit": subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=Path(__file__).parent).stdout.strip(),
         "prompt_sha256": {name: sha256(load_prompt(name)) for name in PROMPTS},
