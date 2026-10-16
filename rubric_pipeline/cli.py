@@ -12,6 +12,19 @@ from .client import complete_json
 from .io import document_record, load_prompt, quote_span, read_json, read_jsonl, sha256, stable_id, write_json, write_jsonl
 from .validation import attribution_flags, partition, principle_errors, rubric_errors, rubric_warnings
 
+CALL_FAILURES: list[dict] = []
+
+
+def call_model(where: str, **kwargs):
+    """One model call; a failed call is recorded and skipped instead of aborting the run."""
+    try:
+        return complete_json(**kwargs)
+    except Exception as error:  # network errors, timeouts, unparseable JSON
+        CALL_FAILURES.append({"where": where, "error": f"{type(error).__name__}: {error}"[:500]})
+        print(f"call failed ({where}): {type(error).__name__}", flush=True)
+        return []
+
+
 PROMPTS = ["stage1_system.txt", "stage1_user.txt", "stage2_system.txt", "stage2_user.txt"]
 
 
@@ -46,7 +59,7 @@ def rubric_prompt(principle: dict, framework: dict) -> str:
 def extract_principles(docs: list[dict], args) -> list[dict]:
     output = {}
     for doc in docs:
-        result = complete_json(system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
+        result = call_model(doc["document_id"], system=load_prompt("stage1_system.txt"), user=principle_prompt(doc), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "principles"):
             quote = (item.get("supporting_quotes") or [{}])[0].get("quote", "")
             item["document_id"] = doc["document_id"]
@@ -59,7 +72,7 @@ def extract_principles(docs: list[dict], args) -> list[dict]:
 def extract_rubrics(principles: list[dict], framework: dict, args) -> list[dict]:
     output = {}
     for principle in principles:
-        result = complete_json(system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
+        result = call_model(principle["principle_id"], system=load_prompt("stage2_system.txt"), user=rubric_prompt(principle, framework), model=args.model, max_tokens=args.max_tokens, provider=args.provider)
         for item in as_records(result, "rubrics"):
             item["principle_id"] = principle["principle_id"]
             item["framework_id"] = framework["framework_id"]
@@ -133,7 +146,8 @@ def main() -> int:
         write_jsonl(out / "rubrics.raw.jsonl", raw)
         write_json(out / "rubrics.validation.json", report)
         write_jsonl(out / "rubrics.validated.jsonl", rubrics)
-    print(f"wrote {args.stage} outputs to {out}")
+    write_json(out / "call_failures.json", CALL_FAILURES)
+    print(f"wrote {args.stage} outputs to {out} ({len(CALL_FAILURES)} failed calls)")
     return 0
 
 

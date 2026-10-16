@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 
 def _post(url: str, headers: dict, body: dict) -> dict:
     request = Request(url, data=json.dumps(body).encode("utf-8"), headers={"content-type": "application/json", **headers}, method="POST")
-    with urlopen(request, timeout=180) as response:
+    with urlopen(request, timeout=int(os.environ.get("LLM_TIMEOUT", "600"))) as response:
         return json.loads(response.read().decode("utf-8"))
 
 

@@ -12,8 +12,9 @@ B=corpus/buffett/processed
 run() {
   local slug=$1 master=$2; shift 2
   python3 -m rubric_pipeline.cli --master "$master" --framework configs/tradebank.json \
-    --out "$OUT/$slug" --documents "$@" ${EXTRA_ARGS:-} "${CLI_ARGS[@]}"
+    --out "$OUT/$slug" --documents "$@" ${EXTRA_ARGS:-} "${CLI_ARGS[@]}" > "$OUT/$slug.log" 2>&1 &
 }
+mkdir -p "$OUT"
 CLI_ARGS=("$@")
 
 # Buffett: letters with the most marketable-securities content (Mr. Market, risk, concentration).
@@ -25,3 +26,5 @@ run marks "Howard Marks" $MAT/marks/marks.mr_market_miscalculates.txt \
   $MAT/marks/marks.the_folly_of_certainty.txt
 # Soros: 2014 reflexivity essay (georgesoros.com). O'Neil waits for his own books.
 run soros "George Soros" $MAT/soros/soros.fallibility_reflexivity_2014.txt
+wait
+tail -n 1 "$OUT"/*.log
