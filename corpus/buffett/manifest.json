@@ -516,30 +516,6 @@
     "retrieved_via": "official_berkshirehathaway"
   },
   {
-    "file": "linked_1998pdf.pdf",
-    "processed_file": "linked_1998pdf.txt",
-    "year": 1998,
-    "format": "pdf",
-    "bytes": 78409,
-    "sha256": "1d798cda07b82e582643a0d9c0a5adf9a141f908426e666774fca9a592944941",
-    "characters": 69906,
-    "words": 11648,
-    "url": "https://www.berkshirehathaway.com/letters/1998pdf.pdf",
-    "retrieved_via": "official_berkshirehathaway"
-  },
-  {
-    "file": "linked_1999htm.html",
-    "processed_file": "linked_1999htm.txt",
-    "year": 1999,
-    "format": "html",
-    "bytes": 135823,
-    "sha256": "2e81412d338ddcfc07325d7c1a1a5bdbf7abdcebe83b60c755118c42b118a0e4",
-    "characters": 74789,
-    "words": 12342,
-    "url": "https://www.berkshirehathaway.com/letters/1999htm.html",
-    "retrieved_via": "official_berkshirehathaway"
-  },
-  {
     "file": "linked_2000pdf.pdf",
     "processed_file": "linked_2000pdf.txt",
     "year": 2000,

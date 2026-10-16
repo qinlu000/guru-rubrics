@@ -1,0 +1,769 @@
+{
+  "selection_id": "material_selection_v3_20261015",
+  "policy": "Cost is not an exclusion criterion; buy books as needed. Book text stays local; the repo stores metadata and hashes only. Attribution rule (2026-10-16, replaces the same-day strict first-hand rule; see attribution_criterion_20261016.md): every principle must be the master's own thinking. Tier A: written, signed or spoken by the master alone. Tier B: published in the master's lifetime under their name with a named co-author, collaborator or co-signatory, in the master's voice. Tier C: the master's verbatim answers in published interviews, answers only. Tier D (excluded): third-party accounts, journalists' paraphrase, institutional material the master did not author, others' forewords or commentary. Edited collections count at the original's tier if unaltered and are dropped when the original is already in the corpus. Passage level: remove non-master spans before extraction and record removed ranges; supporting quotes must be the author's own words; flagged quotes get human review; tier-C-only principles need tier-A/B corroboration or are reported as uncorroborated.",
+  "lineup": {
+    "first_batch": [
+      {
+        "archetype": "deep_value",
+        "primary": "graham"
+      },
+      {
+        "archetype": "quality_compounding",
+        "primary": "buffett",
+        "supplement": "munger"
+      },
+      {
+        "archetype": "risk_cycles_contrarian",
+        "primary": "marks"
+      },
+      {
+        "archetype": "systematic_value_special_situations",
+        "primary": "greenblatt"
+      },
+      {
+        "archetype": "growth",
+        "primary": "lynch"
+      },
+      {
+        "archetype": "momentum_breakout",
+        "primary": "oneil",
+        "supplement": "minervini"
+      },
+      {
+        "archetype": "macro_reflexivity",
+        "primary": "soros"
+      }
+    ],
+    "second_batch": [
+      {
+        "archetype": "concentrated_catalyst",
+        "primary": "ackman",
+        "reason": "Activism unobservable; observable parts overlap Buffett/Greenblatt"
+      }
+    ],
+    "reserve": [
+      {
+        "master": "dalio",
+        "reason": "Macro allocation maps weakly to single-stock decisions",
+        "materials": [
+          "Principles: Life and Work (2017)",
+          "Principles for Navigating Big Debt Crises (2018)",
+          "Principles for Dealing with the Changing World Order (2021)",
+          "Paradigm Shifts"
+        ]
+      },
+      {
+        "master": "fisher",
+        "reason": "Overlaps Buffett's later quality-compounding style; qualitative scuttlebutt is unobservable in trajectories. First choice if the growth archetype needs a second master.",
+        "materials": [
+          "Common Stocks and Uncommon Profits and Other Writings (Wiley); exclude Ken Fisher's introduction"
+        ]
+      },
+      {
+        "master": "klarman",
+        "reason": "Overlaps Graham and Marks",
+        "materials": [
+          "Margin of Safety (1991)"
+        ]
+      },
+      {
+        "master": "livermore",
+        "reason": "Historical reference for the momentum line; authorship (possible ghostwriting) to be verified",
+        "materials": [
+          "How to Trade in Stocks (1940)"
+        ]
+      },
+      {
+        "master": "bogle",
+        "reason": "Passive / anti-timing control group",
+        "materials": [
+          "https://johncbogle.com/wordpress/bogle-speeches/"
+        ]
+      }
+    ]
+  },
+  "materials": [
+    {
+      "id": "graham.intelligent_investor_1973",
+      "master": "graham",
+      "title": "The Intelligent Investor, 4th rev. ed. (1973); if Zweig 2003 edition, Graham text only",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "exclude": "Exclude Buffett's preface and appendix and any Zweig commentary",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.security_analysis_1940",
+      "master": "graham",
+      "title": "Security Analysis, 2nd ed. (1940), Graham and Dodd",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "B",
+      "note": "Focus on common-stock valuation, margin of safety and the definition of investment"
+    },
+    {
+      "id": "graham.lecture_01",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 1 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture1.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_02",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 2 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture2.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_03",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 3 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture3.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_04",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 4 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture4.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_05",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 5 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture5.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_06",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 6 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture6.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_07",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 7 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture7.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_08",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 8 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture8.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_09",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 9 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture9.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "graham.lecture_10",
+      "master": "graham",
+      "title": "Current Problems in Security Analysis, Lecture 10 (1946-47)",
+      "access": "public",
+      "role": "core",
+      "url": "https://business.columbia.edu/sites/default/files-efs/imce-uploads/Graham_Sept1946Feb1947_CurrentProblemsinSecurityAnalysis_Lecture10.pdf",
+      "exclude": "Student questions",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "buffett.letters_mvp",
+      "master": "buffett",
+      "title": "Existing 12 MVP shareholder letters + 2023 letter (corpus/buffett/selected_sources.json)",
+      "access": "public",
+      "role": "core",
+      "note": "Tag each principle as marketable_securities vs control_acquisition/insurance/governance; only the former enters trading rubrics. Expand to ~20 letters to cover Mr. Market/no forecasting, concentration vs diversification, mistake reviews.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "buffett.superinvestors_1984",
+      "master": "buffett",
+      "title": "The Superinvestors of Graham-and-Doddsville (1984)",
+      "access": "check",
+      "role": "supporting",
+      "note": "Official hosted URL to be re-located.",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "buffett.owners_manual",
+      "master": "buffett",
+      "title": "An Owner's Manual",
+      "access": "public",
+      "role": "background",
+      "url": "https://www.berkshirehathaway.com/ownman.pdf",
+      "note": "Extract investment-principle passages only.",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "munger.poor_charlies_almanack",
+      "master": "munger",
+      "title": "Poor Charlie's Almanack, expanded 3rd ed. (2005) or Stripe Press (2023): Munger's eleven talks only",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "priority_talks": [
+        "A Lesson on Elementary, Worldly Wisdom (USC, 1994)",
+        "The Psychology of Human Misjudgment (1995, rev. 2005)",
+        "Worldly Wisdom Revisited (Stanford Law, 1997)",
+        "Investment Practices of Leading Charitable Foundations (1998)"
+      ],
+      "exclude": "Talk texts only; exclude editor introductions, editor notes, chapters by others, compiled Mungerisms",
+      "attribution_tier": "A",
+      "note": "Edited collection; talks are unaltered, so they count at tier A"
+    },
+    {
+      "id": "munger.ctm_past_present_future_2014",
+      "master": "munger",
+      "title": "Charlie Munger: Past, Present and Future (2014)",
+      "access": "public",
+      "role": "supporting",
+      "url": "https://www.berkshirehathaway.com/SpecialLetters/CTM%20past%20present%20future%202014.pdf",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "munger.wesco_letters_1997_2009",
+      "master": "munger",
+      "title": "Wesco letters 1997–2009",
+      "access": "public",
+      "role": "supporting",
+      "note": "Extract investment-discussion passages only; skip subsidiary operating reports.",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.most_important_thing_2011",
+      "master": "marks",
+      "title": "The Most Important Thing (2011, Columbia UP), original not Illuminated",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.mastering_the_market_cycle_2018",
+      "master": "marks",
+      "title": "Mastering the Market Cycle (2018)",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.the_indispensability_of_risk",
+      "master": "marks",
+      "title": "The Indispensability Of Risk",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/the-indispensability-of-risk",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.the_folly_of_certainty",
+      "master": "marks",
+      "title": "The Folly Of Certainty",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/the-folly-of-certainty",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.the_illusion_of_knowledge",
+      "master": "marks",
+      "title": "The Illusion Of Knowledge",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.the_calculus_of_value",
+      "master": "marks",
+      "title": "The Calculus Of Value",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/the-calculus-of-value",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.mr_market_miscalculates",
+      "master": "marks",
+      "title": "Mr Market Miscalculates",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/mr-market-miscalculates",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.sea_change",
+      "master": "marks",
+      "title": "Sea Change",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/sea-change",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.taking_the_temperature",
+      "master": "marks",
+      "title": "Taking The Temperature",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/taking-the-temperature",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.what_really_matters",
+      "master": "marks",
+      "title": "What Really Matters",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/what-really-matters",
+      "status": "existing",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.the_most_important_thing",
+      "master": "marks",
+      "title": "The Most Important Thing (2003 memo)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/the-most-important-thing",
+      "status": "new",
+      "dimension": "overview",
+      "note": "Page exists; older memos keep full text in the linked PDF.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.dare_to_be_great_ii",
+      "master": "marks",
+      "title": "Dare to Be Great II (2014-04)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/dare-to-be-great-ii",
+      "status": "new",
+      "dimension": "willingness to be different",
+      "note": "Page exists; older memos keep full text in the linked PDF.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.risk_revisited",
+      "master": "marks",
+      "title": "Risk Revisited (2014-09)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/risk-revisited",
+      "status": "new",
+      "dimension": "definition of risk",
+      "note": "Page exists; older memos keep full text in the linked PDF.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.it_s_not_easy",
+      "master": "marks",
+      "title": "It's Not Easy (2015)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/it-s-not-easy",
+      "status": "new",
+      "dimension": "second-level thinking",
+      "note": "Page exists; older memos keep full text in the linked PDF.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.on_the_couch",
+      "master": "marks",
+      "title": "On the Couch (2016)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/on-the-couch",
+      "status": "new",
+      "dimension": "psychology and the pendulum",
+      "note": "Page exists; older memos keep full text in the linked PDF.",
+      "exclude": "Quotations of other people cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "marks.something_of_value",
+      "master": "marks",
+      "title": "Something of Value (2021-01)",
+      "access": "public",
+      "role": "core",
+      "url": "https://www.oaktreecapital.com/insights/memo/something-of-value",
+      "status": "new",
+      "attribution_tier": "A",
+      "exclude": "Passages relaying Andrew Marks's views; quotations of other people cannot serve as supporting quotes"
+    },
+    {
+      "id": "greenblatt.stock_market_genius",
+      "master": "greenblatt",
+      "title": "You Can Be a Stock Market Genius (1997)",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "greenblatt.little_book",
+      "master": "greenblatt",
+      "title": "The Little Book That Beats the Market (2010 updated ed.)",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "exclude": "Exclude Andrew Tobias foreword",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "greenblatt.big_secret",
+      "master": "greenblatt",
+      "title": "The Big Secret for the Small Investor (2011)",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "greenblatt.gotham_cio_letter",
+      "master": "greenblatt",
+      "title": "Gotham CIO letter (co-signed with Robert Goldstein)",
+      "access": "public",
+      "role": "supporting",
+      "status": "existing",
+      "attribution_tier": "B"
+    },
+    {
+      "id": "lynch.one_up",
+      "master": "lynch",
+      "title": "One Up on Wall Street (1989; 2000 ed. with new preface), with John Rothchild",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "B"
+    },
+    {
+      "id": "lynch.beating_the_street",
+      "master": "lynch",
+      "title": "Beating the Street (1993), with John Rothchild",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "B",
+      "note": "Peter's Principles and the Magellan stock-picking reviews are most useful"
+    },
+    {
+      "id": "oneil.htmmis_4e",
+      "master": "oneil",
+      "title": "How to Make Money in Stocks, 4th ed. (2009)",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "oneil.successful_investor",
+      "master": "oneil",
+      "title": "The Successful Investor (2004)",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "oneil.fool_interview_2002",
+      "master": "oneil",
+      "title": "Motley Fool interview with William O'Neil (2002)",
+      "access": "public",
+      "role": "supporting",
+      "attribution_tier": "C",
+      "exclude": "Interviewer questions; extract O'Neil's answers only"
+    },
+    {
+      "id": "minervini.trade_like_a_wizard",
+      "master": "minervini",
+      "title": "Trade Like a Stock Market Wizard (2013)",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "minervini.think_and_trade",
+      "master": "minervini",
+      "title": "Think & Trade Like a Champion (2017)",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "soros.alchemy_of_finance",
+      "master": "soros",
+      "title": "The Alchemy of Finance (1987; 2003 Wiley ed.), incl. the real-time experiment in full",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "exclude": "Exclude Paul Volcker foreword (2003 ed.)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "soros.soros_on_soros",
+      "master": "soros",
+      "title": "Soros on Soros (1995), with Byron Wien and Krisztina Koenen",
+      "access": "purchase",
+      "role": "core",
+      "must_have": true,
+      "attribution_tier": "C",
+      "exclude": "Questions by Wien and Koenen; extract Soros's answers only"
+    },
+    {
+      "id": "soros.soros_lectures",
+      "master": "soros",
+      "title": "The Soros Lectures (2010), lectures 1–2",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "soros.fallibility_reflexivity_2014",
+      "master": "soros",
+      "title": "Fallibility, Reflexivity, and the Human Uncertainty Principle (2014)",
+      "access": "public",
+      "role": "supporting",
+      "url": "https://www.georgesoros.com/2014/01/13/fallibility-reflexivity-and-the-human-uncertainty-principle-2/",
+      "exclude": "Quotations of Knight, Keynes, Popper etc. cannot serve as supporting quotes",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "soros.my_investments_in_russia_1997",
+      "master": "soros",
+      "title": "My Investments in Russia (1997)",
+      "access": "public",
+      "role": "case_evidence",
+      "url": "https://www.georgesoros.com/1997/08/21/my-investments-in-russia/",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2016",
+      "master": "ackman",
+      "title": "PSH 2016 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "url": "https://pershingsquareholdings.com/wp-content/uploads/2014/09/PSH-Annual-Report_12.31.16.pdf",
+      "note": "Site returns 403 to scripts; download in a real browser.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2017",
+      "master": "ackman",
+      "title": "PSH 2017 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "note": "Site returns 403 to scripts; download in a real browser. URL to be located on the PSH annual-reports page.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2018",
+      "master": "ackman",
+      "title": "PSH 2018 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "note": "Site returns 403 to scripts; download in a real browser. URL to be located on the PSH annual-reports page.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2019",
+      "master": "ackman",
+      "title": "PSH 2019 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "url": "https://pershingsquareholdings.com/wp-content/uploads/2020/04/Pershing-Square-Holdings-Ltd.-2019-Annual-Report.pdf",
+      "note": "Site returns 403 to scripts; download in a real browser.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2020",
+      "master": "ackman",
+      "title": "PSH 2020 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "note": "Site returns 403 to scripts; download in a real browser. URL to be located on the PSH annual-reports page.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2022",
+      "master": "ackman",
+      "title": "PSH 2022 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "url": "https://pershingsquareholdings.com/wp-content/uploads/2025/02/Pershing-Square-Holdings-Ltd.-2022-Annual-Report.pdf",
+      "note": "Site returns 403 to scripts; download in a real browser.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.psh_annual_report_2024",
+      "master": "ackman",
+      "title": "PSH 2024 Annual Report: Investment Manager's Report: Letter to Shareholders signed by William A. Ackman",
+      "access": "public_browser",
+      "role": "core",
+      "url": "https://pershingsquareholdings.com/wp-content/uploads/2025/07/Pershing-Square-Holdings-Ltd.-2024-Annual-Report-1.pdf",
+      "note": "Site returns 403 to scripts; download in a real browser.",
+      "exclude": "Chairman's Statement (written by the independent chairman)",
+      "attribution_tier": "A"
+    },
+    {
+      "id": "soros.new_paradigm_2008",
+      "master": "soros",
+      "title": "The New Paradigm for Financial Markets (2008)",
+      "access": "purchase",
+      "role": "supporting",
+      "must_have": false,
+      "attribution_tier": "A"
+    },
+    {
+      "id": "ackman.public_presentations",
+      "master": "ackman",
+      "title": "Investment presentations Ackman delivered, e.g. Is MBIA Triple A? (2002), Herbalife (2012)",
+      "access": "check",
+      "role": "supporting",
+      "attribution_tier": "B",
+      "note": "Official archive URLs to be verified"
+    }
+  ],
+  "drop_from_previous": [
+    {
+      "id": "dalio.capital_wars",
+      "reason": "Historical narrative, not investment decisions"
+    },
+    {
+      "id": "dalio.life_expectancy",
+      "reason": "About life expectancy, unrelated to investing"
+    },
+    {
+      "id": "dalio.productivity_structural_reform",
+      "reason": "Macro background; Dalio moved to reserve"
+    },
+    {
+      "id": "ackman.pershing_square_tontine_letters_2021_07_and_2022_07",
+      "reason": "SPAC transaction announcements, not investment philosophy"
+    },
+    {
+      "id": "soros.essay_the_crisis_what_to_do_about_it_2008",
+      "reason": "Policy commentary"
+    },
+    {
+      "id": "soros.essay_the_worst_market_crisis_in_60_years_2008",
+      "reason": "Market commentary; keep at most as case evidence"
+    },
+    {
+      "id": "soros.essays_post_2016",
+      "reason": "Political and policy essays"
+    },
+    {
+      "id": "greenblatt.interviews_2016_2018_2019",
+      "reason": "Journalist narration; no increment once books are in"
+    },
+    {
+      "id": "greenblatt.magic_formula_pages",
+      "reason": "Superseded by the books"
+    },
+    {
+      "id": "munger.talks_pca_online",
+      "reason": "Replaced by the complete purchased edition"
+    },
+    {
+      "id": "buffett.essays_cunningham",
+      "reason": "Tier A edited compilation, but the original letters are already in the corpus (redundant)",
+      "failed": "redundant"
+    },
+    {
+      "id": "oneil.ibd_chart_booklet",
+      "reason": "Tier D: written by IBD staff",
+      "failed": "attribution_rule"
+    },
+    {
+      "id": "ackman.chairmans_statement",
+      "reason": "Tier D: written by the independent chairman",
+      "failed": "attribution_rule"
+    },
+    {
+      "id": "fisher.common_stocks_other_writings",
+      "reason": "Fisher moved back to reserve when Lynch was restored"
+    }
+  ],
+  "decisions": [
+    {
+      "date": "2026-10-15",
+      "decision": "Lineup confirmed as proposed: Dalio reserve, Ackman second batch",
+      "by": "qinlu"
+    },
+    {
+      "date": "2026-10-16",
+      "decision": "Strict first-hand rule applied (firsthand_audit_20261016.md), then relaxed the same day to the attribution rule (attribution_criterion_20261016.md): tiers A/B/C admitted, D excluded, plus passage-level safeguards. Lynch restored as growth primary; Fisher back to reserve.",
+      "by": "qinlu"
+    }
+  ]
+}
