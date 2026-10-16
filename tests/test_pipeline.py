@@ -3,7 +3,7 @@ from pathlib import Path
 
 from rubric_pipeline.cli import as_records
 from rubric_pipeline.io import document_record, quote_span
-from rubric_pipeline.validation import partition, principle_errors, rubric_errors
+from rubric_pipeline.validation import attribution_flags, partition, principle_errors, rubric_errors
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +33,13 @@ class PipelineValidationTests(unittest.TestCase):
         self.assertEqual(text[start:end], "lead-\n up\u201d to the\u2014end")
         self.assertEqual(principle_errors(self.principle, {self.doc["document_id"]: self.doc["text"]}), [])
         self.assertEqual(principle_errors(self.principle, {}), ["supporting_quotes[0]: quote not found in complete document"])
+
+    def test_quotes_attributed_to_others_are_flagged(self):
+        text = "We buy businesses we understand.\n\nAs Graham put it, \u201cin the short run the market is a voting machine.\u201d"
+        record = lambda quote: {"document_id": "d", "supporting_quotes": [{"quote": quote}]}
+        self.assertEqual(attribution_flags(record("We buy businesses we understand."), {"d": text}), [])
+        self.assertEqual(attribution_flags(record("the market is a voting machine"), {"d": text}), ["supporting_quotes[0]: inside quotation marks"])
+        self.assertEqual(attribution_flags(record("in the short run"), {"d": "Ben Graham said in the short run it votes."}), ["supporting_quotes[0]: preceded by an attribution cue"])
 
     def test_invalid_records_are_rejected_not_fatal(self):
         bad = dict(self.principle, principle_id="p2", supporting_quotes=[{"quote": "not in the letter at all"}])

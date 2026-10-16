@@ -10,7 +10,7 @@ from pathlib import Path
 
 from .client import complete_json
 from .io import document_record, load_prompt, quote_span, read_json, read_jsonl, sha256, stable_id, write_json, write_jsonl
-from .validation import partition, principle_errors, rubric_errors, rubric_warnings
+from .validation import attribution_flags, partition, principle_errors, rubric_errors, rubric_warnings
 
 PROMPTS = ["stage1_system.txt", "stage1_user.txt", "stage2_system.txt", "stage2_user.txt"]
 
@@ -117,6 +117,8 @@ def main() -> int:
         for principle in principles:
             for evidence in principle["supporting_quotes"]:
                 evidence["span"] = quote_span(evidence["quote"], texts[principle["document_id"]])
+        # Quotes that may be someone else's words stay in the library but are listed for human review.
+        report["attribution_review"] = [{"principle_id": p["principle_id"], "flags": f} for p in principles if (f := attribution_flags(p, texts))]
         write_jsonl(out / "principles.raw.jsonl", raw)
         write_json(out / "principles.validation.json", report)
         write_jsonl(out / "principles.validated.jsonl", principles)

@@ -69,6 +69,7 @@ def main(run_dir: Path) -> None:
             "principle_rejection_rate": round(pv.get("rejection_rate", 0.0), 3),
             "principle_rejection_reasons": collections.Counter(e.split(":")[-1].strip() for r in pv.get("rejected", []) for e in r["errors"]).most_common(5),
             "principles_accepted": len(principles),
+            "principles_flagged_for_attribution": len(pv.get("attribution_review", [])),
             "rubrics_raw": rv.get("record_count", 0),
             "rubric_rejection_rate": round(rv.get("rejection_rate", 0.0), 3),
             "rubrics_accepted": len(rubrics),

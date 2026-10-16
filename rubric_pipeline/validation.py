@@ -27,6 +27,27 @@ def principle_errors(item: dict, documents: dict[str, str]) -> list[str]:
     return errors
 
 
+ATTRIBUTION_CUE = re.compile(
+    r"\b(?:said|says|wrote|writes|told|tells|argued|argues|observed|put it|according to|in the words of|quipped|remarked)\b", re.I)
+
+
+def attribution_flags(item: dict, documents: dict[str, str], window: int = 300) -> list[str]:
+    """Flag supporting quotes that may be someone else's words, for human review."""
+    document = documents.get(item.get("document_id"), "")
+    flags = []
+    for j, evidence in enumerate(item.get("supporting_quotes", [])):
+        span = quote_span(evidence.get("quote", ""), document) if isinstance(evidence, dict) else None
+        if span is None:
+            continue
+        before = document[max(0, span[0] - window):span[0]]
+        paragraph = re.split(r"\n\s*\n", before)[-1]
+        if paragraph.count("\u201c") > paragraph.count("\u201d") or paragraph.count('"') % 2:
+            flags.append(f"supporting_quotes[{j}]: inside quotation marks")
+        elif ATTRIBUTION_CUE.search(document[max(0, span[0] - 150):span[0]]):
+            flags.append(f"supporting_quotes[{j}]: preceded by an attribution cue")
+    return flags
+
+
 def rubric_errors(item: dict, principle_ids: set[str], framework: dict, documents: dict[str, str]) -> list[str]:
     errors = _missing(item, RUBRIC_FIELDS)
     errors += _missing(item.get("applicability", {}), APPLICABILITY_FIELDS, "applicability.")

@@ -9,6 +9,9 @@ claim. Every item must include exact supporting quotations. Before writing a
 quote, copy a contiguous passage from the supplied document; preserve its words and do not
 paraphrase, normalize, or combine separate passages. If you cannot identify a contiguous passage
 that supports the claim, omit the item rather than guessing at a quotation.
+Supporting quotations must be the author's own words. Do not quote or extract as the author's
+principle a passage the author attributes to someone else (a quotation, or "X said that ..."),
+even when the author agrees with it; use the author's own sentence that adopts the idea instead.
 
 Return exactly one JSON object with a top-level `principles` array. Put every extracted principle
 inside that array; never return a single principle object at the top level. If no supported
