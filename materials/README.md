@@ -5,6 +5,7 @@ This directory tracks which first-party materials are selected, fetched, and pro
 | File | Role |
 |---|---|
 | `material_acquisition_registry_20261011.json` | Source-of-truth inventory of selected and proposed materials, including ones still `pending_lawful_access` or `not_yet_screened` |
+| `master_candidates_20261018.md` | Candidate masters with style, trading-agent fit and first-party material availability; recommended lineup pending decision |
 | `materials_list_20261015.json` | Input list for `scripts/fetch_materials.py` (the 2026-10-15 download), plus four pre-2016 Soros essays |
 
 ## Acquisition tracking
