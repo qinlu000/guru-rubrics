@@ -6,83 +6,52 @@ import os
 from urllib.request import Request, urlopen
 
 
+def _post(url: str, headers: dict, body: dict) -> dict:
+    request = Request(url, data=json.dumps(body).encode("utf-8"), headers={"content-type": "application/json", **headers}, method="POST")
+    with urlopen(request, timeout=180) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
 def _parse_json(text: str):
-    text = text.strip()
-    if text.startswith("```"):
-        text = "\n".join(text.splitlines()[1:-1]).strip()
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        decoder = json.JSONDecoder()
-        for start, char in enumerate(text):
-            if char in "[{":
-                try:
-                    return decoder.raw_decode(text[start:])[0]
-                except json.JSONDecodeError:
-                    continue
-    raise ValueError("model response did not contain valid JSON")
+    # Skip any prose or code fence before the first JSON value.
+    starts = [i for i in (text.find("{"), text.find("[")) if i >= 0]
+    if not starts:
+        raise ValueError("model response did not contain JSON")
+    return json.JSONDecoder().raw_decode(text[min(starts):])[0]
 
 
-def _complete_anthropic(*, system: str, user: str, model: str | None, max_tokens: int):
-    api_key = os.environ["ANTHROPIC_API_KEY"]
-    model = model or os.environ["ANTHROPIC_MODEL"]
-    request = Request(
+def _complete_anthropic(system: str, user: str, model: str | None, max_tokens: int) -> str:
+    payload = _post(
         os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com").rstrip("/") + "/v1/messages",
-        data=json.dumps({
-            "model": model,
+        {"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01"},
+        {
+            "model": model or os.environ["ANTHROPIC_MODEL"],
             "max_tokens": max_tokens,
             "temperature": 0,
             "system": system,
             "messages": [{"role": "user", "content": user}],
-        }).encode("utf-8"),
-        headers={
-            "content-type": "application/json",
-            "x-api-key": api_key,
-            "anthropic-version": "2023-06-01",
         },
-        method="POST",
     )
-    with urlopen(request, timeout=180) as response:
-        payload = json.loads(response.read().decode("utf-8"))
-    text = "\n".join(block["text"] for block in payload["content"] if block.get("type") == "text")
-    return _parse_json(text)
+    return "".join(block["text"] for block in payload["content"] if block["type"] == "text")
 
 
-def _complete_openai_compatible(*, system: str, user: str, model: str | None, max_tokens: int):
-    api_key = os.environ["OPENAI_API_KEY"]
-    model = model or os.environ["OPENAI_MODEL"]
-    base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    request = Request(
-        base_url + "/chat/completions",
-        data=json.dumps({
-            "model": model,
+def _complete_openai(system: str, user: str, model: str | None, max_tokens: int) -> str:
+    payload = _post(
+        os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/") + "/chat/completions",
+        {"authorization": "Bearer " + os.environ["OPENAI_API_KEY"]},
+        {
+            "model": model or os.environ["OPENAI_MODEL"],
             "max_tokens": max_tokens,
             "temperature": 0,
             "response_format": {"type": "json_object"},
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-        }).encode("utf-8"),
-        headers={
-            "content-type": "application/json",
-            "authorization": "Bearer " + api_key,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
         },
-        method="POST",
     )
-    with urlopen(request, timeout=180) as response:
-        payload = json.loads(response.read().decode("utf-8"))
-    content = payload["choices"][0]["message"]["content"]
-    text = content if isinstance(content, str) else "\n".join(
-        block["text"] for block in content if isinstance(block, dict) and block.get("type") == "text"
-    )
-    return _parse_json(text)
+    return payload["choices"][0]["message"]["content"]
 
 
-def complete_json(*, system: str, user: str, model: str | None = None, max_tokens: int = 8192, provider: str | None = None):
-    provider = provider or os.environ.get("LLM_PROVIDER", "anthropic")
-    if provider == "anthropic":
-        return _complete_anthropic(system=system, user=user, model=model, max_tokens=max_tokens)
-    if provider == "openai":
-        return _complete_openai_compatible(system=system, user=user, model=model, max_tokens=max_tokens)
-    raise ValueError(f"unsupported LLM_PROVIDER: {provider}")
+PROVIDERS = {"anthropic": _complete_anthropic, "openai": _complete_openai}
+
+
+def complete_json(*, system: str, user: str, model: str | None = None, max_tokens: int = 8192, provider: str = "anthropic"):
+    return _parse_json(PROVIDERS[provider](system, user, model, max_tokens))

@@ -1,11 +1,11 @@
 """File and prompt helpers used by the CLI."""
-
 from __future__ import annotations
 
 import hashlib
 import json
 import re
 import unicodedata
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -15,29 +15,17 @@ def read_json(path: str | Path) -> Any:
 
 
 def write_json(path: str | Path, value: Any) -> None:
-    target = Path(path)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def write_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
-    target = Path(path)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    with target.open("w", encoding="utf-8") as handle:
+    with Path(path).open("w", encoding="utf-8") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
 def read_jsonl(path: str | Path) -> list[dict[str, Any]]:
-    rows: list[dict[str, Any]] = []
-    for line_number, line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        value = json.loads(line)
-        if not isinstance(value, dict):
-            raise ValueError(f"{path}:{line_number} is not a JSON object")
-        rows.append(value)
-    return rows
+    return [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def load_prompt(name: str) -> str:
@@ -46,29 +34,48 @@ def load_prompt(name: str) -> str:
 
 def stable_id(prefix: str, *parts: str) -> str:
     normalized = "\n".join(re.sub(r"\s+", " ", part.strip().lower()) for part in parts)
-    digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:12]
-    clean_prefix = re.sub(r"[^a-z0-9_]+", "_", prefix.lower()).strip("_")
-    return f"{clean_prefix}_{digest}"
+    return f"{prefix}_{hashlib.sha1(normalized.encode('utf-8')).hexdigest()[:12]}"
+
+
+@lru_cache(maxsize=None)
+def _word_stream(text: str) -> tuple[str, tuple[int, ...]]:
+    """Return the casefolded word stream of ``text`` and each character's offset in ``text``.
+
+    Punctuation, quotation marks and whitespace are ignored, and words split by a
+    hyphen (including PDF line-break hyphens, "lead-\\nup") are joined.
+    Offsets refer to the NFKC-normalized text, which equals the original for
+    the plain-text corpus.
+    """
+    text = unicodedata.normalize("NFKC", text)
+    chars, offsets, end = [], [], None
+    for match in re.finditer(r"\w+", text):
+        if end is not None and not re.fullmatch(r"-\s*", text[end:match.start()]):
+            chars.append(" ")
+            offsets.append(end)
+        for i, char in enumerate(match.group(), start=match.start()):
+            folded = char.casefold()
+            chars.extend(folded)
+            offsets.extend([i] * len(folded))
+        end = match.end()
+    return "".join(chars), tuple(offsets)
 
 
 def normalized_text(text: str) -> str:
-    """Normalize extraction-format differences while preserving quote words."""
-    text = unicodedata.normalize("NFKC", text)
-    # PDF layout extraction may split one word at a line ending (or leave a
-    # space after the split hyphen). Rejoin those fragments before comparing
-    # the ordered word stream.
-    text = re.sub(r"(?<=\w)-[ \t\r\n]+(?=\w)", "", text)
-    # Treat ordinary hyphenated compounds consistently with PDF line-break
-    # extraction (for example, ``lead-up`` versus ``lead-\\nup``).
-    text = re.sub(r"(?<=\w)-(?=\w)", "", text)
-    # PDF and HTML extraction disagree on quotation marks, dashes,
-    # hyphenation, and other punctuation. Compare the ordered word stream.
-    text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
-    return re.sub(r"\s+", " ", text).strip().casefold()
+    return _word_stream(text)[0]
 
 
-def quote_in_document(quote: str, document: str) -> bool:
-    return bool(quote.strip()) and normalized_text(quote) in normalized_text(document)
+def quote_span(quote: str, document: str) -> list[int] | None:
+    """Character span ``[start, end)`` of ``quote`` in ``document``, or None if absent."""
+    needle = normalized_text(quote)
+    stream, offsets = _word_stream(document)
+    start = stream.find(needle) if needle else -1
+    if start < 0:
+        return None
+    return [offsets[start], offsets[start + len(needle) - 1] + 1]
+
+
+def sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
 def document_record(path: str | Path, master: str) -> dict[str, Any]:
@@ -79,7 +86,7 @@ def document_record(path: str | Path, master: str) -> dict[str, Any]:
         "master": master,
         "title": source.stem,
         "local_file": str(source),
-        "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "sha256": sha256(text),
         "character_count": len(text),
         "word_count": len(text.split()),
         "text": text,
