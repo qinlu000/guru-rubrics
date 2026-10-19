@@ -54,15 +54,15 @@ Outputs include raw and deterministically validated JSONL files, run metadata (i
 | `rubric_pipeline/` | Two-stage extraction code, prompts, and JSON schemas |
 | `configs/` | Trajectory framework definitions (currently `tradebank.json`) |
 | `corpus/buffett/` | Buffett pilot corpus: processed letter text, hash manifest, and selected-source list |
-| `materials/` | Acquisition registry, fetch list, and run records; see [`materials/README.md`](materials/README.md) |
-| `scripts/fetch_materials.py` | Downloads the public first-party materials in `materials/materials_list_20261015.json` |
+| `materials/` | Material selection (masters, sources, attribution tiers); see [`materials/README.md`](materials/README.md) |
+| `scripts/fetch_materials.py` | Downloads the public materials listed in the selection |
 | `tests/` | Unit tests (`python -m unittest discover -s tests`) |
 
 Generated runs (`runs/`), raw downloads (`corpus/*/raw/`), and fetched materials (`materials_local/`) are ignored by Git.
 
 ## Master materials
 
-[`materials/material_acquisition_registry_20261011.json`](materials/material_acquisition_registry_20261011.json) is the source-of-truth inventory of selected materials per master, including books still pending lawful access. The repository stores metadata only; it does not redistribute copyrighted books or restricted PDFs.
+[`materials/material_selection_v3_20261015.json`](materials/material_selection_v3_20261015.json) lists the masters, the selected sources per master (books to purchase and public documents), each source's attribution tier, and the spans to exclude before extraction. The repository stores metadata only; it does not redistribute copyrighted books or restricted PDFs.
 
 ## Public material retrieval
 
@@ -72,7 +72,7 @@ Fetch the public first-party documents for all masters into a local, ignored dir
 python3 scripts/fetch_materials.py --out materials_local
 ```
 
-The script reads [`materials/materials_list_20261015.json`](materials/materials_list_20261015.json), also discovers the Wesco letters (Munger) and the georgesoros.com essays, records SHA-256 hashes in `materials_local/retrieval_manifest.json`, and skips copyright books and paywalled article bodies. Pershing Square (Ackman) blocks non-browser requests, so those letters must be saved from a real browser. For canonical O’Neil extraction, use a lawfully obtained complete copy of *How to Make Money in Stocks*.
+The script fetches every public item with a URL in the selection, also discovers the Wesco letters (Munger), and records SHA-256 hashes in `materials_local/retrieval_manifest.json`. Books are never fetched. Pershing Square (Ackman) blocks non-browser requests, so the script only prints those annual-report URLs for download in a real browser.
 
 ## Corpus
 
